@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Web Dev, Design, Video & AI · Tagum, PH</title>
+<meta name="description" content="Freelance web developer, designer, video editor, and AI asset creator based in Tagum, PH. WordPress, Wix, automation, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f0eb;
+    --bg-alt: #e8e5de;
+    --panel: #fafaf8;
+    --text: #0d0d0b;
+    --muted: #706f6b;
+    --border: rgba(0,0,0,0.08);
+    --accent: #c84b11;
+    --accent2: #1a3a2c;
+    --chip-bg: #e8e5de;
+    --font-disp: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 3rem;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: relative;
+    z-index: 20;
+    flex-shrink: 0;
+  }
+  .logo {
+    font-family: var(--font-disp);
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+  }
+  .header-center {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .pulse-dot {
+    width: 7px; height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2.5s ease infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* ── LEFT NAV ── */
+  .col-nav {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+    padding: 3.5rem 3rem;
+    overflow-y: auto;
+  }
+  .tagline {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+  .tagline strong {
+    color: var(--text);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    transition: gap 0.35s var(--ease);
+    position: relative;
+    outline: none;
+  }
+  .nav-btn:first-child { border-top: 1px solid var(--border); }
+  .nav-btn:hover,
+  .nav-btn.active { gap: 1.75rem; }
+  .nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .nav-index {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    width: 20px;
+    flex-shrink: 0;
+    transition: color 0.3s;
+  }
+  .nav-label {
+    font-family: var(--font-disp);
+    font-size: 2.1rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--bg-alt);
+    -webkit-text-stroke: 1.5px rgba(0,0,0,0.15);
+    transition: color 0.3s var(--ease), -webkit-text-stroke 0.3s;
+    position: relative;
+  }
+  .nav-btn:hover .nav-label,
+  .nav-btn.active .nav-label {
+    color: var(--text);
+    -webkit-text-stroke: 0px;
+  }
+  .nav-btn.active .nav-index { color: var(--accent); }
+  .nav-arrow {
+    margin-left: auto;
+    font-size: 1rem;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s, transform 0.3s var(--ease);
+  }
+  .nav-btn.active .nav-arrow,
+  .nav-btn:hover .nav-arrow { opacity: 1; transform: translateX(0); }
+
+  .nav-footer {
+    margin-top: auto;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-footer p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .nav-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* ── RIGHT PANEL ── */
+  .col-content {
+    flex: 1;
+    position: relative;
+    background: var(--panel);
+    min-width: 0;
+  }
+
+  .panel {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    padding: 3.5rem 4rem 7rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease), visibility 0.3s;
+    scrollbar-width: thin;
+  }
+  .panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 2;
+  }
+
+  /* Panel header shared */
+  .panel-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .panel-eyebrow::before {
+    content: '';
+    width: 28px; height: 1.5px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .panel-h1 {
+    font-family: var(--font-disp);
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    letter-spacing: 0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  .panel-body {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 3rem;
+  }
+  .chip {
+    padding: 0.45rem 0.9rem;
+    background: var(--chip-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .stat-cell {
+    padding: 1.25rem 1.5rem;
+    background: var(--panel);
+  }
+  .stat-num {
+    font-family: var(--font-disp);
+    font-size: 2.25rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* ── RESUME FORM ── */
+  .resume-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .resume-top {
+    padding: 2rem 2.25rem;
+    background: var(--accent2);
+    color: #fff;
+  }
+  .resume-top h3 {
+    font-family: var(--font-disp);
+    font-size: 1.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .resume-top p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-weight: 300;
+  }
+  .resume-form-wrap {
+    padding: 1.75rem 2.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .resume-input-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+  .resume-input-row input {
+    flex: 1;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .resume-input-row input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(200,75,17,0.12);
+  }
+  .resume-input-row input::placeholder { color: var(--muted); }
+  .btn-primary {
+    padding: 0.85rem 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: var(--font-disp);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: #a63c0d; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .trust {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.73rem;
+    color: var(--muted);
+  }
+  .trust svg { flex-shrink: 0; }
+
+  /* ── FOLIO CARDS ── */
+  .folio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .folio-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: var(--panel);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s var(--ease), border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .folio-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--card-accent, var(--accent));
+    border-radius: 3px 0 0 3px;
+  }
+  .folio-card[data-color="c1"] { --card-accent: #c84b11; }
+  .folio-card[data-color="c2"] { --card-accent: #1a3a2c; }
+  .folio-card[data-color="c3"] { --card-accent: #2563b0; }
+  .folio-card[data-color="c4"] { --card-accent: #7c3aed; }
+  .folio-card[data-color="c5"] { --card-accent: #b45309; }
+  .folio-card[data-color="c6"] { --card-accent: #0f766e; }
+  .folio-card:hover {
+    transform: translateX(4px);
+    border-color: rgba(0,0,0,0.14);
+    background: var(--bg-alt);
+  }
+  .folio-icon {
+    width: 44px; height: 44px;
+    border-radius: 9px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--card-accent, var(--accent));
+    transition: background 0.2s;
+  }
+  .folio-card:hover .folio-icon { background: var(--panel); }
+  .folio-info { flex: 1; min-width: 0; }
+  .folio-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+  .folio-desc {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .folio-cta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--card-accent, var(--accent));
+    white-space: nowrap;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s, transform 0.3s var(--ease);
+  }
+  .folio-card:hover .folio-cta { opacity: 1; transform: translateX(0); }
+  .folio-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.65;
+  }
+  .folio-note a { color: var(--accent); text-decoration: none; font-style: normal; font-weight: 500; }
+
+  /* ── DRIVE LINKS ── */
+  .drive-links-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .drive-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .drive-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-alt);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.25s var(--ease), border-color 0.2s;
+  }
+  .drive-link:hover {
+    background: var(--panel);
+    border-color: rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }
+  .dl-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dl-name { flex: 1; }
+  .dl-arrow {
+    font-size: 0.75rem;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.25s var(--ease);
+  }
+  .drive-link:hover .dl-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ── GALLERY ── */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .gitem {
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    overflow: hidden;
+    position: relative;
+    cursor: default;
+    transition: transform 0.3s var(--ease);
+  }
+  .gitem:hover { transform: translateY(-3px); }
+  .gitem::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(0,0,0,0.015) 8px, rgba(0,0,0,0.015) 16px);
+  }
+  .gitem-a { background: #dbd6cc; }
+  .gitem-b { background: #cccfc8; }
+  .gitem-c { background: #d4cfc7; background-image: radial-gradient(circle at 70% 30%, #c9c3b8 0%, #dbd6cc 100%); }
+  .gitem-d { background: #c8cdd1; }
+  .gcap {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(4px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    z-index: 2;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 3rem;
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step-num {
+    font-family: var(--font-disp);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    width: 36px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .step-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .step-info p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .tcard {
+    padding: 2rem 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+    position: relative;
+    transition: transform 0.3s var(--ease), border-color 0.2s;
+  }
+  .tcard:hover { transform: translateY(-2px); border-color: rgba(0,0,0,0.14); }
+  .tquote {
+    font-size: 3rem;
+    line-height: 1;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    opacity: 0.35;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.75rem;
+  }
+  .ttext {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 1.25rem;
+    max-width: 520px;
+  }
+  .ttext strong { font-style: normal; font-weight: 500; color: var(--accent2); }
+  .tauthor {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .tavatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+  .ta-green { background: #d1ead6; color: #1a4a23; }
+  .ta-blue  { background: #d0dff5; color: #1a3060; }
+  .ta-earth { background: #e8ddd0; color: #5a3a1a; }
+  .tname {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .trole {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .trating {
+    margin-left: auto;
+    display: flex;
+    gap: 3px;
+  }
+  .star {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  }
+
+  /* ── CASE STUDY BLOCKS ── */
+  .case-block {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s var(--ease);
+  }
+  .case-block:hover { transform: translateY(-2px); }
+  .case-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-alt);
+  }
+  .case-head h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .case-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 3px;
+    background: var(--accent);
+    color: #fff;
+  }
+  .case-body {
+    padding: 1.25rem 1.5rem;
+    background: var(--panel);
+  }
+  .case-body p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .case-metric {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .cm { }
+  .cm-val {
+    font-family: var(--font-disp);
+    font-size: 1.6rem;
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+  .cm-lab {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── STICKY CTA ── */
+  .hire-cta {
+    position: absolute;
+    bottom: 2.25rem;
+    right: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    text-decoration: none;
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  }
+  .hire-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.2);
+  }
+  .hire-label {
+    background: var(--text);
+    color: #fff;
+    font-family: var(--font-disp);
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 1.75rem 1rem 2rem;
+  }
+  .hire-icon {
+    background: var(--accent);
+    color: #fff;
+    width: 52px; height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: transform 0.3s var(--ease);
+  }
+  .hire-cta:hover .hire-icon { transform: rotate(45deg); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    body { overflow-y: auto; height: auto; }
+    main { flex-direction: column; height: auto; }
+
+    header { grid-template-columns: 1fr auto; padding: 0 1.5rem; }
+    .header-center { display: none; }
+
+    .col-nav {
+      width: 100%;
+      padding: 2.5rem 1.75rem 2rem;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links { display: none; }
+
+    .col-content { flex: none; background: transparent; position: static; }
+    .panel {
+      position: static;
+      opacity: 1; visibility: visible; transform: none;
+      padding: 2rem 1.75rem 3rem;
+      overflow-y: visible;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin: 0 1.25rem 1.25rem;
+    }
+
+    .gallery { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr; gap: 1px; }
+    .resume-input-row { flex-direction: column; }
+    .hire-cta { position: fixed; bottom: 1.25rem; right: 1.25rem; left: 1.25rem; border-radius: 50px; justify-content: space-between; }
+    .hire-label { flex: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">SYS.CREATIVE</div>
+  <div class="header-center">Tagum, Davao Region · Philippines</div>
+  <div class="header-right">
+    <div class="pulse-dot"></div>
+    Available for hire
+  </div>
+</header>
+
+<main>
+  <!-- NAV COLUMN -->
+  <div class="col-nav">
+    <p class="tagline">Web development, design, video, AI assets, and automation — <strong>one person, full stack</strong>, built to scale your business.</p>
+
+    <nav aria-label="Portfolio sections">
+      <div class="nav-links" role="tablist">
+        <button class="nav-btn active" role="tab" aria-selected="true" aria-controls="p-about" data-target="p-about">
+          <span class="nav-index">01</span>
+          <span class="nav-label">About</span>
+          <span class="nav-arrow">→</span>
+        </button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="p-work" data-target="p-work">
+          <span class="nav-index">02</span>
+          <span class="nav-label">Work</span>
+          <span class="nav-arrow">→</span>
+        </button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="p-gallery" data-target="p-gallery">
+          <span class="nav-index">03</span>
+          <span class="nav-label">Gallery</span>
+          <span class="nav-arrow">→</span>
+        </button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="p-clients" data-target="p-clients">
+          <span class="nav-index">04</span>
+          <span class="nav-label">Clients</span>
+          <span class="nav-arrow">→</span>
+        </button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="p-process" data-target="p-process">
+          <span class="nav-index">05</span>
+          <span class="nav-label">Process</span>
+          <span class="nav-arrow">→</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="nav-footer">
+      <p>Let's build something together.<br>
+        <a href="mailto:hello@yoursite.com">hello@yoursite.com</a> · 
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- CONTENT COLUMN -->
+  <div class="col-content">
+
+    <!-- ABOUT -->
+    <section class="panel active" id="p-about" role="tabpanel">
+      <div class="panel-eyebrow">Profile · Background</div>
+      <h1 class="panel-h1">Systematic<br>Creativity.</h1>
+      <p class="panel-body">I'm a freelance multi-disciplinary creator based in Tagum, PH. I build websites, edit videos, generate AI-powered assets, and wire up automations that kill repetitive work — all under one roof. No handoffs, no silos.</p>
+
+      <div class="chips">
+        <span class="chip">WordPress</span>
+        <span class="chip">Wix</span>
+        <span class="chip">Custom Dev</span>
+        <span class="chip">Web Design</span>
+        <span class="chip">Video Editing</span>
+        <span class="chip">AI Asset Creation</span>
+        <span class="chip">Kling · Higgsfield · VEO</span>
+        <span class="chip">Adobe Firefly</span>
+        <span class="chip">Workflow Automation</span>
+        <span class="chip">Admin Support</span>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat-cell">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years active</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Projects shipped</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Client satisfaction</div>
+        </div>
+      </div>
+
+      <div class="resume-card">
+        <div class="resume-top">
+          <h3>Get My Resume</h3>
+          <p>An automated workflow sends a PDF straight to your inbox — instantly.</p>
+        </div>
+        <div class="resume-form-wrap">
+          <form id="resumeForm" onsubmit="handleResumeSubmit(event)">
+            <div class="resume-input-row">
+              <input type="email" id="emailInput" placeholder="your@email.com" required aria-label="Email address">
+              <button type="submit" class="btn-primary">Send PDF</button>
+            </div>
+          </form>
+          <div class="trust">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            No spam. Fully automated. Unsubscribe anytime.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="panel" id="p-work" role="tabpanel">
+      <div class="panel-eyebrow">Case Studies · Selected Work</div>
+      <h1 class="panel-h1">What I<br>Build.</h1>
+      <p class="panel-body">Six practice areas — each one an intersection of creative thinking and technical execution.</p>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>Web Development — WordPress, Wix & Custom Code</h4>
+          <span class="case-badge">Dev</span>
+        </div>
+        <div class="case-body">
+          <p>End-to-end website builds from concept to launch. WordPress sites with custom themes and plugins, Wix builds with native CMS and dynamic pages, and fully custom-coded projects for clients who need something beyond templates.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">WordPress</span><span class="chip">Wix</span><span class="chip">HTML/CSS/JS</span><span class="chip">CMS Integration</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">Full-stack</div><div class="cm-lab">Front to back</div></div>
+            <div class="cm"><div class="cm-val">3</div><div class="cm-lab">Platforms covered</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>Web Design — Modern, Conversion-Focused UI</h4>
+          <span class="case-badge">Design</span>
+        </div>
+        <div class="case-body">
+          <p>User-focused design that converts visitors into leads. Every layout decision is intentional — hierarchy, whitespace, and CTAs built to guide the user from landing to action without friction.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">UI/UX</span><span class="chip">Conversion Design</span><span class="chip">Wireframing</span><span class="chip">Brand Systems</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">User-first</div><div class="cm-lab">Design approach</div></div>
+            <div class="cm"><div class="cm-val">CRO</div><div class="cm-lab">Always considered</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>Video Editing — Promotional & Branded Content</h4>
+          <span class="case-badge">Video</span>
+        </div>
+        <div class="case-body">
+          <p>Short-form and long-form video for social media, brand campaigns, and product promotions. Clean cuts, motion graphics, captions, and sound design — edited for retention, not just aesthetics.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">CapCut</span><span class="chip">Social Media</span><span class="chip">Motion Graphics</span><span class="chip">Branded Content</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">Short & long</div><div class="cm-lab">Format range</div></div>
+            <div class="cm"><div class="cm-val">Retention</div><div class="cm-lab">Editing priority</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>AI Asset Creation — Images & Video Generation</h4>
+          <span class="case-badge">AI</span>
+        </div>
+        <div class="case-body">
+          <p>AI-generated visuals and video using the latest generation tools. From product mockups to cinematic AI video clips — used to accelerate content production, cut costs, and unlock creative ideas that would be impractical to shoot traditionally.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">Kling</span><span class="chip">Higgsfield</span><span class="chip">VEO</span><span class="chip">Adobe Firefly</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">4+</div><div class="cm-lab">AI tools in use</div></div>
+            <div class="cm"><div class="cm-val">Faster</div><div class="cm-lab">Content turnaround</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>Automation — Workflow Systems & Productivity</h4>
+          <span class="case-badge">Systems</span>
+        </div>
+        <div class="case-body">
+          <p>Designed and deployed automations that eliminate repetitive work. From Wix workflow triggers to Google Apps Script pipelines — if a task is recurring, it can be automated. Built a financial dashboard that completely eliminated manual data entry for one client.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">Wix Automations</span><span class="chip">Google Apps Script</span><span class="chip">Form Pipelines</span><span class="chip">Workflow Design</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">0</div><div class="cm-lab">Manual entry hours</div></div>
+            <div class="cm"><div class="cm-val">Real-time</div><div class="cm-lab">Data visibility</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-head">
+          <h4>Admin Support — Operations & Task Management</h4>
+          <span class="case-badge">Admin</span>
+        </div>
+        <div class="case-body">
+          <p>Organized, reliable backend support for busy founders and small teams. Task management, scheduling, data entry, research, file organization — the unsexy work that keeps everything running. Remote-first, async-friendly.</p>
+          <div class="chips" style="margin-bottom:1rem;">
+            <span class="chip">Task Management</span><span class="chip">Data Entry</span><span class="chip">Research</span><span class="chip">Remote Support</span>
+          </div>
+          <div class="case-metric">
+            <div class="cm"><div class="cm-val">Async</div><div class="cm-lab">Work style</div></div>
+            <div class="cm"><div class="cm-val">PH timezone</div><div class="cm-lab">Based in Tagum</div></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- GALLERY -->
+    <section class="panel" id="p-gallery" role="tabpanel">
+      <div class="panel-eyebrow">Visuals · Recent Work</div>
+      <h1 class="panel-h1">Selected<br>Projects.</h1>
+      <p class="panel-body">A snapshot of delivered work across all disciplines. Browse by category to see the full folio on Google Drive.</p>
+
+      <div class="gallery">
+        <div class="gitem gitem-a">
+          <span class="gcap">Web Development build</span>
+        </div>
+        <div class="gitem gitem-b">
+          <span class="gcap">Dashboard automation UI</span>
+        </div>
+        <div class="gitem gitem-c">
+          <span class="gcap">AI asset — Talk In Pixels</span>
+        </div>
+        <div class="gitem gitem-d">
+          <span class="gcap">Video editing timeline</span>
+        </div>
+      </div>
+
+      <div class="drive-links-label">Browse full folio by category</div>
+      <div class="drive-links">
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_WEB_DEV_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#c84b11;"></span>
+          <span class="dl-name">Web Development</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_WEB_DESIGN_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#1a3a2c;"></span>
+          <span class="dl-name">Web Design</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_VIDEO_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#2563b0;"></span>
+          <span class="dl-name">Video Editing</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_AI_ASSETS_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#7c3aed;"></span>
+          <span class="dl-name">AI Asset Creation</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_AUTOMATION_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#b45309;"></span>
+          <span class="dl-name">Automation</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+        <a class="drive-link" href="https://drive.google.com/drive/folders/YOUR_ADMIN_FOLDER_ID" target="_blank" rel="noopener">
+          <span class="dl-dot" style="background:#0f766e;"></span>
+          <span class="dl-name">Admin Support</span>
+          <span class="dl-arrow">↗</span>
+        </a>
+
+      </div>
+
+      <p class="folio-note" style="margin-top:1.25rem;">Folders are view-only. Not live yet? <a href="mailto:hello@yoursite.com">Request samples directly.</a></p>
+    </section>
+
+    <!-- CLIENTS / TESTIMONIALS -->
+    <section class="panel" id="p-clients" role="tabpanel">
+      <div class="panel-eyebrow">Social Proof · Client Statements</div>
+      <h1 class="panel-h1">What Clients<br>Say.</h1>
+      <p class="panel-body">Real feedback from people I've worked with. Every engagement is built on clear communication and measurable results.</p>
+
+      <div class="testimonials-grid">
+
+        <div class="tcard">
+          <div class="tquote">"</div>
+          <p class="ttext">Working with this team completely changed how we handle content. The AI pipeline they built let us <strong>publish consistently without burning out</strong> — something we struggled with for over a year.</p>
+          <div class="tauthor">
+            <div class="tavatar ta-green">RD</div>
+            <div>
+              <div class="tname">Rica D.</div>
+              <div class="trole">Brand Manager · Talk In Pixels</div>
+            </div>
+            <div class="trating">
+              <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard">
+          <div class="tquote">"</div>
+          <p class="ttext">The financial dashboard saved us hours every week. I was skeptical about automating our tracking, but it <strong>just works — no maintenance, no errors</strong>. Exactly what a small business needs.</p>
+          <div class="tauthor">
+            <div class="tavatar ta-blue">MV</div>
+            <div>
+              <div class="tname">Marco V.</div>
+              <div class="trole">Owner · Local Service Business</div>
+            </div>
+            <div class="trating">
+              <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard">
+          <div class="tquote">"</div>
+          <p class="ttext">I handed over rough measurements and a pile of ideas for our barn court. What came back was <strong>a complete, buildable spec sheet</strong> — everything accounted for. Impressive attention to detail.</p>
+          <div class="tauthor">
+            <div class="tavatar ta-earth">JC</div>
+            <div>
+              <div class="tname">Jed C.</div>
+              <div class="trole">Property Owner · Tagum</div>
+            </div>
+            <div class="trating">
+              <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;">
+        <div style="flex:1;">
+          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.25rem;">Want to leave a review?</div>
+          <div style="font-size:0.88rem;font-weight:300;color:var(--muted);">If we've worked together, I'd genuinely appreciate hearing from you.</div>
+        </div>
+        <a href="mailto:hello@yoursite.com?subject=Review" style="text-decoration:none;">
+          <button class="btn-primary" style="font-size:0.95rem;padding:0.75rem 1.25rem;">Submit Feedback</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="panel" id="p-process" role="tabpanel">
+      <div class="panel-eyebrow">How It Works · Engagement Flow</div>
+      <h1 class="panel-h1">The<br>Process.</h1>
+      <p class="panel-body">Every project follows a lean, transparent workflow — from first message to final delivery. No bloated discovery phases. No scope creep.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-info">
+            <h4>Discovery Call</h4>
+            <p>A short 20-minute sync to understand your goals, constraints, and timeline. I come prepared with questions — not a pitch deck.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-info">
+            <h4>Scoped Proposal</h4>
+            <p>A one-page breakdown: deliverables, timeline, cost. Clear language, no jargon. Signed off before any work begins.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-info">
+            <h4>Build & Iterate</h4>
+            <p>I work in short cycles with regular check-ins. You see real progress early — not a reveal at the end.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-info">
+            <h4>Delivery & Handoff</h4>
+            <p>Clean documentation, working files, and a walkthrough. You own everything built — no lock-in, no dependency on me to maintain it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-info">
+            <h4>Post-Launch Support</h4>
+            <p>Two weeks of free support after delivery. For ongoing work, we discuss a retainer — entirely optional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Avg. turnaround: 1–2 weeks</span>
+        <span class="chip">Remote-friendly</span>
+        <span class="chip">Tagum-based · PH timezone</span>
+      </div>
+    </section>
+
+    <!-- HIRE CTA -->
+    <a href="mailto:hello@yoursite.com" class="hire-cta" aria-label="Start a project">
+      <span class="hire-label">Start a Project</span>
+      <span class="hire-icon">↗</span>
+    </a>
+
+  </div><!-- /col-content -->
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.nav-btn');
+  const panels = document.querySelectorAll('.panel');
+
+  if (window.innerWidth > 900) {
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        const target = document.getElementById(btn.dataset.target);
+        if (target) { target.classList.add('active'); target.scrollTop = 0; }
+      });
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+      });
+    });
+  }
+
+  function handleResumeSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Sent ✓';
+    btn.style.background = '#1a3a2c';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send PDF';
+      btn.style.background = '';
+      btn.disabled = false;
+      document.getElementById('emailInput').value = '';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
