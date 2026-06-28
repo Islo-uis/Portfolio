@@ -1,1237 +1,2122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Louis Amiel Rollorata — Front-End Developer & Multimedia Specialist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Louis Amiel Rollorata — Front-End Developer & Multimedia Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    :root {
-      --bg:       #F5F7FA;
-      --bg2:      #FFFFFF;
-      --surface:  #FFFFFF;
-      --surface2: #EEF1F7;
-      --border:   #E2E6EF;
-      --cobalt:   #2563EB;
-      --cobalt2:  #1D4ED8;
-      --cobaltbg: rgba(37,99,235,0.07);
-      --amber:    #D97706;
-      --amberbg:  rgba(217,119,6,0.09);
-      --text:     #0F1523;
-      --text2:    #4B5675;
-      --text3:    #8892AA;
-      --glow:     rgba(37,99,235,0.15);
-      --shadow:   0 1px 3px rgba(15,21,35,0.07), 0 4px 16px rgba(15,21,35,0.05);
-      --shadow-lg:0 8px 32px rgba(15,21,35,0.10);
-    }
+        :root {
+            --bg: #FAFBFD;
+            --bg2: #FFFFFF;
+            --surface: #FFFFFF;
+            --surface2: #F4F6FA;
+            --border: #E8ECF2;
+            --border-soft: #EDF0F5;
+            --cobalt: #2B5FEA;
+            --cobalt2: #1A4BD1;
+            --cobaltbg: rgba(43, 95, 234, 0.06);
+            --cobaltbg-hover: rgba(43, 95, 234, 0.10);
+            --amber: #B86E0E;
+            --amberbg: rgba(184, 110, 14, 0.07);
+            --text: #0D1424;
+            --text2: #4A556E;
+            --text3: #8A95AD;
+            --glow: rgba(43, 95, 234, 0.12);
+            --shadow-sm: 0 1px 2px rgba(13, 20, 36, 0.04);
+            --shadow: 0 2px 8px rgba(13, 20, 36, 0.05), 0 1px 2px rgba(13, 20, 36, 0.04);
+            --shadow-lg: 0 12px 40px rgba(13, 20, 36, 0.07), 0 4px 12px rgba(13, 20, 36, 0.04);
+            --shadow-xl: 0 20px 60px rgba(13, 20, 36, 0.10), 0 8px 20px rgba(13, 20, 36, 0.05);
+            --radius-sm: 6px;
+            --radius: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 20px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--cobalt); border-radius: 2px; }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CDD3E0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AEB7CA;
+        }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 4rem;
-      background: rgba(245,247,250,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700; font-size: 1.05rem;
-      letter-spacing: -0.02em; color: var(--text);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--cobalt); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-    .nav-links a {
-      color: var(--text2); text-decoration: none;
-      font-size: 0.875rem; font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--cobalt); color: #fff !important;
-      padding: 0.5rem 1.2rem; border-radius: 7px;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
-      box-shadow: 0 2px 8px var(--glow);
-    }
-    .nav-cta:hover { background: var(--cobalt2) !important; transform: translateY(-1px); box-shadow: 0 4px 16px var(--glow) !important; }
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 3rem;
+            background: rgba(250, 251, 253, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition), background var(--transition);
+        }
+        nav.scrolled {
+            border-bottom-color: var(--border-soft);
+            background: rgba(250, 251, 253, 0.94);
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            text-decoration: none;
+            transition: opacity var(--transition);
+        }
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+        .nav-logo span {
+            color: var(--cobalt);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text2);
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: color var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: var(--cobalt);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+        .nav-cta {
+            background: var(--cobalt);
+            color: #fff !important;
+            padding: 0.5rem 1.3rem;
+            border-radius: 100px;
+            font-weight: 600 !important;
+            letter-spacing: 0.01em;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+            box-shadow: 0 2px 10px var(--glow);
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            background: var(--cobalt2) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px var(--glow) !important;
+        }
 
-    /* ─── HERO ─── */
-    #hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      overflow: hidden;
-      background: var(--bg2);
-    }
-    .hero-bg-grid {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.55;
-      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
-      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 720px; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.13em;
-      text-transform: uppercase; color: var(--cobalt);
-      background: var(--cobaltbg); border: 1px solid rgba(37,99,235,0.18);
-      padding: 0.35rem 0.9rem; border-radius: 100px;
-      margin-bottom: 1.8rem;
-    }
-    .hero-eyebrow::before { content: '●'; font-size: 0.45rem; }
-    .hero-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      font-weight: 700; line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 0.7rem;
-    }
-    .hero-role-wrap {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
-      font-weight: 400; color: var(--text2);
-      margin-bottom: 1.5rem;
-    }
-    .hero-role { color: var(--cobalt); font-weight: 600; min-width: 240px; }
-    .hero-cursor {
-      display: inline-block; width: 2px; height: 1.1em;
-      background: var(--cobalt); vertical-align: middle;
-      animation: blink 0.85s step-end infinite;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-    .hero-desc {
-      max-width: 500px; margin: 0 auto 2.2rem;
-      color: var(--text2); font-size: 1rem; line-height: 1.75;
-    }
-    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--cobalt); color: #fff;
-      padding: 0.8rem 1.8rem; border-radius: 8px;
-      font-weight: 600; font-size: 0.92rem; text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 2px 12px var(--glow);
-    }
-    .btn-primary:hover { background: var(--cobalt2); transform: translateY(-2px); box-shadow: 0 6px 24px var(--glow); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--bg2); color: var(--text);
-      padding: 0.8rem 1.8rem; border-radius: 8px;
-      font-weight: 500; font-size: 0.92rem; text-decoration: none;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      box-shadow: var(--shadow);
-    }
-    .btn-ghost:hover { border-color: var(--cobalt); box-shadow: 0 2px 12px var(--glow); }
+        /* ─── HERO ─── */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10rem 2rem 5rem;
+            overflow: hidden;
+            background: var(--bg2);
+        }
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle at 50% 38%, rgba(43, 95, 234, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(43, 95, 234, 0.03) 0%, transparent 45%),
+                radial-gradient(circle at 80% 20%, rgba(43, 95, 234, 0.03) 0%, transparent 45%);
+            opacity: 0.8;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cobalt);
+            margin-bottom: 2rem;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cobalt);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(43, 95, 234, 0.35);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(43, 95, 234, 0);
+            }
+        }
+        .hero-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        .hero-role-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+            font-weight: 400;
+            color: var(--text2);
+            margin-bottom: 1.8rem;
+            min-height: 2rem;
+        }
+        .hero-role {
+            color: var(--cobalt);
+            font-weight: 600;
+            min-width: 220px;
+            text-align: left;
+        }
+        .hero-cursor {
+            display: inline-block;
+            width: 1.5px;
+            height: 1.1em;
+            background: var(--cobalt);
+            vertical-align: middle;
+            animation: blink 0.8s step-end infinite;
+            border-radius: 1px;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .hero-desc {
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            color: var(--text2);
+            font-size: 1.02rem;
+            line-height: 1.75;
+            letter-spacing: 0.005em;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--cobalt);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 16px var(--glow);
+        }
+        .btn-primary:hover {
+            background: var(--cobalt2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px var(--glow);
+        }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            border: 1.5px solid var(--border);
+            transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+        }
+        .btn-ghost:hover {
+            border-color: var(--cobalt);
+            box-shadow: 0 4px 16px var(--glow);
+            background: var(--cobaltbg);
+        }
 
-    /* ─── TICKER ─── */
-    #clients {
-      background: var(--bg2); padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .ticker-label {
-      text-align: center; font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text3); margin-bottom: 1.4rem;
-    }
-    .ticker-wrap { overflow: hidden; position: relative; }
-    .ticker-wrap::before, .ticker-wrap::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
-    }
-    .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
-    .ticker-wrap::after  { right: 0; background: linear-gradient(to left,  var(--bg2), transparent); }
-    .ticker-track {
-      display: flex; gap: 1rem; align-items: center;
-      width: max-content;
-      animation: ticker-scroll 24s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .logo-pill {
-      display: flex; align-items: center; gap: 0.7rem;
-      background: var(--bg); border: 1px solid var(--border);
-      padding: 0.6rem 1.2rem; border-radius: 100px;
-      white-space: nowrap; flex-shrink: 0;
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .logo-pill:hover { border-color: var(--cobalt); box-shadow: 0 2px 12px var(--glow); }
-    .logo-icon { font-size: 1.1rem; }
-    .logo-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text); }
-    .logo-role { font-size: 0.7rem; color: var(--text3); }
+        /* ─── TICKER ─── */
+        #clients {
+            background: var(--bg);
+            padding: 2.2rem 0;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+            overflow: hidden;
+        }
+        .ticker-label {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text3);
+            margin-bottom: 1.2rem;
+        }
+        .ticker-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        .ticker-wrap::before,
+        .ticker-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .ticker-wrap::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg), transparent);
+        }
+        .ticker-wrap::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg), transparent);
+        }
+        .ticker-track {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            width: max-content;
+            animation: ticker-scroll 28s linear infinite;
+        }
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes ticker-scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+        .logo-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            padding: 0.55rem 1.1rem;
+            border-radius: 100px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .logo-pill:hover {
+            border-color: var(--cobalt);
+            box-shadow: var(--shadow);
+        }
+        .logo-icon {
+            font-size: 1rem;
+        }
+        .logo-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .logo-role {
+            font-size: 0.68rem;
+            color: var(--text3);
+        }
 
-    /* ─── SECTION WRAPPER ─── */
-    section { padding: 6rem 4rem; }
-    .section-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--cobalt); margin-bottom: 0.5rem;
-    }
-    .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      font-weight: 700; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 0.8rem;
-    }
-    .section-sub { color: var(--text2); max-width: 480px; line-height: 1.7; font-size: 0.95rem; }
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 7rem 3rem;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cobalt);
+            margin-bottom: 0.6rem;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            line-height: 1.15;
+        }
+        .section-sub {
+            color: var(--text2);
+            max-width: 460px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            letter-spacing: 0.005em;
+        }
 
-    /* ─── ABOUT ─── */
-    #about { background: var(--bg); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-    .about-text p { color: var(--text2); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
-    .about-text p strong { color: var(--text); }
+        /* ─── ABOUT ─── */
+        #about {
+            background: var(--bg2);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            margin-top: 3.5rem;
+        }
+        .about-text p {
+            color: var(--text2);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 0.94rem;
+            letter-spacing: 0.005em;
+        }
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
 
-    /* ─── ACCORDION SKILLS ─── */
-    .accordion { display: flex; flex-direction: column; gap: 0.5rem; }
-    .accordion-item {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s;
-    }
-    .accordion-item.open { border-color: rgba(37,99,235,0.3); }
-    .accordion-trigger {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 0.85rem 1.1rem; background: none; border: none;
-      color: var(--text); font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.88rem; font-weight: 600; cursor: pointer; text-align: left; gap: 1rem;
-    }
-    .accordion-trigger:hover { color: var(--cobalt); }
-    .acc-left { display: flex; align-items: center; gap: 0.6rem; }
-    .acc-arrow { font-size: 0.72rem; color: var(--text3); transition: transform 0.25s; flex-shrink: 0; }
-    .accordion-item.open .acc-arrow { transform: rotate(180deg); color: var(--cobalt); }
-    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s; padding: 0 1.1rem; }
-    .accordion-item.open .accordion-body { max-height: 300px; padding: 0 1.1rem 1rem; }
-    .acc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .acc-tag {
-      font-size: 0.78rem; padding: 0.28rem 0.7rem; border-radius: 5px;
-      background: var(--cobaltbg); color: var(--cobalt);
-      border: 1px solid rgba(37,99,235,0.14); font-weight: 500;
-    }
+        /* ─── ACCORDION SKILLS ─── */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .accordion-item {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .accordion-item.open {
+            background: var(--surface2);
+            border-color: var(--border-soft);
+        }
+        .accordion-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            gap: 1rem;
+            letter-spacing: 0.005em;
+            transition: color var(--transition);
+        }
+        .accordion-trigger:hover {
+            color: var(--cobalt);
+        }
+        .acc-left {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+        .acc-arrow {
+            font-size: 0.65rem;
+            color: var(--text3);
+            transition: transform var(--transition-slow), color var(--transition);
+            flex-shrink: 0;
+        }
+        .accordion-item.open .acc-arrow {
+            transform: rotate(180deg);
+            color: var(--cobalt);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            padding: 0 1rem;
+        }
+        .accordion-item.open .accordion-body {
+            max-height: 280px;
+            padding: 0 1rem 0.9rem;
+        }
+        .acc-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        .acc-tag {
+            font-size: 0.76rem;
+            padding: 0.26rem 0.65rem;
+            border-radius: 100px;
+            background: var(--cobaltbg);
+            color: var(--cobalt);
+            font-weight: 500;
+            letter-spacing: 0.005em;
+        }
 
-    /* ─── EXPERIENCE ─── */
-    #experience { background: var(--bg2); }
-    .exp-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+        /* ─── EXPERIENCE ─── */
+        #experience {
+            background: var(--bg);
+        }
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-top: 3rem;
+        }
+        .exp-item {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .exp-item.open {
+            border-color: rgba(43, 95, 234, 0.2);
+            box-shadow: var(--shadow);
+        }
+        .exp-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            gap: 1.5rem;
+            transition: background var(--transition);
+        }
+        .exp-trigger:hover {
+            background: var(--cobaltbg);
+        }
+        .exp-trigger-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .exp-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            background: var(--surface2);
+        }
+        .exp-meta {
+            text-align: left;
+        }
+        .exp-role {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.1rem;
+            letter-spacing: -0.01em;
+        }
+        .exp-company {
+            font-size: 0.78rem;
+            color: var(--cobalt);
+            font-weight: 600;
+        }
+        .exp-trigger-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        .exp-date {
+            font-size: 0.73rem;
+            color: var(--text3);
+            font-weight: 500;
+            background: var(--surface2);
+            padding: 0.22rem 0.65rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .exp-chevron {
+            font-size: 0.65rem;
+            color: var(--text3);
+            transition: transform var(--transition-slow), color var(--transition);
+        }
+        .exp-item.open .exp-chevron {
+            transform: rotate(180deg);
+            color: var(--cobalt);
+        }
+        .exp-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .exp-item.open .exp-body {
+            max-height: 750px;
+        }
+        .exp-inner {
+            padding: 0 1.5rem 1.5rem;
+        }
+        .exp-divider {
+            height: 1px;
+            background: var(--border-soft);
+            margin-bottom: 1.1rem;
+        }
+        .exp-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 1.3rem;
+        }
+        .exp-bullets li {
+            font-size: 0.85rem;
+            color: var(--text2);
+            padding-left: 1.1rem;
+            position: relative;
+            line-height: 1.65;
+        }
+        .exp-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cobalt);
+            font-size: 0.7rem;
+            top: 0.15rem;
+        }
+        .exp-bullets li strong {
+            color: var(--text);
+            font-weight: 600;
+        }
 
-    /* Collapsible exp item */
-    .exp-item {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s;
-    }
-    .exp-item.open { border-color: rgba(37,99,235,0.3); }
-    .exp-trigger {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 1.5rem; background: none; border: none;
-      cursor: pointer; text-align: left; gap: 1.5rem;
-      transition: background 0.15s;
-    }
-    .exp-trigger:hover { background: var(--cobaltbg); }
-    .exp-trigger-left { display: flex; align-items: center; gap: 1.1rem; }
-    .exp-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
-      background: var(--surface2); border: 1px solid var(--border);
-    }
-    .exp-meta { text-align: left; }
-    .exp-role {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95rem; font-weight: 600; color: var(--text);
-      margin-bottom: 0.15rem;
-    }
-    .exp-company { font-size: 0.8rem; color: var(--cobalt); font-weight: 600; }
-    .exp-trigger-right { display: flex; align-items: center; gap: 1.2rem; flex-shrink: 0; }
-    .exp-date {
-      font-size: 0.75rem; color: var(--text3); font-weight: 500;
-      background: var(--surface2); padding: 0.25rem 0.7rem;
-      border-radius: 100px; white-space: nowrap;
-      border: 1px solid var(--border);
-    }
-    .exp-chevron { font-size: 0.72rem; color: var(--text3); transition: transform 0.28s; }
-    .exp-item.open .exp-chevron { transform: rotate(180deg); color: var(--cobalt); }
+        /* ── Slideshow inside exp ── */
+        .exp-slideshow {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--surface2);
+            border: 1px solid var(--border-soft);
+        }
+        .slides-wrap {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide {
+            min-width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface2);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .slide-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .slide-placeholder .ph-icon {
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        .slide-placeholder .ph-label {
+            font-size: 0.72rem;
+            color: var(--text3);
+            font-weight: 500;
+            background: var(--surface);
+            padding: 0.22rem 0.65rem;
+            border-radius: 100px;
+            border: 1px solid var(--border-soft);
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.45rem 0.8rem;
+            background: rgba(13, 20, 36, 0.6);
+            backdrop-filter: blur(6px);
+            font-size: 0.7rem;
+            color: #fff;
+            font-weight: 500;
+        }
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 0.4rem;
+            pointer-events: none;
+        }
+        .slide-btn {
+            pointer-events: all;
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.7rem;
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition), background var(--transition);
+        }
+        .slide-btn:hover {
+            border-color: var(--cobalt);
+            background: var(--cobaltbg);
+        }
+        .slide-dots {
+            display: flex;
+            gap: 0.3rem;
+            justify-content: center;
+            padding: 0.5rem 0 0;
+        }
+        .slide-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+        .slide-dot.active {
+            background: var(--cobalt);
+            transform: scale(1.4);
+        }
 
-    .exp-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.45s ease;
-    }
-    .exp-item.open .exp-body { max-height: 700px; }
-    .exp-inner { padding: 0 1.5rem 1.5rem; }
-    .exp-divider { height: 1px; background: var(--border); margin-bottom: 1.2rem; }
+        /* ─── PROJECTS ─── */
+        #projects {
+            background: var(--bg2);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.55s, transform 0.55s, box-shadow var(--transition), border-color var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project-card:hover {
+            border-color: rgba(43, 95, 234, 0.25);
+            box-shadow: var(--shadow-lg);
+        }
+        .project-thumb {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .thumb-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            color: var(--text2);
+            border-top: 1px solid var(--border-soft);
+        }
+        .project-body {
+            padding: 1.2rem 1.3rem 1.3rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.6rem;
+        }
+        .project-tag {
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 100px;
+            background: var(--cobaltbg);
+            color: var(--cobalt);
+        }
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+        .project-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.6;
+            flex: 1;
+        }
+        .project-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--cobalt);
+            font-weight: 600;
+            margin-top: 0.8rem;
+            transition: gap var(--transition);
+        }
+        .project-card:hover .project-arrow {
+            gap: 0.55rem;
+        }
 
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.4rem; }
-    .exp-bullets li {
-      font-size: 0.875rem; color: var(--text2);
-      padding-left: 1.2rem; position: relative; line-height: 1.65;
-    }
-    .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--cobalt); font-size: 0.75rem; top: 0.15rem; }
-    .exp-bullets li strong { color: var(--text); }
+        /* ─── SMM FEATURE CARD ─── */
+        .smm-card {
+            grid-column: span 3;
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.55s, transform 0.55s, box-shadow var(--transition), border-color var(--transition);
+        }
+        .smm-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .smm-card:hover {
+            border-color: rgba(43, 95, 234, 0.25);
+            box-shadow: var(--shadow-lg);
+        }
+        .smm-visual {
+            background: linear-gradient(160deg, #F0F4FF, #E8EFFD);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 220px;
+            position: relative;
+        }
+        .smm-mockup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .smm-post {
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 0.6rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .smm-post-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            background: var(--cobalt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .smm-post-lines {
+            flex: 1;
+        }
+        .smm-line {
+            height: 4px;
+            border-radius: 2px;
+            background: var(--border);
+            margin-bottom: 3px;
+        }
+        .smm-line.short {
+            width: 50%;
+        }
+        .smm-stat {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #16A34A;
+            white-space: nowrap;
+        }
+        .smm-body {
+            padding: 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .smm-body .project-title {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .smm-body .project-desc {
+            margin-bottom: 1rem;
+        }
+        .smm-metrics {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 0.9rem;
+            padding: 0.8rem 1rem;
+            background: var(--cobaltbg);
+            border-radius: var(--radius);
+        }
+        .smm-metric-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .smm-metric-num span {
+            color: var(--cobalt);
+        }
+        .smm-metric-label {
+            font-size: 0.68rem;
+            color: var(--text3);
+        }
 
-    /* ── Slideshow inside exp ── */
-    .exp-slideshow { position: relative; border-radius: 10px; overflow: hidden; background: var(--surface2); border: 1px solid var(--border); }
-    .slides-wrap { display: flex; transition: transform 0.42s ease; }
-    .slide {
-      min-width: 100%; height: 200px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      background: var(--surface2);
-      position: relative; overflow: hidden; flex-shrink: 0;
-    }
-    /* Placeholder style — swap with real <img> tags later */
-    .slide-placeholder {
-      width: 100%; height: 100%; object-fit: cover;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 0.5rem;
-    }
-    .slide-placeholder .ph-icon { font-size: 2.2rem; opacity: 0.35; }
-    .slide-placeholder .ph-label {
-      font-size: 0.75rem; color: var(--text3); font-weight: 500;
-      background: var(--bg2); padding: 0.25rem 0.7rem; border-radius: 100px;
-      border: 1px solid var(--border);
-    }
-    /* Real image inside slide */
-    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .slide-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 0.5rem 0.9rem;
-      background: rgba(15,21,35,0.55); backdrop-filter: blur(4px);
-      font-size: 0.72rem; color: #fff; font-weight: 500;
-    }
-    .slide-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      display: flex; justify-content: space-between;
-      width: 100%; padding: 0 0.5rem; pointer-events: none;
-    }
-    .slide-btn {
-      pointer-events: all; background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 50%; width: 30px; height: 30px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 0.75rem; color: var(--text);
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .slide-btn:hover { border-color: var(--cobalt); background: var(--cobaltbg); }
-    .slide-dots {
-      display: flex; gap: 0.35rem; justify-content: center;
-      padding: 0.55rem 0 0;
-    }
-    .slide-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--border); cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .slide-dot.active { background: var(--cobalt); transform: scale(1.3); }
+        /* ─── MODAL ─── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(13, 20, 36, 0.5);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            max-width: 600px;
+            width: 100%;
+            padding: 2.2rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: modalIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.94) translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--surface2);
+            border: 1px solid var(--border-soft);
+            color: var(--text2);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color var(--transition), color var(--transition), background var(--transition);
+        }
+        .modal-close:hover {
+            border-color: var(--cobalt);
+            color: var(--cobalt);
+            background: var(--cobaltbg);
+        }
+        .modal-tag {
+            margin-bottom: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        .modal-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+        }
+        .modal-period {
+            font-size: 0.78rem;
+            color: var(--amber);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .modal-body {
+            color: var(--text2);
+            line-height: 1.8;
+            font-size: 0.88rem;
+        }
+        .modal-body ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-top: 0.9rem;
+        }
+        .modal-body ul li {
+            padding-left: 1.1rem;
+            position: relative;
+        }
+        .modal-body ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--cobalt);
+        }
+        .modal-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1.3rem;
+        }
+        .modal-chip {
+            font-size: 0.73rem;
+            padding: 0.26rem 0.6rem;
+            border-radius: 100px;
+            background: var(--cobaltbg);
+            color: var(--cobalt);
+            font-weight: 500;
+        }
 
-    /* ─── PROJECTS ─── */
-    #projects { background: var(--bg); }
-    .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 3rem; }
-    .project-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden; cursor: pointer;
-      box-shadow: var(--shadow);
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.5s, transform 0.5s, box-shadow 0.25s, border-color 0.25s;
-    }
-    .project-card.visible { opacity: 1; transform: translateY(0); }
-    .project-card:hover { border-color: var(--cobalt); box-shadow: 0 8px 32px var(--glow); }
-    .project-thumb {
-      height: 170px; display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem; position: relative; overflow: hidden;
-    }
-    .thumb-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 0.35rem 0.8rem;
-      background: rgba(255,255,255,0.75); backdrop-filter: blur(4px);
-      color: var(--text2); border-top: 1px solid var(--border);
-    }
-    .project-body { padding: 1.3rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.7rem; }
-    .project-tag {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
-      text-transform: uppercase; padding: 0.22rem 0.55rem; border-radius: 4px;
-      background: var(--cobaltbg); color: var(--cobalt);
-      border: 1px solid rgba(37,99,235,0.15);
-    }
-    .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
-    .project-desc { font-size: 0.84rem; color: var(--text2); line-height: 1.6; }
-    .project-arrow { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--cobalt); font-weight: 600; margin-top: 0.9rem; transition: gap 0.2s; }
-    .project-card:hover .project-arrow { gap: 0.65rem; }
+        /* ─── FUNNEL ─── */
+        #hire {
+            background: var(--bg);
+            border-top: 1px solid var(--border-soft);
+            text-align: center;
+            padding: 8rem 3rem;
+        }
+        .funnel-box {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        .funnel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: var(--amberbg);
+            color: var(--amber);
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+        .funnel-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+        }
+        .funnel-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 0.9rem;
+            line-height: 1.12;
+        }
+        .funnel-sub {
+            color: var(--text2);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 2.2rem;
+            letter-spacing: 0.005em;
+        }
+        .funnel-form {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .funnel-input {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 0.8rem 1.1rem;
+            border-radius: 100px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            color: var(--text);
+            font-size: 0.88rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .funnel-input:focus {
+            border-color: var(--cobalt);
+            box-shadow: 0 0 0 4px rgba(43, 95, 234, 0.08);
+        }
+        .funnel-input::placeholder {
+            color: var(--text3);
+        }
+        .funnel-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            background: var(--cobalt);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.01em;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 16px var(--glow);
+        }
+        .funnel-btn:hover {
+            background: var(--cobalt2);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px var(--glow);
+        }
+        .funnel-trust {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--text3);
+        }
+        .trust-item .icon {
+            color: var(--cobalt);
+        }
+        .funnel-divider {
+            margin: 2rem auto;
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text3);
+            font-size: 0.76rem;
+        }
+        .funnel-divider::before,
+        .funnel-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-soft);
+        }
+        .funnel-contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            color: var(--text2);
+            text-decoration: none;
+            font-size: 0.84rem;
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition), color var(--transition), box-shadow var(--transition);
+        }
+        .contact-link:hover {
+            border-color: var(--cobalt);
+            color: var(--cobalt);
+            box-shadow: var(--shadow);
+        }
+        .funnel-success {
+            display: none;
+            padding: 1.6rem;
+            background: var(--cobaltbg);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.8rem;
+        }
+        .funnel-success.show {
+            display: block;
+        }
+        .funnel-success h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .funnel-success p {
+            color: var(--text2);
+            font-size: 0.85rem;
+        }
 
-    /* ─── SMM FEATURE CARD ─── */
-    .smm-card {
-      grid-column: span 3;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden; cursor: pointer;
-      display: grid; grid-template-columns: 1fr 1fr;
-      box-shadow: var(--shadow);
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.5s, transform 0.5s, box-shadow 0.25s, border-color 0.25s;
-    }
-    .smm-card.visible { opacity: 1; transform: translateY(0); }
-    .smm-card:hover { border-color: var(--cobalt); box-shadow: 0 8px 32px var(--glow); }
-    .smm-visual {
-      background: linear-gradient(135deg, #EEF3FF, #E0EAFF);
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem; min-height: 220px; position: relative;
-    }
-    .smm-mockup { display: flex; flex-direction: column; gap: 0.55rem; width: 100%; }
-    .smm-post {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.65rem 0.9rem;
-      display: flex; align-items: center; gap: 0.75rem;
-      box-shadow: var(--shadow);
-    }
-    .smm-post-icon {
-      width: 30px; height: 30px; border-radius: 6px;
-      background: var(--cobalt); display: flex; align-items: center;
-      justify-content: center; font-size: 0.9rem; flex-shrink: 0;
-    }
-    .smm-post-lines { flex: 1; }
-    .smm-line { height: 5px; border-radius: 3px; background: var(--border); margin-bottom: 4px; }
-    .smm-line.short { width: 55%; }
-    .smm-stat { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; color: #16A34A; white-space: nowrap; }
-    .smm-body { padding: 2rem 1.8rem; display: flex; flex-direction: column; justify-content: center; }
-    .smm-body .project-title { font-size: 1.2rem; margin-bottom: 0.55rem; }
-    .smm-body .project-desc { margin-bottom: 1.1rem; }
-    .smm-metrics {
-      display: flex; gap: 1.2rem; margin-bottom: 1rem;
-      padding: 0.9rem 1rem; background: var(--cobaltbg);
-      border: 1px solid rgba(37,99,235,0.12); border-radius: 8px;
-    }
-    .smm-metric-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text); }
-    .smm-metric-num span { color: var(--cobalt); }
-    .smm-metric-label { font-size: 0.7rem; color: var(--text3); }
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--bg2);
+            border-top: 1px solid var(--border-soft);
+            padding: 1.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        footer p {
+            font-size: 0.78rem;
+            color: var(--text3);
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-links a {
+            font-size: 0.78rem;
+            color: var(--text3);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--cobalt);
+        }
 
-    /* ─── MODAL ─── */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(15,21,35,0.45); backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 2rem;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 16px; max-width: 620px; width: 100%;
-      padding: 2.2rem; position: relative;
-      max-height: 90vh; overflow-y: auto;
-      box-shadow: var(--shadow-lg);
-      animation: modalIn 0.22s ease;
-    }
-    @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-    .modal-close {
-      position: absolute; top: 1.1rem; right: 1.1rem;
-      background: var(--bg); border: 1px solid var(--border);
-      color: var(--text2); width: 34px; height: 34px;
-      border-radius: 50%; cursor: pointer; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .modal-close:hover { border-color: var(--cobalt); color: var(--cobalt); }
-    .modal-tag { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
-    .modal-period { font-size: 0.8rem; color: var(--amber); margin-bottom: 1.1rem; font-weight: 600; }
-    .modal-body { color: var(--text2); line-height: 1.8; font-size: 0.9rem; }
-    .modal-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-top: 1rem; }
-    .modal-body ul li { padding-left: 1.2rem; position: relative; }
-    .modal-body ul li::before { content: '▸'; position: absolute; left: 0; color: var(--cobalt); }
-    .modal-stack { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.4rem; }
-    .modal-chip {
-      font-size: 0.75rem; padding: 0.28rem 0.65rem; border-radius: 5px;
-      background: var(--cobaltbg); color: var(--cobalt);
-      border: 1px solid rgba(37,99,235,0.18); font-weight: 500;
-    }
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .exp-item {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s, transform 0.5s, border-color var(--transition), box-shadow var(--transition);
+        }
+        .exp-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project-card,
+        .smm-card {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .project-card.visible,
+        .smm-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* ─── FUNNEL ─── */
-    #hire {
-      background: var(--bg2); border-top: 1px solid var(--border);
-      text-align: center; padding: 7rem 4rem;
-    }
-    .funnel-box { max-width: 640px; margin: 0 auto; }
-    .funnel-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--amberbg); border: 1px solid rgba(217,119,6,0.2);
-      color: var(--amber); font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.38rem 1rem; border-radius: 100px; margin-bottom: 1.4rem;
-    }
-    .funnel-badge::before { content: '●'; font-size: 0.45rem; }
-    .funnel-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.9rem, 3.5vw, 3rem);
-      font-weight: 700; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 0.9rem; line-height: 1.15;
-    }
-    .funnel-sub { color: var(--text2); font-size: 1rem; line-height: 1.7; margin-bottom: 2.2rem; }
-    .funnel-form { display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-    .funnel-input {
-      flex: 1; min-width: 210px; max-width: 290px;
-      padding: 0.8rem 1.1rem; border-radius: 8px;
-      background: var(--bg); border: 1px solid var(--border);
-      color: var(--text); font-size: 0.9rem; font-family: 'Inter', sans-serif;
-      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .funnel-input:focus { border-color: var(--cobalt); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-    .funnel-input::placeholder { color: var(--text3); }
-    .funnel-btn {
-      padding: 0.8rem 1.8rem; border-radius: 8px;
-      background: var(--cobalt); color: #fff;
-      font-weight: 700; font-size: 0.92rem; border: none;
-      cursor: pointer; font-family: 'Inter', sans-serif;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 2px 12px var(--glow);
-    }
-    .funnel-btn:hover { background: var(--cobalt2); transform: translateY(-1px); box-shadow: 0 4px 20px var(--glow); }
-    .funnel-trust { display: flex; justify-content: center; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--text3); }
-    .trust-item .icon { color: var(--cobalt); }
-    .funnel-divider {
-      margin: 2rem auto; width: 100%; max-width: 400px;
-      display: flex; align-items: center; gap: 1rem; color: var(--text3); font-size: 0.78rem;
-    }
-    .funnel-divider::before, .funnel-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .funnel-contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .contact-link {
-      display: flex; align-items: center; gap: 0.45rem;
-      padding: 0.65rem 1.3rem; border-radius: 8px;
-      background: var(--bg); border: 1px solid var(--border);
-      color: var(--text2); text-decoration: none; font-size: 0.85rem;
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    }
-    .contact-link:hover { border-color: var(--cobalt); color: var(--cobalt); box-shadow: 0 2px 12px var(--glow); }
-    .funnel-success {
-      display: none; padding: 1.8rem;
-      background: var(--cobaltbg); border: 1px solid rgba(37,99,235,0.2);
-      border-radius: 10px; margin-bottom: 1.8rem;
-    }
-    .funnel-success.show { display: block; }
-    .funnel-success h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text); margin-bottom: 0.4rem; }
-    .funnel-success p { color: var(--text2); font-size: 0.88rem; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--bg); border-top: 1px solid var(--border);
-      padding: 1.8rem 4rem;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-    }
-    footer p { font-size: 0.8rem; color: var(--text3); }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: 0.8rem; color: var(--text3); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cobalt); }
-
-    /* ─── REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s, transform 0.6s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .exp-item { opacity: 0; transform: translateY(16px); transition: opacity 0.45s, transform 0.45s, border-color 0.2s; }
-    .exp-item.visible { opacity: 1; transform: translateY(0); }
-    .project-card, .smm-card { opacity: 0; transform: translateY(20px); }
-    .project-card.visible, .smm-card.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      section { padding: 4rem 1.5rem; }
-      #hero { padding: 7rem 1.5rem 3rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .projects-grid { grid-template-columns: 1fr 1fr; }
-      .smm-card { grid-column: span 2; grid-template-columns: 1fr; }
-      footer { padding: 1.5rem; }
-      #hire { padding: 5rem 1.5rem; }
-      .exp-trigger-right .exp-date { display: none; }
-    }
-    @media (max-width: 600px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .smm-card { grid-column: span 1; }
-      .nav-links li:not(:last-child) { display: none; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-    }
-  </style>
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 0.9rem 1.8rem;
+            }
+            section {
+                padding: 5rem 2rem;
+            }
+            #hero {
+                padding: 8rem 1.5rem 3.5rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .smm-card {
+                grid-column: span 2;
+                grid-template-columns: 1fr;
+            }
+            footer {
+                padding: 1.5rem 2rem;
+            }
+            #hire {
+                padding: 6rem 2rem;
+            }
+            .exp-trigger-right .exp-date {
+                display: none;
+            }
+        }
+        @media (max-width: 640px) {
+            nav {
+                padding: 0.8rem 1.2rem;
+            }
+            section {
+                padding: 4rem 1.2rem;
+            }
+            #hero {
+                padding: 7rem 1rem 3rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .smm-card {
+                grid-column: span 1;
+            }
+            .nav-links li:not(:last-child) {
+                display: none;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary,
+            .btn-ghost {
+                width: 100%;
+                justify-content: center;
+                max-width: 280px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.2rem;
+            }
+            #hire {
+                padding: 4.5rem 1.2rem;
+            }
+            .funnel-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .funnel-input {
+                max-width: 100%;
+                width: 100%;
+            }
+            .funnel-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
-  <a href="#hero" class="nav-logo">LA<span>.</span>Rollorata</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#hire" class="nav-cta">Hire Me ↗</a></li>
-  </ul>
-</nav>
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">LA<span>.</span>Rollorata</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#hire" class="nav-cta">Hire Me ↗</a></li>
+        </ul>
+    </nav>
 
-<!-- ─── HERO ─── -->
-<section id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Available for Work</div>
-    <h1 class="hero-name">Louis Amiel<br>Rollorata.</h1>
-    <div class="hero-role-wrap">
-      I build&nbsp;<span class="hero-role" id="role-text"></span><span class="hero-cursor"></span>
-    </div>
-    <p class="hero-desc">
-      Front-End Developer, UI/UX Designer, and Multimedia Specialist —
-      combining code and creativity to build things that work and look sharp.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View My Work ↓</a>
-      <a href="#hire" class="btn-ghost">Let's Work Together</a>
-    </div>
-  </div>
-</section>
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Available for Work</div>
+            <h1 class="hero-name">Louis Amiel<br>Rollorata.</h1>
+            <div class="hero-role-wrap">
+                I build&nbsp;<span class="hero-role" id="role-text"></span><span class="hero-cursor"></span>
+            </div>
+            <p class="hero-desc">
+                Front-End Developer, UI/UX Designer, and Multimedia Specialist —
+                combining code and creativity to build things that work and look sharp.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-primary">View My Work ↓</a>
+                <a href="#hire" class="btn-ghost">Let's Work Together</a>
+            </div>
+        </div>
+    </section>
 
-<!-- ─── TICKER ─── -->
-<div id="clients">
-  <div class="ticker-label">Organizations & Businesses I've Worked With</div>
-  <div class="ticker-wrap">
-    <div class="ticker-track" id="ticker-track"></div>
-  </div>
-</div>
-
-<!-- ─── ABOUT ─── -->
-<section id="about">
-  <div class="section-label reveal">Who I Am</div>
-  <h2 class="section-title reveal">Code. Design. Story.</h2>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>I'm a <strong>BS Information Technology</strong> graduate (Information Security major) from the University of Southeastern Philippines, with a multidisciplinary skill set spanning front-end development, UI/UX design, and multimedia production.</p>
-      <p>My work lives at the intersection of <strong>technology and visual communication</strong> — from building IoT dashboards and convention platforms to designing branded social campaigns and editing promotional videos.</p>
-      <p>I've driven measurable results: growing social engagement by over <strong>92%</strong> in a year, building platforms used in production, and delivering branded content at scale for clients across industries.</p>
-    </div>
-    <div class="reveal">
-      <div class="accordion" id="skills-accordion">
-        <div class="accordion-item open" data-acc="dev">
-          <button class="accordion-trigger" onclick="toggleAcc('dev')">
-            <div class="acc-left"><span>💻</span> Development</div>
-            <span class="acc-arrow">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="acc-tags">
-              <span class="acc-tag">HTML</span><span class="acc-tag">CSS</span>
-              <span class="acc-tag">JavaScript</span><span class="acc-tag">Front-End Dev</span>
-              <span class="acc-tag">Wix Studio</span><span class="acc-tag">Git & GitHub</span>
-              <span class="acc-tag">Database Management</span>
-            </div>
-          </div>
+    <!-- ─── TICKER ─── -->
+    <div id="clients">
+        <div class="ticker-label">Organizations & Businesses I've Worked With</div>
+        <div class="ticker-wrap">
+            <div class="ticker-track" id="ticker-track"></div>
         </div>
-        <div class="accordion-item" data-acc="design">
-          <button class="accordion-trigger" onclick="toggleAcc('design')">
-            <div class="acc-left"><span>🎨</span> Design & UI/UX</div>
-            <span class="acc-arrow">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="acc-tags">
-              <span class="acc-tag">UI/UX Design</span><span class="acc-tag">Adobe Photoshop</span>
-              <span class="acc-tag">Canva</span><span class="acc-tag">AI Asset Generation</span>
-              <span class="acc-tag">Graphic Design</span><span class="acc-tag">Layout Design</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" data-acc="media">
-          <button class="accordion-trigger" onclick="toggleAcc('media')">
-            <div class="acc-left"><span>🎬</span> Video & Multimedia</div>
-            <span class="acc-arrow">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="acc-tags">
-              <span class="acc-tag">Adobe Premiere</span><span class="acc-tag">Video Editing</span>
-              <span class="acc-tag">Photo Retouching</span><span class="acc-tag">Same-Day Edits</span>
-              <span class="acc-tag">Reels & Short-Form</span>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item" data-acc="marketing">
-          <button class="accordion-trigger" onclick="toggleAcc('marketing')">
-            <div class="acc-left"><span>📣</span> Marketing & Growth</div>
-            <span class="acc-arrow">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="acc-tags">
-              <span class="acc-tag">Social Media Mgmt</span><span class="acc-tag">SEO</span>
-              <span class="acc-tag">Workflow Automation</span><span class="acc-tag">Email Automation</span>
-              <span class="acc-tag">YouTube Mgmt</span><span class="acc-tag">Content Strategy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── EXPERIENCE ─── -->
-<section id="experience">
-  <div class="section-label reveal">Career</div>
-  <h2 class="section-title reveal">Where I've made an impact.</h2>
-  <p class="section-sub reveal">Click any role to expand. Tap the arrows to browse work samples.</p>
-  <div class="exp-list" id="exp-list">
-
-    <!-- SPORT COURT ONTARIO -->
-    <div class="exp-item" data-exp="0">
-      <button class="exp-trigger" onclick="toggleExp(0)">
-        <div class="exp-trigger-left">
-          <div class="exp-icon">🏀</div>
-          <div class="exp-meta">
-            <div class="exp-role">Social Media Manager · Video Editor · Graphic Designer</div>
-            <div class="exp-company">Sport Court Ontario</div>
-          </div>
-        </div>
-        <div class="exp-trigger-right">
-          <span class="exp-date">Oct 2025 – Jun 2026</span>
-          <span class="exp-chevron">▼</span>
-        </div>
-      </button>
-      <div class="exp-body">
-        <div class="exp-inner">
-          <div class="exp-divider"></div>
-          <ul class="exp-bullets">
-            <li>Managed Facebook and Instagram campaigns to grow brand visibility and engagement.</li>
-            <li>Produced and edited promotional videos, reels, and branded content.</li>
-            <li>Designed graphics and ad materials with consistent visual identity using <strong>AI Asset Generation</strong>.</li>
-          </ul>
-          <div class="exp-slideshow" id="ss-0">
-            <div class="slides-wrap" id="sw-0">
-              <div class="slide">
-                <!-- REPLACE: <img src="your-photo.jpg" alt="Court design post"> -->
-                <div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-label">Campaign Visual — replace with photo</div></div>
-                <div class="slide-caption">Instagram campaign graphic · Sport Court Ontario</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🎬</div><div class="ph-label">Reel / Video Edit — replace with photo</div></div>
-                <div class="slide-caption">Promotional reel · Facebook & Instagram</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🏀</div><div class="ph-label">Court Design Visual — replace with photo</div></div>
-                <div class="slide-caption">Court design showcase · branded content</div>
-              </div>
-            </div>
-            <div class="slide-nav">
-              <button class="slide-btn" onclick="prevSlide(0,3)">‹</button>
-              <button class="slide-btn" onclick="nextSlide(0,3)">›</button>
-            </div>
-            <div class="slide-dots" id="dots-0">
-              <div class="slide-dot active" onclick="goSlide(0,0,3)"></div>
-              <div class="slide-dot" onclick="goSlide(0,1,3)"></div>
-              <div class="slide-dot" onclick="goSlide(0,2,3)"></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- ABECON -->
-    <div class="exp-item" data-exp="1">
-      <button class="exp-trigger" onclick="toggleExp(1)">
-        <div class="exp-trigger-left">
-          <div class="exp-icon">🏛</div>
-          <div class="exp-meta">
-            <div class="exp-role">Front-End Designer & Developer</div>
-            <div class="exp-company">ABECON 2025</div>
-          </div>
-        </div>
-        <div class="exp-trigger-right">
-          <span class="exp-date">Sep 2025 – Nov 2025</span>
-          <span class="exp-chevron">▼</span>
-        </div>
-      </button>
-      <div class="exp-body">
-        <div class="exp-inner">
-          <div class="exp-divider"></div>
-          <ul class="exp-bullets">
-            <li>Led UI/UX design and front-end development of a full convention management platform.</li>
-            <li>Built registration, attendance tracking, e-commerce, online voting, and tabulation features.</li>
-            <li>Collaborated cross-functionally to ship a responsive, accessible application.</li>
-          </ul>
-          <div class="exp-slideshow" id="ss-1">
-            <div class="slides-wrap" id="sw-1">
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🖥</div><div class="ph-label">Platform UI — replace with screenshot</div></div>
-                <div class="slide-caption">ABECON 2025 · Registration module UI</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🗳</div><div class="ph-label">Voting Module — replace with screenshot</div></div>
-                <div class="slide-caption">ABECON 2025 · Online voting & tabulation</div>
-              </div>
+    <!-- ─── ABOUT ─── -->
+    <section id="about">
+        <div class="section-label reveal">Who I Am</div>
+        <h2 class="section-title reveal">Code. Design. Story.</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>I'm a <strong>BS Information Technology</strong> graduate (Information Security major) from the University of Southeastern Philippines, with a multidisciplinary skill set spanning front-end development, UI/UX design, and multimedia production.</p>
+                <p>My work lives at the intersection of <strong>technology and visual communication</strong> — from building IoT dashboards and convention platforms to designing branded social campaigns and editing promotional videos.</p>
+                <p>I've driven measurable results: growing social engagement by over <strong>92%</strong> in a year, building platforms used in production, and delivering branded content at scale for clients across industries.</p>
             </div>
-            <div class="slide-nav">
-              <button class="slide-btn" onclick="prevSlide(1,2)">‹</button>
-              <button class="slide-btn" onclick="nextSlide(1,2)">›</button>
+            <div class="reveal">
+                <div class="accordion" id="skills-accordion">
+                    <div class="accordion-item open" data-acc="dev">
+                        <button class="accordion-trigger" onclick="toggleAcc('dev')">
+                            <div class="acc-left"><span>💻</span> Development</div>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="accordion-body">
+                            <div class="acc-tags">
+                                <span class="acc-tag">HTML</span><span class="acc-tag">CSS</span>
+                                <span class="acc-tag">JavaScript</span><span class="acc-tag">Front-End Dev</span>
+                                <span class="acc-tag">Wix Studio</span><span class="acc-tag">Git & GitHub</span>
+                                <span class="acc-tag">Database Management</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" data-acc="design">
+                        <button class="accordion-trigger" onclick="toggleAcc('design')">
+                            <div class="acc-left"><span>🎨</span> Design & UI/UX</div>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="accordion-body">
+                            <div class="acc-tags">
+                                <span class="acc-tag">UI/UX Design</span><span class="acc-tag">Adobe Photoshop</span>
+                                <span class="acc-tag">Canva</span><span class="acc-tag">AI Asset Generation</span>
+                                <span class="acc-tag">Graphic Design</span><span class="acc-tag">Layout Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" data-acc="media">
+                        <button class="accordion-trigger" onclick="toggleAcc('media')">
+                            <div class="acc-left"><span>🎬</span> Video & Multimedia</div>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="accordion-body">
+                            <div class="acc-tags">
+                                <span class="acc-tag">Adobe Premiere</span><span class="acc-tag">Video Editing</span>
+                                <span class="acc-tag">Photo Retouching</span><span class="acc-tag">Same-Day Edits</span>
+                                <span class="acc-tag">Reels & Short-Form</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" data-acc="marketing">
+                        <button class="accordion-trigger" onclick="toggleAcc('marketing')">
+                            <div class="acc-left"><span>📣</span> Marketing & Growth</div>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="accordion-body">
+                            <div class="acc-tags">
+                                <span class="acc-tag">Social Media Mgmt</span><span class="acc-tag">SEO</span>
+                                <span class="acc-tag">Workflow Automation</span><span class="acc-tag">Email Automation</span>
+                                <span class="acc-tag">YouTube Mgmt</span><span class="acc-tag">Content Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="slide-dots" id="dots-1">
-              <div class="slide-dot active" onclick="goSlide(1,0,2)"></div>
-              <div class="slide-dot" onclick="goSlide(1,1,2)"></div>
-            </div>
-          </div>
         </div>
-      </div>
+    </section>
+
+    <!-- ─── EXPERIENCE ─── -->
+    <section id="experience">
+        <div class="section-label reveal">Career</div>
+        <h2 class="section-title reveal">Where I've made an impact.</h2>
+        <p class="section-sub reveal">Click any role to expand. Tap the arrows to browse work samples.</p>
+        <div class="exp-list" id="exp-list">
+
+            <!-- SPORT COURT ONTARIO -->
+            <div class="exp-item" data-exp="0">
+                <button class="exp-trigger" onclick="toggleExp(0)">
+                    <div class="exp-trigger-left">
+                        <div class="exp-icon">🏀</div>
+                        <div class="exp-meta">
+                            <div class="exp-role">Social Media Manager · Video Editor · Graphic Designer</div>
+                            <div class="exp-company">Sport Court Ontario</div>
+                        </div>
+                    </div>
+                    <div class="exp-trigger-right">
+                        <span class="exp-date">Oct 2025 – Jun 2026</span>
+                        <span class="exp-chevron">▼</span>
+                    </div>
+                </button>
+                <div class="exp-body">
+                    <div class="exp-inner">
+                        <div class="exp-divider"></div>
+                        <ul class="exp-bullets">
+                            <li>Managed Facebook and Instagram campaigns to grow brand visibility and engagement.</li>
+                            <li>Produced and edited promotional videos, reels, and branded content.</li>
+                            <li>Designed graphics and ad materials with consistent visual identity using <strong>AI Asset Generation</strong>.</li>
+                        </ul>
+                        <div class="exp-slideshow" id="ss-0">
+                            <div class="slides-wrap" id="sw-0">
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-label">Campaign Visual — replace with photo</div></div>
+                                    <div class="slide-caption">Instagram campaign graphic · Sport Court Ontario</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🎬</div><div class="ph-label">Reel / Video Edit — replace with photo</div></div>
+                                    <div class="slide-caption">Promotional reel · Facebook & Instagram</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🏀</div><div class="ph-label">Court Design Visual — replace with photo</div></div>
+                                    <div class="slide-caption">Court design showcase · branded content</div>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-btn" onclick="prevSlide(0,3)">‹</button>
+                                <button class="slide-btn" onclick="nextSlide(0,3)">›</button>
+                            </div>
+                            <div class="slide-dots" id="dots-0">
+                                <div class="slide-dot active" onclick="goSlide(0,0,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(0,1,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(0,2,3)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABECON -->
+            <div class="exp-item" data-exp="1">
+                <button class="exp-trigger" onclick="toggleExp(1)">
+                    <div class="exp-trigger-left">
+                        <div class="exp-icon">🏛</div>
+                        <div class="exp-meta">
+                            <div class="exp-role">Front-End Designer & Developer</div>
+                            <div class="exp-company">ABECON 2025</div>
+                        </div>
+                    </div>
+                    <div class="exp-trigger-right">
+                        <span class="exp-date">Sep 2025 – Nov 2025</span>
+                        <span class="exp-chevron">▼</span>
+                    </div>
+                </button>
+                <div class="exp-body">
+                    <div class="exp-inner">
+                        <div class="exp-divider"></div>
+                        <ul class="exp-bullets">
+                            <li>Led UI/UX design and front-end development of a full convention management platform.</li>
+                            <li>Built registration, attendance tracking, e-commerce, online voting, and tabulation features.</li>
+                            <li>Collaborated cross-functionally to ship a responsive, accessible application.</li>
+                        </ul>
+                        <div class="exp-slideshow" id="ss-1">
+                            <div class="slides-wrap" id="sw-1">
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🖥</div><div class="ph-label">Platform UI — replace with screenshot</div></div>
+                                    <div class="slide-caption">ABECON 2025 · Registration module UI</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🗳</div><div class="ph-label">Voting Module — replace with screenshot</div></div>
+                                    <div class="slide-caption">ABECON 2025 · Online voting & tabulation</div>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-btn" onclick="prevSlide(1,2)">‹</button>
+                                <button class="slide-btn" onclick="nextSlide(1,2)">›</button>
+                            </div>
+                            <div class="slide-dots" id="dots-1">
+                                <div class="slide-dot active" onclick="goSlide(1,0,2)"></div>
+                                <div class="slide-dot" onclick="goSlide(1,1,2)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOST-PCAARD -->
+            <div class="exp-item" data-exp="2">
+                <button class="exp-trigger" onclick="toggleExp(2)">
+                    <div class="exp-trigger-left">
+                        <div class="exp-icon">🌱</div>
+                        <div class="exp-meta">
+                            <div class="exp-role">Front-End Designer & Developer (Internship)</div>
+                            <div class="exp-company">DOST-PCAARD</div>
+                        </div>
+                    </div>
+                    <div class="exp-trigger-right">
+                        <span class="exp-date">Jun 2025 – Sep 2025</span>
+                        <span class="exp-chevron">▼</span>
+                    </div>
+                </button>
+                <div class="exp-body">
+                    <div class="exp-inner">
+                        <div class="exp-divider"></div>
+                        <ul class="exp-bullets">
+                            <li>Led front-end development and UI/UX design for a government-backed IoT cacao monitoring platform.</li>
+                            <li>Implemented real-time sensor data algorithms for harvesting insights.</li>
+                            <li>Assisted with back-end development and hardware integration.</li>
+                        </ul>
+                        <div class="exp-slideshow" id="ss-2">
+                            <div class="slides-wrap" id="sw-2">
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📊</div><div class="ph-label">Dashboard UI — replace with screenshot</div></div>
+                                    <div class="slide-caption">Smart Cacao System · IoT monitoring dashboard</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📡</div><div class="ph-label">Sensor Data View — replace with screenshot</div></div>
+                                    <div class="slide-caption">Real-time sensor feed · DOST-PCAARD</div>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-btn" onclick="prevSlide(2,2)">‹</button>
+                                <button class="slide-btn" onclick="nextSlide(2,2)">›</button>
+                            </div>
+                            <div class="slide-dots" id="dots-2">
+                                <div class="slide-dot active" onclick="goSlide(2,0,2)"></div>
+                                <div class="slide-dot" onclick="goSlide(2,1,2)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PNC STUDIOS -->
+            <div class="exp-item" data-exp="3">
+                <button class="exp-trigger" onclick="toggleExp(3)">
+                    <div class="exp-trigger-left">
+                        <div class="exp-icon">🎬</div>
+                        <div class="exp-meta">
+                            <div class="exp-role">Creative Media Specialist</div>
+                            <div class="exp-company">PNC Studios</div>
+                        </div>
+                    </div>
+                    <div class="exp-trigger-right">
+                        <span class="exp-date">Jun 2024 – Jun 2025</span>
+                        <span class="exp-chevron">▼</span>
+                    </div>
+                </button>
+                <div class="exp-body">
+                    <div class="exp-inner">
+                        <div class="exp-divider"></div>
+                        <ul class="exp-bullets">
+                            <li>Designed and produced yearbooks including photo retouching and layout design.</li>
+                            <li>Captured and edited photos for events, publications, and promotional materials.</li>
+                            <li>Produced videos including same-day edits, highlights, and multimedia content.</li>
+                        </ul>
+                        <div class="exp-slideshow" id="ss-3">
+                            <div class="slides-wrap" id="sw-3">
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📖</div><div class="ph-label">Yearbook Layout — replace with photo</div></div>
+                                    <div class="slide-caption">PNC Studios · Yearbook design & layout</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📷</div><div class="ph-label">Event Photography — replace with photo</div></div>
+                                    <div class="slide-caption">Event photography · PNC Studios</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🎞</div><div class="ph-label">Video Edit / SDE — replace with photo</div></div>
+                                    <div class="slide-caption">Same-day edit · highlights reel</div>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-btn" onclick="prevSlide(3,3)">‹</button>
+                                <button class="slide-btn" onclick="nextSlide(3,3)">›</button>
+                            </div>
+                            <div class="slide-dots" id="dots-3">
+                                <div class="slide-dot active" onclick="goSlide(3,0,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(3,1,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(3,2,3)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE LIGHT PUBLICATION -->
+            <div class="exp-item" data-exp="4">
+                <button class="exp-trigger" onclick="toggleExp(4)">
+                    <div class="exp-trigger-left">
+                        <div class="exp-icon">📰</div>
+                        <div class="exp-meta">
+                            <div class="exp-role">Multimedia Content Designer · Writer · Social Media Manager</div>
+                            <div class="exp-company">The Light Publication</div>
+                        </div>
+                    </div>
+                    <div class="exp-trigger-right">
+                        <span class="exp-date">Nov 2022 – May 2024</span>
+                        <span class="exp-chevron">▼</span>
+                    </div>
+                </button>
+                <div class="exp-body">
+                    <div class="exp-inner">
+                        <div class="exp-divider"></div>
+                        <ul class="exp-bullets">
+                            <li>Created digital and print marketing materials: graphics, posters, and promotional assets.</li>
+                            <li>Managed social media campaigns aligned with brand objectives.</li>
+                            <li>Grew social media engagement by <strong>92.31%</strong> in 12 months through strategic content planning.</li>
+                        </ul>
+                        <div class="exp-slideshow" id="ss-4">
+                            <div class="slides-wrap" id="sw-4">
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🎨</div><div class="ph-label">Social Graphic — replace with photo</div></div>
+                                    <div class="slide-caption">The Light Publication · social media graphic</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">📊</div><div class="ph-label">Engagement Growth — replace with screenshot</div></div>
+                                    <div class="slide-caption">92.31% engagement growth · 12 months</div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-placeholder"><div class="ph-icon">🖼</div><div class="ph-label">Print Material — replace with photo</div></div>
+                                    <div class="slide-caption">Print poster / promotional asset</div>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-btn" onclick="prevSlide(4,3)">‹</button>
+                                <button class="slide-btn" onclick="nextSlide(4,3)">›</button>
+                            </div>
+                            <div class="slide-dots" id="dots-4">
+                                <div class="slide-dot active" onclick="goSlide(4,0,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(4,1,3)"></div>
+                                <div class="slide-dot" onclick="goSlide(4,2,3)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects">
+        <div class="section-label reveal">Work</div>
+        <h2 class="section-title reveal">Things I've built and shipped.</h2>
+        <p class="section-sub reveal">Click any card to see the full story.</p>
+        <div class="projects-grid">
+
+            <div class="smm-card reveal" onclick="openModal('sportcourt')">
+                <div class="smm-visual">
+                    <div class="smm-mockup">
+                        <div class="smm-post">
+                            <div class="smm-post-icon">🏀</div>
+                            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
+                            <div class="smm-stat">↑ 4.2k reach</div>
+                        </div>
+                        <div class="smm-post">
+                            <div class="smm-post-icon" style="background:#B86E0E;">🎬</div>
+                            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
+                            <div class="smm-stat">↑ 9.8k views</div>
+                        </div>
+                        <div class="smm-post">
+                            <div class="smm-post-icon" style="background:#16A34A;">📸</div>
+                            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
+                            <div class="smm-stat">↑ 2.1k likes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="smm-body">
+                    <div class="project-tags"><span class="project-tag">Social Media</span><span class="project-tag">Video</span><span class="project-tag">Branding</span></div>
+                    <div class="project-title">Sport Court Ontario — Full Digital Presence</div>
+                    <p class="project-desc">Ran the end-to-end digital brand for Sport Court Ontario: campaign strategy, video reels, graphic design, and AI-assisted content production under one consistent visual identity.</p>
+                    <div class="smm-metrics">
+                        <div><div class="smm-metric-num">8<span>mo</span></div><div class="smm-metric-label">Managed full-time</div></div>
+                        <div><div class="smm-metric-num">2<span>+</span></div><div class="smm-metric-label">Platforms grown</div></div>
+                        <div><div class="smm-metric-num">3<span>×</span></div><div class="smm-metric-label">Content formats</div></div>
+                    </div>
+                    <span class="project-arrow">View details →</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal" onclick="openModal('abecon')">
+                <div class="project-thumb" style="background: linear-gradient(160deg,#EEF3FF,#DBEAFE);">🏛<div class="thumb-label">Web Platform</div></div>
+                <div class="project-body">
+                    <div class="project-tags"><span class="project-tag">Front-End</span><span class="project-tag">E-Commerce</span><span class="project-tag">UX</span></div>
+                    <div class="project-title">ABECON 2025 Convention Platform</div>
+                    <p class="project-desc">Full-featured convention management system with registration, voting, attendance tracking, and e-commerce.</p>
+                    <span class="project-arrow">View details →</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal" onclick="openModal('atlas')">
+                <div class="project-thumb" style="background: linear-gradient(160deg,#F0FDF4,#DCFCE7);">🌐<div class="thumb-label">Web · Automation</div></div>
+                <div class="project-body">
+                    <div class="project-tags"><span class="project-tag">Wix Studio</span><span class="project-tag">Automation</span><span class="project-tag">SEO</span></div>
+                    <div class="project-title">Atlas Edge Global Website</div>
+                    <p class="project-desc">Responsive business website with workflow automation and lead generation optimization using Wix Studio.</p>
+                    <span class="project-arrow">View details →</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal" onclick="openModal('light')">
+                <div class="project-thumb" style="background: linear-gradient(160deg,#FFF7ED,#FEF3C7);">📰<div class="thumb-label">Content · Growth</div></div>
+                <div class="project-body">
+                    <div class="project-tags"><span class="project-tag">Content Strategy</span><span class="project-tag">Design</span><span class="project-tag">Growth</span></div>
+                    <div class="project-title">The Light Publication</div>
+                    <p class="project-desc">Content strategy and design that drove 92.31% social media engagement growth in 12 months.</p>
+                    <span class="project-arrow">View details →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNNEL ─── -->
+    <section id="hire">
+        <div class="funnel-box">
+            <div class="funnel-badge">Available Now</div>
+            <h2 class="funnel-title reveal">Ready to build<br>something great together?</h2>
+            <p class="funnel-sub reveal">Whether it's a web app, a brand identity, a social campaign, or all three — I bring the technical skills and creative thinking to make it real.</p>
+            <div class="funnel-success" id="funnel-success">
+                <h3>🎉 Message received!</h3>
+                <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+            </div>
+            <div class="funnel-form reveal" id="funnel-form">
+                <input class="funnel-input" type="email" id="funnel-email" placeholder="Your email address" />
+                <button class="funnel-btn" onclick="handleFunnelSubmit()">Get in Touch →</button>
+            </div>
+            <div class="funnel-trust reveal">
+                <div class="trust-item"><span class="icon">✓</span> Fast response (&lt;24h)</div>
+                <div class="trust-item"><span class="icon">✓</span> Open to remote & freelance</div>
+                <div class="trust-item"><span class="icon">✓</span> Based in PH · works globally</div>
+            </div>
+            <div class="funnel-divider reveal">or reach me directly</div>
+            <div class="funnel-contact-links reveal">
+                <a href="mailto:louis.rollorata@gmail.com" class="contact-link">✉ louis.rollorata@gmail.com</a>
+                <a href="tel:+639910557647" class="contact-link">📞 +63 9910-557-647</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <p>© 2026 Louis Amiel B. Rollorata · Tagum City, Davao del Norte, Philippines</p>
+        <div class="footer-links">
+            <a href="#hero">Back to top ↑</a>
+            <a href="mailto:louis.rollorata@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <!-- ─── MODAL ─── -->
+    <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modal-content"></div>
+        </div>
     </div>
 
-    <!-- DOST-PCAARD -->
-    <div class="exp-item" data-exp="2">
-      <button class="exp-trigger" onclick="toggleExp(2)">
-        <div class="exp-trigger-left">
-          <div class="exp-icon">🌱</div>
-          <div class="exp-meta">
-            <div class="exp-role">Front-End Designer & Developer (Internship)</div>
-            <div class="exp-company">DOST-PCAARD</div>
-          </div>
-        </div>
-        <div class="exp-trigger-right">
-          <span class="exp-date">Jun 2025 – Sep 2025</span>
-          <span class="exp-chevron">▼</span>
-        </div>
-      </button>
-      <div class="exp-body">
-        <div class="exp-inner">
-          <div class="exp-divider"></div>
-          <ul class="exp-bullets">
-            <li>Led front-end development and UI/UX design for a government-backed IoT cacao monitoring platform.</li>
-            <li>Implemented real-time sensor data algorithms for harvesting insights.</li>
-            <li>Assisted with back-end development and hardware integration.</li>
-          </ul>
-          <div class="exp-slideshow" id="ss-2">
-            <div class="slides-wrap" id="sw-2">
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">📊</div><div class="ph-label">Dashboard UI — replace with screenshot</div></div>
-                <div class="slide-caption">Smart Cacao System · IoT monitoring dashboard</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">📡</div><div class="ph-label">Sensor Data View — replace with screenshot</div></div>
-                <div class="slide-caption">Real-time sensor feed · DOST-PCAARD</div>
-              </div>
-            </div>
-            <div class="slide-nav">
-              <button class="slide-btn" onclick="prevSlide(2,2)">‹</button>
-              <button class="slide-btn" onclick="nextSlide(2,2)">›</button>
-            </div>
-            <div class="slide-dots" id="dots-2">
-              <div class="slide-dot active" onclick="goSlide(2,0,2)"></div>
-              <div class="slide-dot" onclick="goSlide(2,1,2)"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script>
+        /* ── NAV SCROLL ── */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-    <!-- PNC STUDIOS -->
-    <div class="exp-item" data-exp="3">
-      <button class="exp-trigger" onclick="toggleExp(3)">
-        <div class="exp-trigger-left">
-          <div class="exp-icon">🎬</div>
-          <div class="exp-meta">
-            <div class="exp-role">Creative Media Specialist</div>
-            <div class="exp-company">PNC Studios</div>
-          </div>
-        </div>
-        <div class="exp-trigger-right">
-          <span class="exp-date">Jun 2024 – Jun 2025</span>
-          <span class="exp-chevron">▼</span>
-        </div>
-      </button>
-      <div class="exp-body">
-        <div class="exp-inner">
-          <div class="exp-divider"></div>
-          <ul class="exp-bullets">
-            <li>Designed and produced yearbooks including photo retouching and layout design.</li>
-            <li>Captured and edited photos for events, publications, and promotional materials.</li>
-            <li>Produced videos including same-day edits, highlights, and multimedia content.</li>
-          </ul>
-          <div class="exp-slideshow" id="ss-3">
-            <div class="slides-wrap" id="sw-3">
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">📖</div><div class="ph-label">Yearbook Layout — replace with photo</div></div>
-                <div class="slide-caption">PNC Studios · Yearbook design & layout</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">📷</div><div class="ph-label">Event Photography — replace with photo</div></div>
-                <div class="slide-caption">Event photography · PNC Studios</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🎞</div><div class="ph-label">Video Edit / SDE — replace with photo</div></div>
-                <div class="slide-caption">Same-day edit · highlights reel</div>
-              </div>
-            </div>
-            <div class="slide-nav">
-              <button class="slide-btn" onclick="prevSlide(3,3)">‹</button>
-              <button class="slide-btn" onclick="nextSlide(3,3)">›</button>
-            </div>
-            <div class="slide-dots" id="dots-3">
-              <div class="slide-dot active" onclick="goSlide(3,0,3)"></div>
-              <div class="slide-dot" onclick="goSlide(3,1,3)"></div>
-              <div class="slide-dot" onclick="goSlide(3,2,3)"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        /* ── ROLE TYPER ── */
+        const roles = ['Front-End Experiences', 'UI/UX Interfaces', 'Multimedia Content', 'Social Campaigns',
+        'IoT Dashboards'];
+        let ri = 0,
+            ci = 0,
+            deleting = false;
+        const roleEl = document.getElementById('role-text');
 
-    <!-- THE LIGHT PUBLICATION -->
-    <div class="exp-item" data-exp="4">
-      <button class="exp-trigger" onclick="toggleExp(4)">
-        <div class="exp-trigger-left">
-          <div class="exp-icon">📰</div>
-          <div class="exp-meta">
-            <div class="exp-role">Multimedia Content Designer · Writer · Social Media Manager</div>
-            <div class="exp-company">The Light Publication</div>
-          </div>
-        </div>
-        <div class="exp-trigger-right">
-          <span class="exp-date">Nov 2022 – May 2024</span>
-          <span class="exp-chevron">▼</span>
-        </div>
-      </button>
-      <div class="exp-body">
-        <div class="exp-inner">
-          <div class="exp-divider"></div>
-          <ul class="exp-bullets">
-            <li>Created digital and print marketing materials: graphics, posters, and promotional assets.</li>
-            <li>Managed social media campaigns aligned with brand objectives.</li>
-            <li>Grew social media engagement by <strong>92.31%</strong> in 12 months through strategic content planning.</li>
-          </ul>
-          <div class="exp-slideshow" id="ss-4">
-            <div class="slides-wrap" id="sw-4">
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🎨</div><div class="ph-label">Social Graphic — replace with photo</div></div>
-                <div class="slide-caption">The Light Publication · social media graphic</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">📊</div><div class="ph-label">Engagement Growth — replace with screenshot</div></div>
-                <div class="slide-caption">92.31% engagement growth · 12 months</div>
-              </div>
-              <div class="slide">
-                <div class="slide-placeholder"><div class="ph-icon">🖼</div><div class="ph-label">Print Material — replace with photo</div></div>
-                <div class="slide-caption">Print poster / promotional asset</div>
-              </div>
-            </div>
-            <div class="slide-nav">
-              <button class="slide-btn" onclick="prevSlide(4,3)">‹</button>
-              <button class="slide-btn" onclick="nextSlide(4,3)">›</button>
-            </div>
-            <div class="slide-dots" id="dots-4">
-              <div class="slide-dot active" onclick="goSlide(4,0,3)"></div>
-              <div class="slide-dot" onclick="goSlide(4,1,3)"></div>
-              <div class="slide-dot" onclick="goSlide(4,2,3)"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        function typeRole() {
+            const cur = roles[ri];
+            if (!deleting) {
+                roleEl.textContent = cur.slice(0, ++ci);
+                if (ci === cur.length) { deleting = true;
+                    setTimeout(typeRole, 1900); return; }
+            } else {
+                roleEl.textContent = cur.slice(0, --ci);
+                if (ci === 0) { deleting = false;
+                    ri = (ri + 1) % roles.length; }
+            }
+            setTimeout(typeRole, deleting ? 38 : 62);
+        }
+        typeRole();
 
-  </div>
-</section>
+        /* ── TICKER ── */
+        const clients = [
+            { icon: '🏀', name: 'Sport Court Ontario', role: 'SMM · Video · Design' },
+            { icon: '🌐', name: 'Atlas Edge Global', role: 'Web · Automation' },
+            { icon: '🏛', name: 'ABECON 2025', role: 'Front-End · UI/UX' },
+            { icon: '🇵🇭', name: 'DOST-PCAARD', role: 'IoT · Front-End' },
+            { icon: '🎬', name: 'PNC Studios', role: 'Media · Photography' },
+            { icon: '📰', name: 'The Light Publication', role: 'Content · Design' },
+        ];
+        const track = document.getElementById('ticker-track');
+        [...clients, ...clients].forEach(c => {
+            const p = document.createElement('div');
+            p.className = 'logo-pill';
+            p.innerHTML =
+                `<div class="logo-icon">${c.icon}</div><div><div class="logo-name">${c.name}</div><div class="logo-role">${c.role}</div></div>`;
+            track.appendChild(p);
+        });
 
-<!-- ─── PROJECTS ─── -->
-<section id="projects">
-  <div class="section-label reveal">Work</div>
-  <h2 class="section-title reveal">Things I've built and shipped.</h2>
-  <p class="section-sub reveal">Click any card to see the full story.</p>
-  <div class="projects-grid">
+        /* ── SKILLS ACCORDION ── */
+        function toggleAcc(key) {
+            const item = document.querySelector(`[data-acc="${key}"]`);
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
 
-    <div class="smm-card reveal" onclick="openModal('sportcourt')">
-      <div class="smm-visual">
-        <div class="smm-mockup">
-          <div class="smm-post">
-            <div class="smm-post-icon">🏀</div>
-            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
-            <div class="smm-stat">↑ 4.2k reach</div>
-          </div>
-          <div class="smm-post">
-            <div class="smm-post-icon" style="background:#D97706;">🎬</div>
-            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
-            <div class="smm-stat">↑ 9.8k views</div>
-          </div>
-          <div class="smm-post">
-            <div class="smm-post-icon" style="background:#16A34A;">📸</div>
-            <div class="smm-post-lines"><div class="smm-line"></div><div class="smm-line short"></div></div>
-            <div class="smm-stat">↑ 2.1k likes</div>
-          </div>
-        </div>
-      </div>
-      <div class="smm-body">
-        <div class="project-tags"><span class="project-tag">Social Media</span><span class="project-tag">Video</span><span class="project-tag">Branding</span></div>
-        <div class="project-title">Sport Court Ontario — Full Digital Presence</div>
-        <p class="project-desc">Ran the end-to-end digital brand for Sport Court Ontario: campaign strategy, video reels, graphic design, and AI-assisted content production under one consistent visual identity.</p>
-        <div class="smm-metrics">
-          <div><div class="smm-metric-num">8<span>mo</span></div><div class="smm-metric-label">Managed full-time</div></div>
-          <div><div class="smm-metric-num">2<span>+</span></div><div class="smm-metric-label">Platforms grown</div></div>
-          <div><div class="smm-metric-num">3<span>×</span></div><div class="smm-metric-label">Content formats</div></div>
-        </div>
-        <span class="project-arrow">View details →</span>
-      </div>
-    </div>
+        /* ── EXP COLLAPSIBLE ── */
+        function toggleExp(idx) {
+            const item = document.querySelector(`[data-exp="${idx}"]`);
+            item.classList.toggle('open');
+        }
 
-    <div class="project-card reveal" onclick="openModal('abecon')">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#EEF3FF,#DBEAFE);">🏛<div class="thumb-label">Web Platform</div></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Front-End</span><span class="project-tag">E-Commerce</span><span class="project-tag">UX</span></div>
-        <div class="project-title">ABECON 2025 Convention Platform</div>
-        <p class="project-desc">Full-featured convention management system with registration, voting, attendance tracking, and e-commerce.</p>
-        <span class="project-arrow">View details →</span>
-      </div>
-    </div>
+        /* ── SLIDESHOW ── */
+        const slideState = {};
 
-    <div class="project-card reveal" onclick="openModal('atlas')">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#F0FDF4,#DCFCE7);">🌐<div class="thumb-label">Web · Automation</div></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Wix Studio</span><span class="project-tag">Automation</span><span class="project-tag">SEO</span></div>
-        <div class="project-title">Atlas Edge Global Website</div>
-        <p class="project-desc">Responsive business website with workflow automation and lead generation optimization using Wix Studio.</p>
-        <span class="project-arrow">View details →</span>
-      </div>
-    </div>
+        function getState(id) {
+            if (!slideState[id]) slideState[id] = 0;
+            return slideState[id];
+        }
 
-    <div class="project-card reveal" onclick="openModal('light')">
-      <div class="project-thumb" style="background: linear-gradient(135deg,#FFF7ED,#FEF3C7);">📰<div class="thumb-label">Content · Growth</div></div>
-      <div class="project-body">
-        <div class="project-tags"><span class="project-tag">Content Strategy</span><span class="project-tag">Design</span><span class="project-tag">Growth</span></div>
-        <div class="project-title">The Light Publication</div>
-        <p class="project-desc">Content strategy and design that drove 92.31% social media engagement growth in 12 months.</p>
-        <span class="project-arrow">View details →</span>
-      </div>
-    </div>
+        function setSlide(id, idx, total) {
+            slideState[id] = (idx + total) % total;
+            const wrap = document.getElementById(`sw-${id}`);
+            if (wrap) wrap.style.transform = `translateX(-${slideState[id] * 100}%)`;
+            const dots = document.querySelectorAll(`#dots-${id} .slide-dot`);
+            dots.forEach((d, i) => d.classList.toggle('active', i === slideState[id]));
+        }
 
-  </div>
-</section>
+        function nextSlide(id, total) { setSlide(id, getState(id) + 1, total); }
 
-<!-- ─── FUNNEL ─── -->
-<section id="hire">
-  <div class="funnel-box">
-    <div class="funnel-badge">Available Now</div>
-    <h2 class="funnel-title reveal">Ready to build<br>something great together?</h2>
-    <p class="funnel-sub reveal">Whether it's a web app, a brand identity, a social campaign, or all three — I bring the technical skills and creative thinking to make it real.</p>
-    <div class="funnel-success" id="funnel-success">
-      <h3>🎉 Message received!</h3>
-      <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
-    </div>
-    <div class="funnel-form reveal" id="funnel-form">
-      <input class="funnel-input" type="email" id="funnel-email" placeholder="Your email address" />
-      <button class="funnel-btn" onclick="handleFunnelSubmit()">Get in Touch →</button>
-    </div>
-    <div class="funnel-trust reveal">
-      <div class="trust-item"><span class="icon">✓</span> Fast response (&lt;24h)</div>
-      <div class="trust-item"><span class="icon">✓</span> Open to remote & freelance</div>
-      <div class="trust-item"><span class="icon">✓</span> Based in PH · works globally</div>
-    </div>
-    <div class="funnel-divider reveal">or reach me directly</div>
-    <div class="funnel-contact-links reveal">
-      <a href="mailto:louis.rollorata@gmail.com" class="contact-link">✉ louis.rollorata@gmail.com</a>
-      <a href="tel:+639910557647" class="contact-link">📞 +63 9910-557-647</a>
-    </div>
-  </div>
-</section>
+        function prevSlide(id, total) { setSlide(id, getState(id) - 1, total); }
 
-<!-- ─── FOOTER ─── -->
-<footer>
-  <p>© 2026 Louis Amiel B. Rollorata · Tagum City, Davao del Norte, Philippines</p>
-  <div class="footer-links">
-    <a href="#hero">Back to top ↑</a>
-    <a href="mailto:louis.rollorata@gmail.com">Email</a>
-  </div>
-</footer>
+        function goSlide(id, idx, total) { setSlide(id, idx, total); }
 
-<!-- ─── MODAL ─── -->
-<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modal-content"></div>
-  </div>
-</div>
+        /* ── SCROLL REVEAL ── */
+        const allReveal = document.querySelectorAll('.reveal, .exp-item, .project-card, .smm-card');
+        const revObs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 60);
+                    revObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.06 });
+        allReveal.forEach(el => revObs.observe(el));
 
-<script>
-  /* ── ROLE TYPER ── */
-  const roles = ['Front-End Experiences','UI/UX Interfaces','Multimedia Content','Social Campaigns','IoT Dashboards'];
-  let ri = 0, ci = 0, deleting = false;
-  const roleEl = document.getElementById('role-text');
-  function typeRole() {
-    const cur = roles[ri];
-    if (!deleting) {
-      roleEl.textContent = cur.slice(0, ++ci);
-      if (ci === cur.length) { deleting = true; setTimeout(typeRole, 1900); return; }
-    } else {
-      roleEl.textContent = cur.slice(0, --ci);
-      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
-    }
-    setTimeout(typeRole, deleting ? 40 : 68);
-  }
-  typeRole();
+        /* ── MODAL ── */
+        const projects = {
+            sportcourt: {
+                tag: 'Social Media · Video · Branding',
+                title: 'Sport Court Ontario — Full Digital Presence',
+                period: 'October 2025 – June 2026',
+                body: 'Managed the complete digital brand for Sport Court Ontario across Facebook and Instagram — campaign strategy, promotional video production, and AI-assisted graphic design.',
+                bullets: [
+                    'Managed day-to-day Facebook and Instagram presence for consistent brand growth.',
+                    'Produced and edited promotional videos, reels, and branded content.',
+                    'Designed graphics, advertisements, and branding materials under one cohesive visual identity.',
+                    'Leveraged AI Asset Generation to scale content output without sacrificing quality.',
+                ],
+                stack: ['Adobe Premiere', 'Adobe Photoshop', 'Canva', 'AI Asset Generation', 'Facebook',
+                    'Instagram'
+                ]
+            },
+            abecon: {
+                tag: 'Web Platform · Front-End',
+                title: 'ABECON 2025 Convention Platform',
+                period: 'September 2025 – November 2025',
+                body: 'A full-featured convention management system built for ABECON 2025, handling everything from delegate registration to real-time vote tabulation and online commerce.',
+                bullets: [
+                    'Led UI/UX design and front-end development end-to-end.',
+                    'Built registration, attendance tracking, e-commerce, online voting, and tabulation features.',
+                    'Collaborated with a development team to ship a responsive and accessible platform.',
+                    'Ensured intuitive UX for non-technical convention delegates and administrators.',
+                ],
+                stack: ['HTML', 'CSS', 'JavaScript', 'UI/UX Design', 'E-Commerce', 'Real-Time Voting']
+            },
+            atlas: {
+                tag: 'Website · Automation · SEO',
+                title: 'Atlas Edge Global Website',
+                period: 'December 2025 – January 2026',
+                body: 'Designed and maintained a responsive business website using Wix Studio with a focus on performance, lead generation, and workflow automation.',
+                bullets: [
+                    'Built and maintained a responsive, performant website with Wix Studio.',
+                    'Implemented workflow and email automation to improve operational efficiency.',
+                    'Optimized front-end for lead generation and user experience.',
+                    'Applied SEO best practices to improve search discoverability.',
+                ],
+                stack: ['Wix Studio', 'Email Automation', 'Workflow Automation', 'SEO', 'Lead Gen']
+            },
+            light: {
+                tag: 'Content Strategy · Growth · Design',
+                title: 'The Light Publication',
+                period: 'November 2022 – May 2024',
+                body: 'Content designer and social media strategist — drove a measurable 92.31% growth in social engagement within 12 months through strategic content planning.',
+                bullets: [
+                    'Created digital and print marketing materials: graphics, posters, and promotional assets.',
+                    'Wrote engaging content aligned with brand objectives.',
+                    'Managed social media campaigns across platforms.',
+                    'Grew social engagement by 92.31% in 12 months through data-informed strategy.',
+                ],
+                stack: ['Content Strategy', 'Graphic Design', 'Social Media Management', 'Copywriting', 'Canva']
+            }
+        };
 
-  /* ── TICKER ── */
-  const clients = [
-    { icon: '🏀', name: 'Sport Court Ontario', role: 'SMM · Video · Design' },
-    { icon: '🌐', name: 'Atlas Edge Global',    role: 'Web · Automation' },
-    { icon: '🏛',  name: 'ABECON 2025',          role: 'Front-End · UI/UX' },
-    { icon: '🇵🇭', name: 'DOST-PCAARD',          role: 'IoT · Front-End' },
-    { icon: '🎬', name: 'PNC Studios',           role: 'Media · Photography' },
-    { icon: '📰', name: 'The Light Publication', role: 'Content · Design' },
-  ];
-  const track = document.getElementById('ticker-track');
-  [...clients, ...clients].forEach(c => {
-    const p = document.createElement('div');
-    p.className = 'logo-pill';
-    p.innerHTML = `<div class="logo-icon">${c.icon}</div><div><div class="logo-name">${c.name}</div><div class="logo-role">${c.role}</div></div>`;
-    track.appendChild(p);
-  });
+        function openModal(key) {
+            const p = projects[key];
+            document.getElementById('modal-content').innerHTML = `
+          <div class="modal-tag">${p.tag.split('·').map(t=>`<span class="project-tag">${t.trim()}</span>`).join('')}</div>
+          <div class="modal-title">${p.title}</div>
+          <div class="modal-period">${p.period}</div>
+          <div class="modal-body"><p>${p.body}</p><ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+          <div class="modal-stack">${p.stack.map(s=>`<span class="modal-chip">${s}</span>`).join('')}</div>`;
+            document.getElementById('modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
 
-  /* ── SKILLS ACCORDION ── */
-  function toggleAcc(key) {
-    const item = document.querySelector(`[data-acc="${key}"]`);
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
 
-  /* ── EXP COLLAPSIBLE ── */
-  function toggleExp(idx) {
-    const item = document.querySelector(`[data-exp="${idx}"]`);
-    item.classList.toggle('open');
-  }
+        function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  /* ── SLIDESHOW ── */
-  const slideState = {};
-  function getState(id) {
-    if (!slideState[id]) slideState[id] = 0;
-    return slideState[id];
-  }
-  function setSlide(id, idx, total) {
-    slideState[id] = (idx + total) % total;
-    const wrap = document.getElementById(`sw-${id}`);
-    if (wrap) wrap.style.transform = `translateX(-${slideState[id] * 100}%)`;
-    const dots = document.querySelectorAll(`#dots-${id} .slide-dot`);
-    dots.forEach((d, i) => d.classList.toggle('active', i === slideState[id]));
-  }
-  function nextSlide(id, total) { setSlide(id, getState(id) + 1, total); }
-  function prevSlide(id, total) { setSlide(id, getState(id) - 1, total); }
-  function goSlide(id, idx, total)  { setSlide(id, idx, total); }
-
-  /* ── SCROLL REVEAL ── */
-  const allReveal = document.querySelectorAll('.reveal, .exp-item, .project-card, .smm-card');
-  const revObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 70);
-        revObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  allReveal.forEach(el => revObs.observe(el));
-
-  /* ── MODAL ── */
-  const projects = {
-    sportcourt: {
-      tag: 'Social Media · Video · Branding',
-      title: 'Sport Court Ontario — Full Digital Presence',
-      period: 'October 2025 – June 2026',
-      body: 'Managed the complete digital brand for Sport Court Ontario across Facebook and Instagram — campaign strategy, promotional video production, and AI-assisted graphic design.',
-      bullets: [
-        'Managed day-to-day Facebook and Instagram presence for consistent brand growth.',
-        'Produced and edited promotional videos, reels, and branded content.',
-        'Designed graphics, advertisements, and branding materials under one cohesive visual identity.',
-        'Leveraged AI Asset Generation to scale content output without sacrificing quality.',
-      ],
-      stack: ['Adobe Premiere', 'Adobe Photoshop', 'Canva', 'AI Asset Generation', 'Facebook', 'Instagram']
-    },
-    abecon: {
-      tag: 'Web Platform · Front-End',
-      title: 'ABECON 2025 Convention Platform',
-      period: 'September 2025 – November 2025',
-      body: 'A full-featured convention management system built for ABECON 2025, handling everything from delegate registration to real-time vote tabulation and online commerce.',
-      bullets: [
-        'Led UI/UX design and front-end development end-to-end.',
-        'Built registration, attendance tracking, e-commerce, online voting, and tabulation features.',
-        'Collaborated with a development team to ship a responsive and accessible platform.',
-        'Ensured intuitive UX for non-technical convention delegates and administrators.',
-      ],
-      stack: ['HTML', 'CSS', 'JavaScript', 'UI/UX Design', 'E-Commerce', 'Real-Time Voting']
-    },
-    atlas: {
-      tag: 'Website · Automation · SEO',
-      title: 'Atlas Edge Global Website',
-      period: 'December 2025 – January 2026',
-      body: 'Designed and maintained a responsive business website using Wix Studio with a focus on performance, lead generation, and workflow automation.',
-      bullets: [
-        'Built and maintained a responsive, performant website with Wix Studio.',
-        'Implemented workflow and email automation to improve operational efficiency.',
-        'Optimized front-end for lead generation and user experience.',
-        'Applied SEO best practices to improve search discoverability.',
-      ],
-      stack: ['Wix Studio', 'Email Automation', 'Workflow Automation', 'SEO', 'Lead Gen']
-    },
-    light: {
-      tag: 'Content Strategy · Growth · Design',
-      title: 'The Light Publication',
-      period: 'November 2022 – May 2024',
-      body: 'Content designer and social media strategist — drove a measurable 92.31% growth in social engagement within 12 months through strategic content planning.',
-      bullets: [
-        'Created digital and print marketing materials: graphics, posters, and promotional assets.',
-        'Wrote engaging content aligned with brand objectives.',
-        'Managed social media campaigns across platforms.',
-        'Grew social engagement by 92.31% in 12 months through data-informed strategy.',
-      ],
-      stack: ['Content Strategy', 'Graphic Design', 'Social Media Management', 'Copywriting', 'Canva']
-    }
-  };
-
-  function openModal(key) {
-    const p = projects[key];
-    document.getElementById('modal-content').innerHTML = `
-      <div class="modal-tag">${p.tag.split('·').map(t=>`<span class="project-tag">${t.trim()}</span>`).join('')}</div>
-      <div class="modal-title">${p.title}</div>
-      <div class="modal-period">${p.period}</div>
-      <div class="modal-body"><p>${p.body}</p><ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>
-      <div class="modal-stack">${p.stack.map(s=>`<span class="modal-chip">${s}</span>`).join('')}</div>`;
-    document.getElementById('modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  /* ── FUNNEL ── */
-  function handleFunnelSubmit() {
-    const email = document.getElementById('funnel-email').value.trim();
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      document.getElementById('funnel-email').style.borderColor = '#DC2626';
-      setTimeout(() => document.getElementById('funnel-email').style.borderColor = '', 1500);
-      return;
-    }
-    document.getElementById('funnel-form').style.display = 'none';
-    document.getElementById('funnel-success').classList.add('show');
-  }
-</script>
+        /* ── FUNNEL ── */
+        function handleFunnelSubmit() {
+            const email = document.getElementById('funnel-email').value.trim();
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('funnel-email').style.borderColor = '#DC2626';
+                setTimeout(() => document.getElementById('funnel-email').style.borderColor = '', 1800);
+                return;
+            }
+            document.getElementById('funnel-form').style.display = 'none';
+            document.getElementById('funnel-success').classList.add('show');
+        }
+    </script>
 </body>
 </html>
