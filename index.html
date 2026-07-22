@@ -9,23 +9,26 @@
     <title>Louis Rollorata — Front-End Developer &amp; UI/UX Designer</title>
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#5B4DFF',
-                        secondary: '#7C3AED',
-                        accent: '#22D3EE',
-                        'bg-dark': '#0B0B0F',
-                        'bg-mid': '#111216',
-                        'bg-light': '#18181B',
-                        'text-soft': '#B8BCC8',
+                        primary: '#E0447D',
+                        secondary: '#7A3FA6',
+                        accent: '#FFA552',
+                        'bg-dark': '#0B061A',
+                        'bg-mid': '#120D24',
+                        'bg-light': '#1A1435',
+                        'text-soft': '#C7B3D9',
+                        'text-muted': '#8E7AA3',
                     },
                     borderRadius: {
                         '2xl': '18px',
                         '3xl': '24px',
+                        '4xl': '32px',
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
@@ -35,7 +38,7 @@
         }
     </script>
 
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter + Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -48,7 +51,12 @@
             -moz-osx-font-smoothing: grayscale;
         }
         body {
-            background-color: #0B0B0F;
+            background: #0B061A;
+            background-image:
+                radial-gradient(ellipse 70% 40% at 50% 0%, rgba(122, 63, 166, 0.20), transparent 50%),
+                radial-gradient(ellipse 60% 35% at 90% 70%, rgba(224, 68, 125, 0.08), transparent 50%),
+                radial-gradient(ellipse 50% 30% at 10% 80%, rgba(255, 165, 82, 0.06), transparent 50%);
+            background-attachment: fixed;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #fff;
             overflow-x: hidden;
@@ -60,43 +68,53 @@
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.025;
+            opacity: 0.018;
             background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
-            background-size: 38px 38px;
+            background-size: 42px 42px;
         }
 
         /* ── Glassmorphism ── */
         .glass {
-            background: rgba(24, 24, 27, 0.55);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(26, 20, 53, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .glass-light {
-            background: rgba(255, 255, 255, 0.025);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-heavy {
+            background: rgba(11, 6, 26, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         /* ── Glow Hover ── */
         .glow-hover {
-            transition: box-shadow 0.45s ease, transform 0.45s ease, border-color 0.45s ease;
+            transition: box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.5s ease;
         }
         .glow-hover:hover {
-            box-shadow: 0 0 45px rgba(91, 77, 255, 0.18), 0 0 90px rgba(91, 77, 255, 0.06);
-            border-color: rgba(91, 77, 255, 0.3);
-            transform: translateY(-5px);
+            box-shadow: 0 0 60px rgba(224, 68, 125, 0.12), 0 0 120px rgba(224, 68, 125, 0.04);
+            border-color: rgba(224, 68, 125, 0.20);
+            transform: translateY(-6px);
         }
 
         /* ── Typing Cursor ── */
         @keyframes blinkCursor {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.15; }
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.1;
+            }
         }
         .typing-cursor {
             display: inline-block;
             width: 3px;
             height: 0.8em;
-            background: #22D3EE;
+            background: #FFA552;
             margin-left: 3px;
             border-radius: 2px;
             animation: blinkCursor 0.85s ease-in-out infinite;
@@ -114,59 +132,105 @@
             white-space: nowrap;
         }
         .text-gradient {
-            background: linear-gradient(135deg, #5B4DFF, #22D3EE, #7C3AED);
+            background: linear-gradient(135deg, #E0447D, #FFA552, #7A3FA6);
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shimmer 4.5s linear infinite;
+            animation: shimmer 5s linear infinite;
         }
         @keyframes shimmer {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
         }
 
         /* ── Name accent ── */
-        .name-accent { position: relative; }
+        .name-accent {
+            position: relative;
+            display: inline-block;
+        }
         .name-accent::after {
             content: '';
             position: absolute;
-            bottom: -0.06em;
+            bottom: 0.04em;
             left: 0;
-            width: 0.35em;
+            width: 100%;
             height: 0.04em;
-            background: #22D3EE;
+            background: linear-gradient(90deg, #E0447D, #FFA552, #7A3FA6);
             border-radius: 2px;
-            opacity: 0.7;
+            opacity: 0.5;
         }
 
         /* ── Floating Animations ── */
         @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(18px, -22px) scale(1.06); }
-            50% { transform: translate(-10px, -35px) scale(0.94); }
-            75% { transform: translate(-20px, -10px) scale(1.04); }
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, -24px) scale(1.05);
+            }
+            50% {
+                transform: translate(-12px, -38px) scale(0.95);
+            }
+            75% {
+                transform: translate(-22px, -12px) scale(1.03);
+            }
         }
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.75; transform: scale(1.12); }
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.10);
+            }
         }
         @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
         @keyframes driftShape {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(20px, -15px) rotate(6deg); }
-            66% { transform: translate(-10px, -30px) rotate(-4deg); }
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(22px, -16px) rotate(6deg);
+            }
+            66% {
+                transform: translate(-12px, -32px) rotate(-4deg);
+            }
         }
         @keyframes pulseRing {
-            0%, 100% { transform: scale(1); opacity: 0.25; }
-            50% { transform: scale(1.3); opacity: 0.08; }
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(1.4);
+                opacity: 0.05;
+            }
         }
         @keyframes floatDot {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.2); }
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-24px) scale(1.15);
+            }
         }
 
         /* ── Orb base ── */
@@ -174,8 +238,8 @@
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            filter: blur(70px);
-            opacity: 0.22;
+            filter: blur(80px);
+            opacity: 0.18;
         }
 
         /* ── Section background containers ── */
@@ -186,121 +250,175 @@
             z-index: 0;
             overflow: hidden;
         }
-        .section-bg .orb {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(70px);
-            opacity: 0.2;
-        }
 
-        /* ── Masonry ── */
-        .masonry-grid {
-            column-count: 1;
-            column-gap: 1.25rem;
+        /* ── Portfolio Grid ── */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
         }
         @media (min-width: 640px) {
-            .masonry-grid { column-count: 2; }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         @media (min-width: 1024px) {
-            .masonry-grid { column-count: 3; column-gap: 1.5rem; }
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.25rem;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        @media (min-width: 1024px) {
-            .masonry-item { margin-bottom: 1.5rem; }
-        }
-        .masonry-item.hidden-item { display: none; }
-
-        /* ── Zoom ── */
-        .zoom-container { overflow: hidden; border-radius: 18px; }
-        .zoom-container .placeholder-img {
-            transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .zoom-container:hover .placeholder-img { transform: scale(1.08); }
-
-        /* ── Play overlay ── */
-        .play-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .play-circle {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .zoom-container:hover .play-circle {
-            transform: scale(1.12);
-            background: rgba(91, 77, 255, 0.6);
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
         }
 
-        /* ── Lightbox ── */
-        .lightbox-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-        .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 85vh;
+        /* ── Portfolio Card ── */
+        .portfolio-card {
+            position: relative;
+            background: rgba(26, 20, 53, 0.50);
             border-radius: 24px;
             overflow: hidden;
-            position: relative;
-            transform: scale(0.92);
-            transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            cursor: pointer;
         }
-        .lightbox-overlay.active .lightbox-content { transform: scale(1); }
+        .portfolio-card:hover {
+            border-color: rgba(224, 68, 125, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(224, 68, 125, 0.06);
+        }
+        .portfolio-card .thumb {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-card .thumb .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(11, 6, 26, 0.70) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+        .portfolio-card:hover .thumb .overlay {
+            opacity: 1;
+        }
+        .portfolio-card .thumb .icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(224, 68, 125, 0.15);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        .portfolio-card:hover .thumb .icon-wrap {
+            background: rgba(224, 68, 125, 0.30);
+            transform: scale(1.05);
+        }
+        .portfolio-card .badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2;
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #C7B3D9;
+        }
+        .badge-graphics {
+            border-color: rgba(255, 165, 82, 0.3);
+            color: #FFA552;
+        }
+        .badge-video {
+            border-color: rgba(224, 68, 125, 0.3);
+            color: #E0447D;
+        }
+        .badge-web {
+            border-color: rgba(122, 63, 166, 0.3);
+            color: #7A3FA6;
+        }
+
+        .portfolio-card .thumb .placeholder-svg {
+            opacity: 0.25;
+            transition: opacity 0.5s ease;
+        }
+        .portfolio-card:hover .thumb .placeholder-svg {
+            opacity: 0.45;
+        }
+
+        /* ── Category Tabs ── */
+        .category-tab {
+            padding: 0.6rem 1.6rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: #8E7AA3;
+            cursor: pointer;
+            user-select: none;
+        }
+        .category-tab:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.10);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .category-tab.active {
+            background: rgba(224, 68, 125, 0.15);
+            border-color: rgba(224, 68, 125, 0.30);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(224, 68, 125, 0.06);
+        }
 
         /* ── Scroll Reveal ── */
         .reveal {
             opacity: 0;
-            transform: translateY(36px);
-            transition: opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
-                transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        /* Staggered reveal delays used across sections */
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 {
+            transition-delay: 0.08s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.16s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.24s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.32s;
+        }
 
-        /* ── Gradient border ── */
-        .gradient-border-card {
+        /* ── Gradient border card ── */
+        .gradient-border {
             position: relative;
-            background: #18181B;
-            border-radius: 22px;
+            border-radius: 24px;
         }
-        .gradient-border-card::before {
+        .gradient-border::before {
             content: '';
             position: absolute;
             inset: -1px;
-            border-radius: 22px;
+            border-radius: 24px;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(91, 77, 255, 0.25), rgba(34, 211, 238, 0.18), rgba(124, 58, 237, 0.2));
+            background: linear-gradient(135deg, rgba(224, 68, 125, 0.20), rgba(255, 165, 82, 0.12), rgba(122, 63, 166, 0.18));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -310,30 +428,76 @@
 
         /* ── Marquee ── */
         @keyframes marqueeScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
-        .marquee-track { animation: marqueeScroll 30s linear infinite; }
-        .marquee-container:hover .marquee-track { animation-play-state: paused; }
+        .marquee-track {
+            animation: marqueeScroll 32s linear infinite;
+        }
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
 
-        /* ── Scrollbar ── */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0B0B0F; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
-
-        /* ── Utility: section relative with z-index ── */
-        .section-wrap { position: relative; z-index: 1; }
-
-        /* ── Carousel (testimonials) ── */
+        /* ── Carousel ── */
         .carousel-track {
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
-        .carousel-track::-webkit-scrollbar { display: none; }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B061A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+        }
+
+        /* ── Section wrap ── */
+        .section-wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Timeline ── */
+        .timeline-line {
+            border-left: 1.5px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* ── Link style ── */
+        .project-link {
+            color: #C7B3D9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+        .project-link:hover {
+            color: #FFA552;
+        }
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
 
         /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -344,65 +508,67 @@
 </head>
 <body>
 
-    <!-- Background Texture (fixed) -->
+    <!-- Background Texture -->
     <div class="bg-texture"></div>
 
     <!-- ============================================================ -->
     <!-- NAVIGATION                                                   -->
     <!-- ============================================================ -->
-    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-xl shadow-black/25 transition-all duration-400 w-auto max-w-[95vw]" id="mainNav" aria-label="Main navigation">
+    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-2xl shadow-black/30 w-auto max-w-[95vw]" id="mainNav" aria-label="Main navigation">
         <a href="#hero" class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors duration-300 flex-shrink-0">LR</a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a>
-            <a href="#portfolio" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a>
-            <a href="#skills" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Skills</a>
-            <a href="#experience" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Experience</a>
-            <a href="#testimonials" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Testimonials</a>
+            <a href="#portfolio" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a>
+            <a href="#skills" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Skills</a>
+            <a href="#experience" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Experience</a>
+            <a href="#testimonials" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Testimonials</a>
+            <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a>
         </div>
-        <a href="#contact" class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 flex-shrink-0">
+        <a href="#contact" class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 flex-shrink-0">
             Let's Talk
         </a>
         <button class="md:hidden text-white p-1.5 flex-shrink-0" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="menuIcon">
-                <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
         </button>
     </nav>
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden fixed top-20 left-4 right-4 z-50 glass rounded-3xl p-6 flex flex-col gap-3 text-center shadow-2xl transition-all duration-300 opacity-0 transform -translate-y-4">
-        <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">About</a>
         <a href="#portfolio" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Portfolio</a>
         <a href="#skills" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Skills</a>
         <a href="#experience" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Experience</a>
         <a href="#testimonials" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Testimonials</a>
+        <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">About</a>
         <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 mt-2">Let's Talk</a>
     </div>
 
     <!-- ============================================================ -->
-    <!-- HERO — Animated                                              -->
+    <!-- HERO                                                         -->
     <!-- ============================================================ -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 lg:px-16 pt-32 sm:pt-36 lg:pt-40 pb-12 section-wrap">
         <!-- Background -->
         <div class="section-bg">
-            <div class="orb w-[28rem] h-[28rem] bg-primary" style="top:-8%; right:-10%; animation:pulseGlow 7s ease-in-out infinite;"></div>
-            <div class="orb w-[22rem] h-[22rem] bg-accent" style="bottom:5%; left:-8%; animation:pulseGlow 9s ease-in-out infinite 2s;"></div>
-            <div class="orb w-[18rem] h-[18rem] bg-secondary" style="top:35%; right:28%; animation:pulseGlow 8s ease-in-out infinite 1s;"></div>
+            <div class="orb w-[32rem] h-[32rem] bg-primary" style="top:-10%; right:-8%; animation:pulseGlow 8s ease-in-out infinite;"></div>
+            <div class="orb w-[24rem] h-[24rem] bg-accent" style="bottom:5%; left:-6%; animation:pulseGlow 10s ease-in-out infinite 2s;"></div>
+            <div class="orb w-[20rem] h-[20rem] bg-secondary" style="top:35%; right:25%; animation:pulseGlow 9s ease-in-out infinite 1s;"></div>
             <!-- Abstract shapes -->
-            <div class="absolute hidden lg:block" style="top:20%; right:18%; animation:floatOrb 9s ease-in-out infinite;">
-                <div class="w-20 h-20 rounded-3xl border-2 border-primary/35 bg-primary/4 backdrop-blur-sm rotate-12"></div>
+            <div class="absolute hidden lg:block" style="top:18%; right:16%; animation:floatOrb 10s ease-in-out infinite;">
+                <div class="w-24 h-24 rounded-3xl border border-primary/20 bg-primary/5 backdrop-blur-sm rotate-12"></div>
             </div>
-            <div class="absolute hidden lg:block" style="top:50%; right:8%; animation:floatOrb 10s ease-in-out infinite 0.5s;">
-                <div class="w-14 h-14 rounded-full border-2 border-accent/35 bg-accent/4 backdrop-blur-sm"></div>
+            <div class="absolute hidden lg:block" style="top:52%; right:6%; animation:floatOrb 11s ease-in-out infinite 0.6s;">
+                <div class="w-16 h-16 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-sm"></div>
             </div>
-            <div class="absolute hidden lg:block" style="top:25%; right:35%; animation:floatOrb 8s ease-in-out infinite 1.8s;">
-                <div class="w-10 h-10 rounded-2xl border-2 border-secondary/40 bg-secondary/6 backdrop-blur-sm -rotate-6"></div>
+            <div class="absolute hidden lg:block" style="top:22%; right:38%; animation:floatOrb 9s ease-in-out infinite 1.8s;">
+                <div class="w-12 h-12 rounded-2xl border border-secondary/25 bg-secondary/6 backdrop-blur-sm -rotate-6"></div>
             </div>
             <!-- Rotating ring -->
-            <div class="absolute hidden lg:block" style="top:30%; right:16%; animation:rotateSlow 22s linear infinite;">
-                <svg width="180" height="180" viewBox="0 0 180 180" fill="none" class="opacity-20">
-                    <circle cx="90" cy="90" r="80" stroke="url(#gradRingHero)" stroke-width="1.5" stroke-dasharray="28 14 55 18" fill="none" />
-                    <defs><linearGradient id="gradRingHero" x1="0" y1="0" x2="180" y2="180"><stop offset="0%" stop-color="#5B4DFF"/><stop offset="50%" stop-color="#22D3EE"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient></defs>
+            <div class="absolute hidden lg:block" style="top:28%; right:14%; animation:rotateSlow 25s linear infinite;">
+                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" class="opacity-15">
+                    <circle cx="100" cy="100" r="88" stroke="url(#gradRingHero)" stroke-width="1.5" stroke-dasharray="30 16 60 20" fill="none" />
+                    <defs><linearGradient id="gradRingHero" x1="0" y1="0" x2="200" y2="200"><stop offset="0%" stop-color="#E0447D"/><stop offset="50%" stop-color="#FFA552"/><stop offset="100%" stop-color="#7A3FA6"/></linearGradient></defs>
                 </svg>
             </div>
         </div>
@@ -411,11 +577,11 @@
         <div class="relative z-10 text-center max-w-4xl mx-auto w-full">
             <div class="inline-flex items-center gap-2 glass-light rounded-full px-4 py-1.5 text-sm text-text-soft mb-10 reveal">
                 <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                Based in Tagum City, Philippines &middot; Open to freelance &amp; full-time roles
+                Based in Tagum City, Philippines &middot; Open to freelance &amp; full-time
             </div>
             <h1 class="reveal reveal-delay-1 mb-6">
-                <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.92] text-white name-accent">
-                    Louis Rollorata
+                <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.92] text-white">
+                    Louis <span class="name-accent">Rollorata</span>
                 </span>
                 <span class="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white mt-4 sm:mt-5">
                     I build&nbsp;
@@ -426,11 +592,11 @@
                 </span>
             </h1>
             <p class="text-sm sm:text-base md:text-lg text-text-soft max-w-2xl mx-auto mb-10 leading-relaxed reveal reveal-delay-2">
-                Front-End Developer, UI/UX Designer, and Multimedia Specialist with hands-on experience in web development, digital design, content creation, and marketing. I combine technology and creativity to deliver responsive web apps, user-focused interfaces, and multimedia content that perform.
+                Front-End Developer, UI/UX Designer, and Multimedia Specialist — crafting responsive web apps, user-focused interfaces, and content that performs.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center reveal reveal-delay-3">
                 <a href="#portfolio" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
-                    View My Work
+                    Explore My Work
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
                 <a href="#contact" class="inline-flex items-center justify-center gap-2 glass-light hover:bg-white/7 text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5">
@@ -441,237 +607,303 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ABOUT — Static (no background animation)                     -->
-    <!-- ============================================================ -->
-    <section id="about" class="py-28 px-6 lg:px-16 relative z-10 section-wrap">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <div class="reveal">
-                    <span class="text-accent text-sm font-semibold tracking-widest uppercase">About Me</span>
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-8 leading-[1.15]">
-                        Creative mindset,<br>
-                        <span class="text-text-soft">technical</span><br>
-                        execution
-                    </h2>
-                </div>
-                <div class="reveal reveal-delay-2">
-                    <p class="text-text-soft text-lg leading-relaxed mb-6">
-                        I'm a versatile Front-End Developer, UI/UX Designer, and Multimedia Specialist with hands-on experience across web development, digital design, content creation, and marketing. I'm currently finishing a BS in Information Technology, majoring in Information Security, at the University of Southeastern Philippines.
-                    </p>
-                    <p class="text-text-soft text-lg leading-relaxed mb-8">
-                        Whether it's building a responsive web application, designing a user-focused interface, producing multimedia content, or implementing workflow automation — I bring a detail-oriented, technology-meets-creativity approach to every project.
-                    </p>
-                    <div class="grid grid-cols-3 gap-5">
-                        <div class="glass-light rounded-2xl p-5 text-center">
-                            <div class="text-3xl font-bold text-white mb-1">4+</div>
-                            <div class="text-xs text-text-soft">Years Exp.</div>
-                        </div>
-                        <div class="glass-light rounded-2xl p-5 text-center">
-                            <div class="text-3xl font-bold text-white mb-1">7+</div>
-                            <div class="text-xs text-text-soft">Projects</div>
-                        </div>
-                        <div class="glass-light rounded-2xl p-5 text-center">
-                            <div class="text-3xl font-bold text-white mb-1">92%</div>
-                            <div class="text-xs text-text-soft">Engagement Growth</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- PORTFOLIO — Animated                                         -->
+    <!-- PORTFOLIO — Main Focus                                       -->
     <!-- ============================================================ -->
     <section id="portfolio" class="py-28 px-6 lg:px-16 relative z-10 bg-bg-mid section-wrap overflow-hidden">
-        <!-- Background: floating geometric shapes -->
+        <!-- Background -->
         <div class="section-bg">
-            <div class="absolute" style="top:5%; left:3%; animation:driftShape 14s ease-in-out infinite;">
-                <div class="w-16 h-16 rounded-2xl border border-primary/20 bg-primary/5 backdrop-blur-sm rotate-12"></div>
+            <div class="absolute" style="top:5%; left:2%; animation:driftShape 15s ease-in-out infinite;">
+                <div class="w-20 h-20 rounded-2xl border border-primary/15 bg-primary/5 backdrop-blur-sm rotate-12"></div>
             </div>
-            <div class="absolute" style="bottom:10%; right:5%; animation:driftShape 16s ease-in-out infinite 1.2s;">
-                <div class="w-20 h-20 rounded-full border border-accent/15 bg-accent/5 backdrop-blur-sm"></div>
+            <div class="absolute" style="bottom:12%; right:3%; animation:driftShape 17s ease-in-out infinite 1.4s;">
+                <div class="w-24 h-24 rounded-full border border-accent/12 bg-accent/4 backdrop-blur-sm"></div>
             </div>
-            <div class="absolute" style="top:40%; left:60%; animation:driftShape 12s ease-in-out infinite 0.6s;">
-                <div class="w-12 h-12 rounded-xl border border-secondary/20 bg-secondary/5 backdrop-blur-sm -rotate-6"></div>
+            <div class="absolute" style="top:35%; left:55%; animation:driftShape 13s ease-in-out infinite 0.8s;">
+                <div class="w-14 h-14 rounded-xl border border-secondary/15 bg-secondary/5 backdrop-blur-sm -rotate-6"></div>
             </div>
-            <div class="absolute" style="top:70%; left:10%; animation:driftShape 18s ease-in-out infinite 2s;">
-                <div class="w-10 h-10 rounded-lg border border-primary/20 bg-primary/4 backdrop-blur-sm rotate-45"></div>
-            </div>
-            <div class="absolute" style="top:15%; right:12%; animation:driftShape 15s ease-in-out infinite 0.9s;">
-                <div class="w-14 h-14 rounded-2xl border border-accent/15 bg-accent/4 backdrop-blur-sm"></div>
+            <div class="absolute" style="top:75%; left:8%; animation:driftShape 19s ease-in-out infinite 2.2s;">
+                <div class="w-12 h-12 rounded-lg border border-primary/15 bg-primary/4 backdrop-blur-sm rotate-45"></div>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-14 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Portfolio</span>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">Curated Work</h2>
-                <p class="text-text-soft text-lg max-w-xl mx-auto">Real projects and client work spanning web development and creative production.</p>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">Featured Work</h2>
+                <p class="text-text-soft text-lg max-w-xl mx-auto">A curated selection of projects spanning web development, graphic design, and video production.</p>
             </div>
 
-            <!-- Filter -->
-            <div class="flex justify-center gap-3 mb-12 reveal reveal-delay-1 flex-wrap">
-                <button class="filter-btn active px-6 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-lg shadow-primary/20" data-filter="all">All Work</button>
-                <button class="filter-btn px-6 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 glass-light text-text-soft hover:text-white hover:bg-white/8" data-filter="web">Web Projects</button>
-                <button class="filter-btn px-6 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 glass-light text-text-soft hover:text-white hover:bg-white/8" data-filter="creative">Creative Work</button>
+            <!-- Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal reveal-delay-1">
+                <button class="category-tab active" data-filter="all">All Work</button>
+                <button class="category-tab" data-filter="graphics">Graphics</button>
+                <button class="category-tab" data-filter="video">Videos</button>
+                <button class="category-tab" data-filter="web">Web Projects</button>
             </div>
 
-            <!-- Masonry -->
-            <div class="masonry-grid reveal reveal-delay-2" id="masonryGallery">
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid reveal reveal-delay-2" id="portfolioGrid">
 
-                <!-- 1. Web -->
-                <div class="masonry-item" data-category="web">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="Atlas Edge Global Website" data-cat="Web Project" data-desc="Designed and maintained a responsive Wix website with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-56 bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/15 flex items-center justify-center">
-                                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="8" y="12" width="54" height="46" rx="6" stroke="#5B4DFF" stroke-width="3"/>
-                                        <circle cx="22" cy="28" r="8" stroke="#22D3EE" stroke-width="2.5"/>
-                                        <line x1="34" y1="26" x2="58" y2="26" stroke="#7C3AED" stroke-width="2.5"/>
-                                        <line x1="34" y1="35" x2="50" y2="35" stroke="#5B4DFF" stroke-width="2.5"/>
-                                    </svg>
-                                </div>
+                <!-- ── GRAPHICS ── -->
+                <!-- Sport Court Ontario Campaigns -->
+                <div class="portfolio-card" data-category="graphics">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="8" y="8" width="48" height="48" rx="12" stroke="#FFA552" stroke-width="2.5" opacity="0.5"/>
+                                <circle cx="32" cy="32" r="14" stroke="#FFA552" stroke-width="2" opacity="0.4"/>
+                                <circle cx="32" cy="32" r="5" fill="#FFA552" opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Web Project</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">Atlas Edge Global Website</h3>
-                                <p class="text-text-soft text-sm">Wix Studio • Workflow Automation</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-graphics">Graphics</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Sport Court Ontario Campaigns</h3>
+                        <p class="text-text-soft text-sm">Social media graphics, reels, and branded content</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Facebook</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Instagram</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Canva</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. Creative (Social Media) -->
-                <div class="masonry-item" data-category="creative">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="Sport Court Ontario Campaigns" data-cat="Creative • Social Media" data-desc="Managed Facebook and Instagram content, produced promotional reels, and designed branded graphics with AI asset generation to grow brand visibility. Oct 2025 – present.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-72 bg-gradient-to-br from-pink-400/20 via-orange-400/15 to-yellow-400/18 flex items-center justify-center">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="8" y="8" width="44" height="44" rx="12" stroke="#FF6B9D" stroke-width="3"/>
-                                        <circle cx="30" cy="30" r="12" stroke="#FFB347" stroke-width="2.5"/>
-                                        <circle cx="30" cy="30" r="4" fill="#FF6B9D"/>
-                                    </svg>
-                                </div>
+                <!-- The Light Publication Content -->
+                <div class="portfolio-card" data-category="graphics">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="8" y="6" width="48" height="52" rx="6" stroke="#C084FC" stroke-width="2.5" opacity="0.5"/>
+                                <text x="32" y="36" text-anchor="middle" fill="#C084FC" font-size="14" font-weight="bold" opacity="0.3">EVENT</text>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Creative • Social Media</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">Sport Court Ontario Campaigns</h3>
-                                <p class="text-text-soft text-sm">Reels • Graphics • Branding</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-graphics">Graphics</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">The Light Publication Content</h3>
+                        <p class="text-text-soft text-sm">Posters, social graphics, and promotional assets</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Print</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Social</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">92% Growth</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Web -->
-                <div class="masonry-item" data-category="web">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="ABECON 2025 Convention Platform" data-cat="Web Project" data-desc="Led UI/UX design and front-end development for a convention platform covering registration, attendance tracking, e-commerce, online voting, and vote tabulation. Sep – Nov 2025.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-48 bg-gradient-to-br from-accent/20 via-primary/18 to-secondary/14 flex items-center justify-center">
-                                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="4" y="20" width="12" height="36" rx="3" stroke="#22D3EE" stroke-width="2.5"/>
-                                        <rect x="20" y="10" width="12" height="46" rx="3" stroke="#5B4DFF" stroke-width="2.5"/>
-                                        <rect x="36" y="28" width="12" height="28" rx="3" stroke="#7C3AED" stroke-width="2.5"/>
-                                        <rect x="52" y="16" width="12" height="40" rx="3" stroke="#22D3EE" stroke-width="2.5"/>
-                                    </svg>
-                                </div>
+                <!-- PNC Studios Yearbook -->
+                <div class="portfolio-card" data-category="graphics">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="8" y="8" width="48" height="48" rx="6" stroke="#A78BFA" stroke-width="2.5" opacity="0.5"/>
+                                <rect x="16" y="16" width="32" height="32" rx="3" stroke="#A78BFA" stroke-width="2" opacity="0.3"/>
+                                <line x1="16" y1="26" x2="48" y2="26" stroke="#A78BFA" stroke-width="2" opacity="0.3"/>
+                                <line x1="16" y1="34" x2="40" y2="34" stroke="#A78BFA" stroke-width="2" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Web Project</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">ABECON 2025 Convention Platform</h3>
-                                <p class="text-text-soft text-sm">Registration • E-commerce • Voting</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-graphics">Graphics</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">PNC Studios Yearbook &amp; Layout</h3>
+                        <p class="text-text-soft text-sm">Yearbook design, photo retouching, layout</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Photoshop</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Layout</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Retouching</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. Creative (Video) -->
-                <div class="masonry-item" data-category="creative">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="PNC Studios Yearbook & Multimedia" data-cat="Creative • Video &amp; Photo" data-desc="Edited and designed yearbook layouts, captured and retouched event photography, and produced same-day edits and highlight videos. June 2024 – June 2025.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-64 bg-gradient-to-br from-slate-700/30 via-slate-600/25 to-slate-500/20 flex items-center justify-center relative">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="opacity-30 group-hover:opacity-50 transition-opacity duration-500">
-                                        <rect x="4" y="8" width="52" height="44" rx="8" stroke="#B8BCC8" stroke-width="2.5"/>
-                                        <polygon points="24,20 24,40 42,30" fill="#B8BCC8" opacity="0.6"/>
-                                    </svg>
-                                    <div class="play-overlay"><div class="play-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 19,12 8,19"/></svg></div></div>
-                                </div>
+                <!-- ── VIDEOS ── -->
+                <!-- Sport Court Ontario Videos -->
+                <div class="portfolio-card" data-category="video">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="6" y="12" width="52" height="40" rx="8" stroke="#E0447D" stroke-width="2.5" opacity="0.5"/>
+                                <polygon points="26,22 26,42 44,32" fill="#E0447D" opacity="0.25"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Creative • Video &amp; Photo</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">PNC Studios Yearbook & Multimedia</h3>
-                                <p class="text-text-soft text-sm">Same-Day Edits • Photo Retouching</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-video">Video</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Sport Court Ontario Reels &amp; Shorts</h3>
+                        <p class="text-text-soft text-sm">Promotional reels, short-form content for social</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Reels</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Shorts</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Premiere Pro</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 5. Web (IoT) -->
-                <div class="masonry-item" data-category="web">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="Smart Cacao System (DOST-PCAARD)" data-cat="Web Project" data-desc="Led front-end development and UI/UX design for an IoT-based cacao monitoring platform, implementing algorithms to process real-time sensor data. June – Sep 2025.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-52 bg-gradient-to-br from-emerald-400/18 via-teal-400/16 to-cyan-400/14 flex items-center justify-center">
-                                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="10" y="15" width="45" height="38" rx="8" stroke="#34D399" stroke-width="3"/>
-                                        <line x1="22" y1="28" x2="43" y2="28" stroke="#22D3EE" stroke-width="2.5"/>
-                                        <line x1="22" y1="37" x2="38" y2="37" stroke="#5B4DFF" stroke-width="2.5"/>
-                                        <line x1="22" y1="46" x2="32" y2="46" stroke="#34D399" stroke-width="2.5"/>
-                                    </svg>
-                                </div>
+                <!-- PNC Studios Video -->
+                <div class="portfolio-card" data-category="video">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="6" y="10" width="52" height="44" rx="8" stroke="#C7B3D9" stroke-width="2.5" opacity="0.5"/>
+                                <polygon points="24,18 24,46 44,32" fill="#C7B3D9" opacity="0.2"/>
+                                <circle cx="24" cy="18" r="4" fill="#C7B3D9" opacity="0.1"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7B3D9" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Web Project</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">Smart Cacao System</h3>
-                                <p class="text-text-soft text-sm">IoT • Real-Time Sensor Data</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-video">Video</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">PNC Studios Highlight Videos</h3>
+                        <p class="text-text-soft text-sm">Same-day edits, event highlight reels, long-form</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Long-form</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Highlights</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Same-day</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 6. Creative (Print/Editorial) -->
-                <div class="masonry-item" data-category="creative">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="The Light Publication Content" data-cat="Creative • Graphic Design" data-desc="Created digital and print marketing materials — social graphics, posters, and promotional assets — and wrote content that grew social engagement by 92.31% in 12 months. Nov 2022 – May 2024.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-80 bg-gradient-to-br from-violet-500/20 via-fuchsia-500/18 to-indigo-500/22 flex items-center justify-center">
-                                    <svg width="55" height="55" viewBox="0 0 55 55" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="6" y="4" width="43" height="47" rx="4" stroke="#A855F7" stroke-width="3"/>
-                                        <text x="27" y="32" text-anchor="middle" fill="#C084FC" font-size="14" font-weight="bold">EVENT</text>
-                                    </svg>
-                                </div>
+                <!-- ── WEB PROJECTS ── -->
+                <!-- Atlas Edge Global -->
+                <div class="portfolio-card" data-category="web">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="6" y="10" width="52" height="44" rx="6" stroke="#7A3FA6" stroke-width="2.5" opacity="0.5"/>
+                                <circle cx="22" cy="30" r="10" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
+                                <line x1="36" y1="28" x2="56" y2="28" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
+                                <line x1="36" y1="37" x2="48" y2="37" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Creative • Graphic Design</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">The Light Publication Content</h3>
-                                <p class="text-text-soft text-sm">Posters • Social Graphics • Copy</p>
-                            </div>
+                        </div>
+                        <span class="badge badge-web">Web</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Atlas Edge Global Website</h3>
+                        <p class="text-text-soft text-sm">Responsive Wix site with workflow automation</p>
+                        <div class="mt-3 flex items-center gap-4">
+                            <a href="#" class="project-link" onclick="event.stopPropagation();">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live Project
+                            </a>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Wix Studio</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 7. Web -->
-                <div class="masonry-item" data-category="web">
-                    <div class="gradient-border-card glow-hover cursor-pointer group" onclick="openLightbox(this)" data-title="Glory Commercial Integrated System" data-cat="Web Project" data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. June – July 2023.">
-                        <div class="relative z-10 rounded-[22px] overflow-hidden">
-                            <div class="zoom-container relative">
-                                <div class="placeholder-img w-full h-60 bg-gradient-to-br from-sky-400/18 via-blue-400/16 to-indigo-400/14 flex items-center justify-center">
-                                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" class="opacity-35 group-hover:opacity-55 transition-opacity duration-500">
-                                        <rect x="8" y="10" width="49" height="40" rx="6" stroke="#38BDF8" stroke-width="3"/>
-                                        <circle cx="32" cy="30" r="8" stroke="#5B4DFF" stroke-width="2.5"/>
-                                        <circle cx="32" cy="30" r="3" fill="#22D3EE"/>
-                                    </svg>
-                                </div>
+                <!-- ABECON 2025 -->
+                <div class="portfolio-card" data-category="web">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="4" y="18" width="14" height="38" rx="3" stroke="#FFA552" stroke-width="2.5" opacity="0.4"/>
+                                <rect x="22" y="8" width="14" height="48" rx="3" stroke="#E0447D" stroke-width="2.5" opacity="0.4"/>
+                                <rect x="40" y="28" width="14" height="28" rx="3" stroke="#7A3FA6" stroke-width="2.5" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                             </div>
-                            <div class="p-5">
-                                <span class="text-accent text-xs font-semibold tracking-widest uppercase">Web Project</span>
-                                <h3 class="text-lg font-bold mt-1.5 mb-1">Glory Commercial Integrated System</h3>
-                                <p class="text-text-soft text-sm">POS • Inventory • Sales Analytics</p>
+                        </div>
+                        <span class="badge badge-web">Web</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">ABECON 2025 Convention Platform</h3>
+                        <p class="text-text-soft text-sm">Registration, e-commerce, voting, tabulation</p>
+                        <div class="mt-3 flex items-center gap-4">
+                            <a href="#" class="project-link" onclick="event.stopPropagation();">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live Project
+                            </a>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Cacao System -->
+                <div class="portfolio-card" data-category="web">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="8" y="14" width="48" height="40" rx="8" stroke="#FFA552" stroke-width="2.5" opacity="0.5"/>
+                                <line x1="20" y1="28" x2="44" y2="28" stroke="#FFA552" stroke-width="2" opacity="0.3"/>
+                                <line x1="20" y1="38" x2="38" y2="38" stroke="#E0447D" stroke-width="2" opacity="0.3"/>
+                                <line x1="20" y1="48" x2="32" y2="48" stroke="#FFA552" stroke-width="2" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                             </div>
+                        </div>
+                        <span class="badge badge-web">Web</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Smart Cacao System</h3>
+                        <p class="text-text-soft text-sm">IoT monitoring platform · DOST-PCAARD</p>
+                        <div class="mt-3 flex items-center gap-4">
+                            <a href="#" class="project-link" onclick="event.stopPropagation();">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live Project
+                            </a>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glory Commercial -->
+                <div class="portfolio-card" data-category="web">
+                    <div class="thumb">
+                        <div class="placeholder-svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <rect x="6" y="8" width="52" height="48" rx="6" stroke="#B95BA8" stroke-width="2.5" opacity="0.5"/>
+                                <circle cx="32" cy="32" r="10" stroke="#E0447D" stroke-width="2" opacity="0.3"/>
+                                <circle cx="32" cy="32" r="4" fill="#FFA552" opacity="0.2"/>
+                            </svg>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                            </div>
+                        </div>
+                        <span class="badge badge-web">Web</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Glory Commercial Integrated System</h3>
+                        <p class="text-text-soft text-sm">POS, inventory, sales analytics</p>
+                        <div class="mt-3 flex items-center gap-4">
+                            <a href="#" class="project-link" onclick="event.stopPropagation();">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live Project
+                            </a>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">POS</span>
                         </div>
                     </div>
                 </div>
@@ -681,84 +913,58 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- LIGHTBOX                                                    -->
-    <!-- ============================================================ -->
-    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl" onclick="event.stopPropagation()">
-            <button class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300" onclick="closeLightbox()" aria-label="Close lightbox">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-            <div class="rounded-2xl overflow-hidden mb-5" id="lightboxImageContainer">
-                <div class="w-full h-64 sm:h-80 bg-gradient-to-br from-primary/20 via-secondary/18 to-accent/15 flex items-center justify-center" id="lightboxPlaceholder">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="opacity-40">
-                        <rect x="10" y="15" width="60" height="50" rx="8" stroke="#5B4DFF" stroke-width="3"/>
-                        <circle cx="35" cy="40" r="12" stroke="#22D3EE" stroke-width="2.5"/>
-                    </svg>
-                </div>
-            </div>
-            <span class="text-accent text-xs font-semibold tracking-widest uppercase" id="lightboxCat">Category</span>
-            <h3 class="text-2xl font-bold mt-2 mb-2" id="lightboxTitle">Title</h3>
-            <p class="text-text-soft text-sm leading-relaxed" id="lightboxDesc">Description</p>
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SKILLS — Static                                              -->
+    <!-- SKILLS                                                       -->
     <!-- ============================================================ -->
     <section id="skills" class="py-28 px-6 lg:px-16 relative z-10 section-wrap">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Expertise</span>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">What I Bring to the Table</h2>
-                <p class="text-text-soft text-lg max-w-xl mx-auto">A diverse skill set spanning development, design, content creation, and strategy.</p>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">What I Bring</h2>
+                <p class="text-text-soft text-lg max-w-xl mx-auto">A versatile skillset across development, design, content, and strategy.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-1 group cursor-default">
                     <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5 group-hover:bg-primary/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B4DFF" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Front-End Development</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">HTML, CSS, JavaScript, Wix Studio, Git &amp; GitHub, database management, and workflow &amp; email automation.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">HTML, CSS, JavaScript, Wix Studio, Git, database management, workflow &amp; email automation.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-2 group cursor-default">
                     <div class="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:bg-accent/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">UI/UX Design</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">User-focused interface design for responsive web applications, from registration systems to IoT dashboards.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">User-focused interfaces for web applications, from registration systems to IoT dashboards.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-3 group cursor-default">
                     <div class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center mb-5 group-hover:bg-secondary/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Social Media &amp; Content</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">Social media management, SEO, YouTube channel management, and content strategy that grows engagement.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">Social media management, SEO, YouTube channel management, content strategy that grows engagement.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-4 group cursor-default">
                     <div class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5 group-hover:bg-white/15 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8BCC8" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="14" height="14" rx="2"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C7B3D9" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="14" height="14" rx="2"/></svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Video &amp; Multimedia</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">Video editing and photo retouching in Adobe Photoshop &amp; Premiere and Canva, including same-day edits and highlight reels.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">Video editing and photo retouching in Adobe Photoshop, Premiere, and Canva — including same-day edits.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- EXPERIENCE — Animated                                        -->
+    <!-- EXPERIENCE                                                    -->
     <!-- ============================================================ -->
     <section id="experience" class="py-28 px-6 lg:px-16 relative z-10 bg-bg-mid section-wrap overflow-hidden">
-        <!-- Background: pulsing rings -->
         <div class="section-bg">
-            <div class="absolute" style="top:10%; right:5%; animation:pulseRing 6s ease-in-out infinite;">
-                <div class="w-64 h-64 rounded-full border border-primary/10 bg-primary/5"></div>
+            <div class="absolute" style="top:8%; right:4%; animation:pulseRing 7s ease-in-out infinite;">
+                <div class="w-72 h-72 rounded-full border border-primary/8 bg-primary/4"></div>
             </div>
-            <div class="absolute" style="bottom:15%; left:3%; animation:pulseRing 8s ease-in-out infinite 1.2s;">
-                <div class="w-80 h-80 rounded-full border border-accent/8 bg-accent/3"></div>
-            </div>
-            <div class="absolute" style="top:50%; left:50%; transform:translate(-50%,-50%); animation:pulseRing 10s ease-in-out infinite 0.6s;">
-                <div class="w-96 h-96 rounded-full border border-secondary/6 bg-secondary/2"></div>
+            <div class="absolute" style="bottom:18%; left:2%; animation:pulseRing 9s ease-in-out infinite 1.4s;">
+                <div class="w-80 h-80 rounded-full border border-accent/6 bg-accent/2"></div>
             </div>
         </div>
 
@@ -768,44 +974,44 @@
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">Career Timeline</h2>
             </div>
             <div class="space-y-1">
-                <div class="flex gap-6 items-start py-8 border-l-2 border-white/8 pl-8 relative reveal">
+                <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal">
                     <div class="absolute w-3.5 h-3.5 rounded-full bg-primary -left-[7px] top-10 shadow-lg shadow-primary/30"></div>
                     <div>
                         <span class="text-accent text-xs font-semibold tracking-widest uppercase">Oct 2025 — Present</span>
-                        <h3 class="text-xl font-bold mt-1">Social Media Manager | Video Editor | Graphic Designer</h3>
-                        <p class="text-text-soft mt-1.5">Sport Court Ontario — Manage social content and marketing campaigns on Facebook and Instagram, produce promotional videos and reels, and design branded graphics with AI asset generation.</p>
+                        <h3 class="text-xl font-bold mt-1">Social Media Manager · Video Editor · Graphic Designer</h3>
+                        <p class="text-text-soft mt-1.5">Sport Court Ontario — Manage social content on Facebook and Instagram, produce promotional reels, design branded graphics with AI asset generation.</p>
                     </div>
                 </div>
-                <div class="flex gap-6 items-start py-8 border-l-2 border-white/8 pl-8 relative reveal reveal-delay-1">
+                <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-1">
                     <div class="absolute w-3.5 h-3.5 rounded-full bg-accent -left-[7px] top-10 shadow-lg shadow-accent/30"></div>
                     <div>
                         <span class="text-accent text-xs font-semibold tracking-widest uppercase">Sep 2025 — Nov 2025</span>
                         <h3 class="text-xl font-bold mt-1">Front-End Designer &amp; Developer</h3>
-                        <p class="text-text-soft mt-1.5">ABECON 2025 — Led UI/UX design and front-end development of a convention management platform with registration, attendance tracking, e-commerce, online voting, and vote tabulation.</p>
+                        <p class="text-text-soft mt-1.5">ABECON 2025 — Led UI/UX design and front-end development of a convention management platform with registration, e-commerce, voting, and tabulation.</p>
                     </div>
                 </div>
-                <div class="flex gap-6 items-start py-8 border-l-2 border-white/8 pl-8 relative reveal reveal-delay-2">
+                <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-2">
                     <div class="absolute w-3.5 h-3.5 rounded-full bg-secondary -left-[7px] top-10 shadow-lg shadow-secondary/30"></div>
                     <div>
                         <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2025 — Sep 2025</span>
-                        <h3 class="text-xl font-bold mt-1">Front-End Designer &amp; Developer (Internship)</h3>
-                        <p class="text-text-soft mt-1.5">DOST-PCAARD Smart Cacao System — Led front-end development and UI/UX design of an IoT-based cacao monitoring platform, implementing real-time sensor data processing.</p>
+                        <h3 class="text-xl font-bold mt-1">Front-End Designer &amp; Developer · Intern</h3>
+                        <p class="text-text-soft mt-1.5">DOST-PCAARD Smart Cacao System — Led front-end development and UI/UX design of an IoT-based cacao monitoring platform with real-time sensor data.</p>
                     </div>
                 </div>
-                <div class="flex gap-6 items-start py-8 border-l-2 border-white/8 pl-8 relative reveal reveal-delay-3">
+                <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-3">
                     <div class="absolute w-3.5 h-3.5 rounded-full bg-white/30 -left-[7px] top-10 shadow-lg shadow-white/10"></div>
                     <div>
                         <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2024 — Jun 2025</span>
                         <h3 class="text-xl font-bold mt-1">Creative Media Specialist</h3>
-                        <p class="text-text-soft mt-1.5">PNC Studios — Edited and designed yearbooks including photo retouching and layout design, captured event photography, and produced same-day edits and highlight videos.</p>
+                        <p class="text-text-soft mt-1.5">PNC Studios — Edited and designed yearbooks, photo retouching, event photography, same-day edits, and highlight videos.</p>
                     </div>
                 </div>
-                <div class="flex gap-6 items-start py-8 border-l-2 border-white/8 pl-8 relative reveal reveal-delay-4">
+                <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-4">
                     <div class="absolute w-3.5 h-3.5 rounded-full bg-primary/60 -left-[7px] top-10 shadow-lg shadow-primary/20"></div>
                     <div>
                         <span class="text-accent text-xs font-semibold tracking-widest uppercase">Nov 2022 — May 2024</span>
-                        <h3 class="text-xl font-bold mt-1">Multimedia Content Designer | Writer | Social Media Manager</h3>
-                        <p class="text-text-soft mt-1.5">The Light Publication — Created digital and print marketing materials and wrote engaging content, increasing social media engagement by 92.31% within 12 months.</p>
+                        <h3 class="text-xl font-bold mt-1">Multimedia Content Designer · Writer · Social Media Manager</h3>
+                        <p class="text-text-soft mt-1.5">The Light Publication — Created digital and print marketing materials, wrote content, grew social engagement by 92.31% in 12 months.</p>
                     </div>
                 </div>
             </div>
@@ -813,7 +1019,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ORGANIZATIONS MARQUEE — Static                               -->
+    <!-- CLIENTS MARQUEE                                               -->
     <!-- ============================================================ -->
     <section class="py-20 relative z-10 overflow-hidden section-wrap">
         <div class="max-w-full mx-auto">
@@ -845,21 +1051,21 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- TESTIMONIALS — Carousel                                      -->
+    <!-- TESTIMONIALS                                                  -->
     <!-- ============================================================ -->
     <section id="testimonials" class="py-28 px-6 lg:px-16 relative z-10 bg-bg-mid section-wrap">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Testimonials</span>
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">What People Say</h2>
-                <p class="text-text-soft text-lg max-w-xl mx-auto">Direct collaborators who can speak to my work — reach out to any of them.</p>
+                <p class="text-text-soft text-lg max-w-xl mx-auto">Direct collaborators who can speak to my work.</p>
             </div>
             <div class="reveal">
                 <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth carousel-track pb-2" id="testimonialTrack">
                     <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">Sport Court Ontario</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-primary/50 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">Add Camilla's testimonial here — a short quote about working together on Sport Court Ontario's social media and video campaigns.</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-primary/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis brought a fresh creative energy to our social media. His reels and graphics consistently outperformed, and he's a pleasure to work with."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">CT</div>
                             <div>
@@ -870,8 +1076,8 @@
                     </div>
                     <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-accent font-extrabold text-lg tracking-tight mb-6">Atlas Edge Global</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/50 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">Add Lel's testimonial here — a short quote about working together on the Atlas Edge Global website.</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis delivered a polished, professional website with seamless automation. He understood our needs and executed with precision."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">LS</div>
                             <div>
@@ -882,8 +1088,8 @@
                     </div>
                     <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">PNC Studios</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-secondary/50 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">Add Francis's testimonial here — a short quote about working together on PNC Studios' yearbook and multimedia production.</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-secondary/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis handled our yearbook and event coverage with incredible attention to detail. His same-day edits were a game-changer."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">FC</div>
                             <div>
@@ -894,11 +1100,11 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center gap-5 mt-8">
-                    <button id="testimonialPrev" aria-label="Previous testimonial" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                    <button id="testimonialPrev" aria-label="Previous" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
                     </button>
                     <div class="flex items-center gap-2" id="testimonialDots"></div>
-                    <button id="testimonialNext" aria-label="Next testimonial" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                    <button id="testimonialNext" aria-label="Next" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                     </button>
                 </div>
@@ -907,28 +1113,72 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- CONTACT — Animated                                           -->
+    <!-- ABOUT — Moved to Bottom                                      -->
+    <!-- ============================================================ -->
+    <section id="about" class="py-28 px-6 lg:px-16 relative z-10 section-wrap">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div class="reveal order-2 lg:order-1">
+                    <span class="text-accent text-sm font-semibold tracking-widest uppercase">About Me</span>
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-8 leading-[1.15]">
+                        Creative mindset,<br>
+                        <span class="text-text-soft">technical</span><br>
+                        execution
+                    </h2>
+                    <p class="text-text-soft text-lg leading-relaxed mb-6">
+                        I'm a versatile Front-End Developer, UI/UX Designer, and Multimedia Specialist with hands-on experience across web development, digital design, content creation, and marketing. I'm currently finishing a BS in Information Technology, majoring in Information Security, at the University of Southeastern Philippines.
+                    </p>
+                    <p class="text-text-soft text-lg leading-relaxed mb-8">
+                        Whether it's building a responsive web application, designing a user-focused interface, producing multimedia content, or implementing workflow automation — I bring a detail-oriented, technology-meets-creativity approach to every project.
+                    </p>
+                    <div class="grid grid-cols-3 gap-5">
+                        <div class="glass-light rounded-2xl p-5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1">4+</div>
+                            <div class="text-xs text-text-soft">Years Exp.</div>
+                        </div>
+                        <div class="glass-light rounded-2xl p-5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1">7+</div>
+                            <div class="text-xs text-text-soft">Projects</div>
+                        </div>
+                        <div class="glass-light rounded-2xl p-5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1">92%</div>
+                            <div class="text-xs text-text-soft">Engagement Growth</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-2 order-1 lg:order-2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/10 flex items-center justify-center border border-white/5 backdrop-blur-sm">
+                            <span class="text-7xl font-black text-white/10">LR</span>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl glass-light flex items-center justify-center border border-white/5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-16 h-16 rounded-2xl glass-light flex items-center justify-center border border-white/5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTACT                                                      -->
     <!-- ============================================================ -->
     <section id="contact" class="py-28 px-6 lg:px-16 relative z-10 section-wrap overflow-hidden">
-        <!-- Background: floating dots -->
         <div class="section-bg">
-            <div class="absolute" style="top:8%; left:6%; animation:floatDot 7s ease-in-out infinite;">
-                <div class="w-3 h-3 rounded-full bg-primary/30"></div>
+            <div class="absolute" style="top:6%; left:5%; animation:floatDot 8s ease-in-out infinite;">
+                <div class="w-3 h-3 rounded-full bg-primary/25"></div>
             </div>
-            <div class="absolute" style="top:20%; right:12%; animation:floatDot 9s ease-in-out infinite 1.2s;">
-                <div class="w-4 h-4 rounded-full bg-accent/25"></div>
+            <div class="absolute" style="top:22%; right:10%; animation:floatDot 10s ease-in-out infinite 1.4s;">
+                <div class="w-4 h-4 rounded-full bg-accent/20"></div>
             </div>
-            <div class="absolute" style="bottom:30%; left:10%; animation:floatDot 8s ease-in-out infinite 0.6s;">
-                <div class="w-2.5 h-2.5 rounded-full bg-secondary/30"></div>
+            <div class="absolute" style="bottom:35%; left:8%; animation:floatDot 9s ease-in-out infinite 0.8s;">
+                <div class="w-2.5 h-2.5 rounded-full bg-secondary/25"></div>
             </div>
-            <div class="absolute" style="bottom:15%; right:8%; animation:floatDot 10s ease-in-out infinite 1.8s;">
-                <div class="w-3.5 h-3.5 rounded-full bg-primary/25"></div>
-            </div>
-            <div class="absolute" style="top:50%; left:4%; animation:floatDot 11s ease-in-out infinite 0.3s;">
-                <div class="w-2 h-2 rounded-full bg-accent/30"></div>
-            </div>
-            <div class="absolute" style="top:40%; right:5%; animation:floatDot 8.5s ease-in-out infinite 2.2s;">
-                <div class="w-3 h-3 rounded-full bg-secondary/25"></div>
+            <div class="absolute" style="bottom:12%; right:6%; animation:floatDot 11s ease-in-out infinite 2s;">
+                <div class="w-3.5 h-3.5 rounded-full bg-primary/20"></div>
             </div>
         </div>
 
@@ -937,7 +1187,7 @@
                 <div class="reveal">
                     <span class="text-accent text-sm font-semibold tracking-widest uppercase">Contact</span>
                     <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-6 leading-[1.15]">Let's create<br><span class="text-gradient">something great</span></h2>
-                    <p class="text-text-soft text-lg leading-relaxed mb-8">I'm available for freelance projects, collaborations, and full-time opportunities. Whether you need a website, a social media strategy, or compelling video content — let's talk.</p>
+                    <p class="text-text-soft text-lg leading-relaxed mb-8">Available for freelance, collaborations, and full-time opportunities. Whether you need a website, a social strategy, or compelling video content — let's talk.</p>
                     <div class="space-y-4 text-text-soft">
                         <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:louis.rollorata@gmail.com" class="hover:text-white transition-colors duration-300">louis.rollorata@gmail.com</a></div>
                         <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg><a href="tel:+639910557647" class="hover:text-white transition-colors duration-300">+63 9910 - 557 - 647</a></div>
@@ -946,15 +1196,15 @@
                 </div>
                 <div class="glass-light rounded-3xl p-8 reveal reveal-delay-2 flex flex-col justify-center text-center">
                     <div class="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-6">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5B4DFF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 15l2 2 4-4"/></svg>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 15l2 2 4-4"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Book a Google Meet</h3>
-                    <p class="text-text-soft text-sm leading-relaxed mb-8">Skip the back-and-forth — grab a slot straight from my calendar and we'll hop on a video call to talk through your project.</p>
+                    <p class="text-text-soft text-sm leading-relaxed mb-8">Skip the back-and-forth — grab a slot straight from my calendar and we'll hop on a video call.</p>
                     <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR-SCHEDULE-LINK-HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
                         Schedule on Google Calendar
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
-                    <p class="text-text-soft text-xs mt-5">Prefer email or a call? Use the details on the left instead.</p>
+                    <p class="text-text-soft text-xs mt-5">Prefer email or a call? Use the details on the left.</p>
                 </div>
             </div>
         </div>
@@ -966,12 +1216,37 @@
     <footer class="py-16 px-6 lg:px-16 relative z-10 border-t border-white/5 section-wrap">
         <div class="max-w-6xl mx-auto">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                <div><a href="#hero" class="text-white font-bold text-2xl tracking-tight">LR</a><p class="text-text-soft text-sm mt-3 leading-relaxed">Front-end development, UI/UX design, and multimedia production based in Tagum City, Philippines.</p></div>
-                <div><h4 class="text-white font-semibold mb-4">Navigation</h4><div class="flex flex-col gap-2.5 text-sm text-text-soft"><a href="#about" class="hover:text-white transition-colors duration-300">About</a><a href="#portfolio" class="hover:text-white transition-colors duration-300">Portfolio</a><a href="#skills" class="hover:text-white transition-colors duration-300">Skills</a><a href="#experience" class="hover:text-white transition-colors duration-300">Experience</a><a href="#testimonials" class="hover:text-white transition-colors duration-300">Testimonials</a></div></div>
-                <div><h4 class="text-white font-semibold mb-4">Connect</h4><div class="flex flex-col gap-2.5 text-sm text-text-soft"><a href="mailto:louis.rollorata@gmail.com" class="hover:text-white transition-colors duration-300">Email</a><a href="#" class="hover:text-white transition-colors duration-300">LinkedIn</a><a href="#" class="hover:text-white transition-colors duration-300">GitHub</a></div></div>
-                <div><h4 class="text-white font-semibold mb-4">Start a Project</h4><p class="text-text-soft text-sm mb-4 leading-relaxed">Ready to elevate your brand? Let's collaborate.</p><a href="#contact" class="inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300">Get in Touch</a></div>
+                <div>
+                    <a href="#hero" class="text-white font-bold text-2xl tracking-tight">LR</a>
+                    <p class="text-text-soft text-sm mt-3 leading-relaxed">Front-end development, UI/UX design, and multimedia production based in Tagum City, Philippines.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Navigation</h4>
+                    <div class="flex flex-col gap-2.5 text-sm text-text-soft">
+                        <a href="#portfolio" class="hover:text-white transition-colors duration-300">Portfolio</a>
+                        <a href="#skills" class="hover:text-white transition-colors duration-300">Skills</a>
+                        <a href="#experience" class="hover:text-white transition-colors duration-300">Experience</a>
+                        <a href="#testimonials" class="hover:text-white transition-colors duration-300">Testimonials</a>
+                        <a href="#about" class="hover:text-white transition-colors duration-300">About</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex flex-col gap-2.5 text-sm text-text-soft">
+                        <a href="mailto:louis.rollorata@gmail.com" class="hover:text-white transition-colors duration-300">Email</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">LinkedIn</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">GitHub</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Start a Project</h4>
+                    <p class="text-text-soft text-sm mb-4 leading-relaxed">Ready to elevate your brand? Let's collaborate.</p>
+                    <a href="#contact" class="inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300">Get in Touch</a>
+                </div>
             </div>
-            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-text-soft text-sm"><p>&copy; 2026 Louis Amiel B. Rollorata. All rights reserved.</p></div>
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-text-soft text-sm">
+                <p>&copy; 2026 Louis Amiel B. Rollorata. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -1015,7 +1290,9 @@
         function typeAnimation() {
             const current = phrases[phraseIndex];
             if (isPausing) {
-                timeoutId = setTimeout(() => { isPausing = false; isDeleting = true; typeAnimation(); }, 2200);
+                timeoutId = setTimeout(() => { isPausing = false;
+                    isDeleting = true;
+                    typeAnimation(); }, 2200);
                 return;
             }
             if (!isDeleting) {
@@ -1026,7 +1303,9 @@
                     timeoutId = setTimeout(typeAnimation, speed);
                 } else {
                     isPausing = true;
-                    timeoutId = setTimeout(() => { isPausing = false; isDeleting = true; typeAnimation(); }, 2400);
+                    timeoutId = setTimeout(() => { isPausing = false;
+                        isDeleting = true;
+                        typeAnimation(); }, 2400);
                 }
             } else {
                 if (charIndex > 0) {
@@ -1049,6 +1328,7 @@
         const menuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         let menuOpen = false;
+
         function closeMobileMenu() {
             menuOpen = false;
             mobileMenu.style.opacity = '0';
@@ -1061,63 +1341,41 @@
             if (menuOpen) {
                 mobileMenu.classList.remove('hidden');
                 menuBtn.setAttribute('aria-expanded', 'true');
-                requestAnimationFrame(() => { mobileMenu.style.opacity = '1'; mobileMenu.style.transform = 'translateY(0)'; });
+                requestAnimationFrame(() => { mobileMenu.style.opacity = '1';
+                    mobileMenu.style.transform = 'translateY(0)'; });
             } else {
                 closeMobileMenu();
             }
         });
         mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
 
-        // ── Filter ──
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.masonry-item');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
-                    b.classList.add('glass-light', 'text-text-soft');
-                });
-                btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
-                btn.classList.remove('glass-light', 'text-text-soft');
-                const filter = btn.getAttribute('data-filter');
-                items.forEach(item => {
-                    item.classList.toggle('hidden-item', !(filter === 'all' || item.getAttribute('data-category') === filter));
+        // ── Portfolio Filter ──
+        const catTabs = document.querySelectorAll('.category-tab');
+        const portfolioItems = document.querySelectorAll('.portfolio-card');
+
+        catTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                catTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 });
             });
         });
 
-        // ── Lightbox ──
-        const overlay = document.getElementById('lightboxOverlay');
-        const lbTitle = document.getElementById('lightboxTitle');
-        const lbCat = document.getElementById('lightboxCat');
-        const lbDesc = document.getElementById('lightboxDesc');
-        const lbPlaceholder = document.getElementById('lightboxPlaceholder');
-
-        function openLightbox(el) {
-            lbTitle.textContent = el.getAttribute('data-title');
-            lbCat.textContent = el.getAttribute('data-cat');
-            lbDesc.textContent = el.getAttribute('data-desc');
-            const src = el.querySelector('.placeholder-img');
-            if (src) {
-                lbPlaceholder.innerHTML = src.innerHTML;
-                lbPlaceholder.className = src.className + ' w-full h-64 sm:h-80 flex items-center justify-center rounded-2xl';
-            }
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox(e) {
-            if (e && e.target !== overlay && e.target.closest('.lightbox-content')) return;
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox(); });
-
         // ── Scroll Reveal ──
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible');
+                    observer.unobserve(e.target); } });
+        }, { rootMargin: '0px 0px -40px 0px', threshold: 0.06 });
         revealEls.forEach(el => observer.observe(el));
 
         // ── Smooth Scroll ──
@@ -1126,7 +1384,8 @@
                 const id = this.getAttribute('href');
                 if (id === '#') return;
                 const target = document.querySelector(id);
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                if (target) { e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
 
@@ -1137,19 +1396,18 @@
         const testimonialDots = document.getElementById('testimonialDots');
         if (testimonialTrack && testimonialPrev && testimonialNext && testimonialDots) {
             const cards = Array.from(testimonialTrack.children);
-            const gap = 24; // matches gap-6
-
+            const gap = 24;
             cards.forEach((_, i) => {
                 const dot = document.createElement('button');
                 dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
-                dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-6' : 'bg-white/20');
+                dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-6' :
+                    'bg-white/20');
                 dot.addEventListener('click', () => {
                     cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
                 });
                 testimonialDots.appendChild(dot);
             });
             const dotEls = Array.from(testimonialDots.children);
-
             const updateActiveDot = () => {
                 const cardWidth = cards[0].offsetWidth + gap;
                 const index = Math.round(testimonialTrack.scrollLeft / cardWidth);
@@ -1161,7 +1419,6 @@
                 });
             };
             testimonialTrack.addEventListener('scroll', () => requestAnimationFrame(updateActiveDot));
-
             const scrollByCard = (dir) => {
                 const amount = cards[0].offsetWidth + gap;
                 testimonialTrack.scrollBy({ left: dir * amount, behavior: 'smooth' });
@@ -1174,13 +1431,14 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) {
-                nav.style.background = 'rgba(17,18,22,0.82)';
-                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.45)';
+                nav.style.background = 'rgba(11,6,26,0.85)';
+                nav.style.boxShadow = '0 12px 48px rgba(0,0,0,0.5)';
             } else {
-                nav.style.background = 'rgba(24,24,27,0.55)';
+                nav.style.background = 'rgba(26,20,53,0.65)';
                 nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)';
             }
         });
     </script>
+
 </body>
 </html>
