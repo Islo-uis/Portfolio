@@ -299,7 +299,39 @@
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .portfolio-card:hover .thumb img {
+        /* ── Logo thumbnail: contain + center ── */
+        .portfolio-card .thumb img.logo-thumb {
+            object-fit: contain;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.20);
+        }
+        /* ── "Others" custom logo container ── */
+        .others-logo-wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(224, 68, 125, 0.10), rgba(122, 63, 166, 0.08), rgba(255, 165, 82, 0.06));
+            transition: background 0.5s ease;
+        }
+        .portfolio-card:hover .others-logo-wrap {
+            background: linear-gradient(145deg, rgba(224, 68, 125, 0.18), rgba(122, 63, 166, 0.14), rgba(255, 165, 82, 0.10));
+        }
+        .others-logo-svg {
+            width: 70%;
+            height: 70%;
+            max-width: 140px;
+            max-height: 140px;
+            filter: drop-shadow(0 0 30px rgba(224, 68, 125, 0.08));
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        .portfolio-card:hover .others-logo-svg {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 50px rgba(224, 68, 125, 0.16));
+        }
+
+        .portfolio-card:hover .thumb img:not(.logo-thumb) {
             transform: scale(1.05);
         }
         .portfolio-card .thumb .overlay {
@@ -465,6 +497,12 @@
             justify-content: center;
             color: #8E7AA3;
             font-size: 0.9rem;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        #galleryGrid .image-placeholder small {
+            font-size: 0.7rem;
+            opacity: 0.5;
         }
 
         /* ── Marquee ── */
@@ -705,7 +743,7 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/SportCourt/SC_HL1.png" alt="Sport Court Ontario" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <img src="Logo/sp-logo-new.jpg" alt="Sport Court Ontario" class="logo-thumb" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
                         <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/25 to-accent/20">
                             <span class="text-text-soft text-sm">Sport Court</span>
                         </div>
@@ -727,7 +765,7 @@
                     </div>
                 </div>
 
-                <!-- 2. The Light Publication -->
+                <!-- 2. The Light Publication (SEPARATE FOLDER) -->
                 <div class="portfolio-card" data-category="graphics"
                      data-gallery="true"
                      data-gallery-title="The Light Publication"
@@ -741,7 +779,7 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/The Light/TL_1.png" alt="The Light Publication" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <img src="Logo/TL.jpg" alt="The Light Publication" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
                         <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
                             <span class="text-text-soft text-sm">The Light</span>
                         </div>
@@ -778,7 +816,7 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/SocialEdge/Social_Edge_1.webp" alt="Social Edge" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <img src="Graphics/SocialEdge/Social_Edge_2.webp" alt="Social Edge" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
                         <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
                             <span class="text-text-soft text-sm">Social Edge</span>
                         </div>
@@ -812,7 +850,7 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/Medicard/MediCard_1.webp" alt="Medicard" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <img src="Logo/Medicard.jpeg" alt="Medicard" class="logo-thumb" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
                         <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/25 to-primary/20">
                             <span class="text-text-soft text-sm">Medicard</span>
                         </div>
@@ -846,7 +884,7 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/PcByte/PcByte_1.png" alt="PcByte" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <img src="Logo/PcByte.jpg" alt="PcByte" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
                         <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-700/30 to-slate-600/20">
                             <span class="text-text-soft text-sm">PcByte</span>
                         </div>
@@ -901,7 +939,7 @@
                     </div>
                 </div>
 
-                <!-- 7. Others (Miscellaneous Graphics) -->
+                <!-- 7. Others (Miscellaneous Graphics) — with custom logo -->
                 <div class="portfolio-card" data-category="graphics"
                      data-gallery="true"
                      data-gallery-title="Other Graphics"
@@ -920,9 +958,30 @@
                      ]'
                      onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/Others/Boss Kol Logo.png" alt="Other Graphics" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-700/30 to-slate-600/20">
-                            <span class="text-text-soft text-sm">Others</span>
+                        <!-- Custom "Others" logo: stylized "O" with geometric flair -->
+                        <div class="others-logo-wrap">
+                            <svg class="others-logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Outer ring -->
+                                <circle cx="100" cy="100" r="86" stroke="url(#othersGrad)" stroke-width="3.5" opacity="0.5"/>
+                                <circle cx="100" cy="100" r="72" stroke="url(#othersGrad)" stroke-width="2" opacity="0.3" stroke-dasharray="12 8"/>
+                                <!-- Inner diamond -->
+                                <rect x="56" y="56" width="88" height="88" rx="16" stroke="url(#othersGrad)" stroke-width="2.8" opacity="0.4" transform="rotate(12 100 100)"/>
+                                <!-- Stylized "O" letter -->
+                                <text x="100" y="118" font-family="Inter, system-ui, sans-serif" font-size="70" font-weight="800" fill="url(#othersGrad)" text-anchor="middle" dominant-baseline="middle" opacity="0.9">O</text>
+                                <!-- Accent dots -->
+                                <circle cx="48" cy="48" r="6" fill="#FFA552" opacity="0.3"/>
+                                <circle cx="152" cy="48" r="5" fill="#E0447D" opacity="0.25"/>
+                                <circle cx="48" cy="152" r="5" fill="#7A3FA6" opacity="0.25"/>
+                                <circle cx="152" cy="152" r="6" fill="#FFA552" opacity="0.3"/>
+                                <!-- Gradient definitions -->
+                                <defs>
+                                    <linearGradient id="othersGrad" x1="0" y1="0" x2="200" y2="200">
+                                        <stop offset="0%" stop-color="#E0447D"/>
+                                        <stop offset="45%" stop-color="#FFA552"/>
+                                        <stop offset="100%" stop-color="#7A3FA6"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
@@ -1651,6 +1710,8 @@
                 return;
             }
 
+            console.log(`📸 Loading ${images.length} images for "${title}"`);
+
             let loadedCount = 0;
             const totalImages = images.length;
 
@@ -1665,41 +1726,45 @@
                 img.className = 'w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105';
                 img.loading = 'lazy';
 
-                // Image error handling with multiple path fallbacks
-                img.onerror = function() {
-                    console.warn('Failed to load image:', cleanSrc);
-                    const fallbackPaths = [
-                        './' + cleanSrc,
-                        cleanSrc.replace('./', ''),
-                        cleanSrc.replace('Graphics/', ''),
-                    ];
-                    // Try each fallback path
-                    let tried = 0;
-                    const tryNext = () => {
-                        if (tried < fallbackPaths.length && fallbackPaths[tried] !== cleanSrc) {
-                            this.src = fallbackPaths[tried];
-                            tried++;
-                        } else {
-                            // Show placeholder
-                            this.style.display = 'none';
-                            const placeholder = document.createElement('div');
-                            placeholder.className =
-                                'image-placeholder w-full min-h-[200px] flex items-center justify-center text-text-muted';
-                            placeholder.textContent = '🖼️ ' + (index + 1);
-                            col.appendChild(placeholder);
-                        }
-                    };
-                    // Try the first fallback
-                    if (fallbackPaths.length > 0 && fallbackPaths[0] !== cleanSrc) {
-                        this.src = fallbackPaths[0];
-                        this.onerror = tryNext;
+                // Store original source for fallback
+                img.dataset.src = cleanSrc;
+
+                // Error handling: try multiple fallback paths
+                const fallbackPaths = [
+                    cleanSrc.replace('Graphics/', ''),
+                    cleanSrc.replace('Graphics/', '../Graphics/'),
+                    './' + cleanSrc,
+                    cleanSrc.replace(/^\.\//, ''),
+                ];
+                let attemptIndex = 0;
+
+                const tryLoad = () => {
+                    if (attemptIndex < fallbackPaths.length && fallbackPaths[attemptIndex] !== cleanSrc) {
+                        console.warn(`Attempting fallback ${attemptIndex+1}: ${fallbackPaths[attemptIndex]}`);
+                        img.src = fallbackPaths[attemptIndex];
+                        attemptIndex++;
                     } else {
-                        // Show placeholder
-                        this.style.display = 'none';
+                        // All fallbacks failed – show placeholder
+                        console.warn(`All attempts failed for: ${cleanSrc}`);
+                        img.style.display = 'none';
                         const placeholder = document.createElement('div');
                         placeholder.className =
                             'image-placeholder w-full min-h-[200px] flex items-center justify-center text-text-muted';
-                        placeholder.textContent = '🖼️ ' + (index + 1);
+                        placeholder.innerHTML = `<span>🖼️ ${index+1}</span><small>${cleanSrc.split('/').pop()}</small>`;
+                        col.appendChild(placeholder);
+                    }
+                };
+
+                img.onerror = function() {
+                    if (attemptIndex < fallbackPaths.length) {
+                        tryLoad();
+                    } else {
+                        // Show placeholder
+                        img.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.className =
+                            'image-placeholder w-full min-h-[200px] flex items-center justify-center text-text-muted';
+                        placeholder.innerHTML = `<span>🖼️ ${index+1}</span><small>${cleanSrc.split('/').pop()}</small>`;
                         col.appendChild(placeholder);
                     }
                 };
@@ -1707,29 +1772,22 @@
                 img.onload = function() {
                     loadedCount++;
                     this.style.opacity = '1';
+                    console.log(`✅ Loaded: ${this.src}`);
                 };
 
-                // Start with low opacity
+                // Start loading
                 img.style.opacity = '0.6';
                 col.appendChild(img);
                 galleryGrid.appendChild(col);
             });
 
-            // Show fallback if all images fail after 4 seconds
+            // After 5 seconds, if not all images loaded, show a count
             setTimeout(() => {
                 const visibleImgs = galleryGrid.querySelectorAll('img:not([style*="display: none"])');
-                if (visibleImgs.length === 0 && totalImages > 0) {
-                    const placeholders = galleryGrid.querySelectorAll('.image-placeholder');
-                    if (placeholders.length === totalImages || placeholders.length > 0) {
-                        // All images failed - we have placeholders already
-                    } else if (loadedCount === 0) {
-                        galleryGrid.innerHTML = '';
-                        galleryFallback.classList.remove('hidden');
-                        galleryFallback.querySelector('p').textContent =
-                            '⚠️ Images failed to load. Please check the file paths.';
-                    }
+                if (visibleImgs.length < totalImages) {
+                    console.log(`⚠️ ${visibleImgs.length}/${totalImages} images loaded.`);
                 }
-            }, 4000);
+            }, 5000);
 
             galleryOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
