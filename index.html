@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Louis Amiel B. Rollorata — Front-End Developer, UI/UX Designer, and Multimedia Specialist based in Tagum City, Philippines." />
-    <meta name="keywords" content="portfolio, front-end developer, UI UX designer, multimedia specialist, social media manager, video editor, web developer Philippines" />
+    <meta name="description"
+        content="Portfolio of Louis Amiel B. Rollorata — Front-End Developer, UI/UX Designer, and Multimedia Specialist based in Tagum City, Philippines." />
+    <meta name="keywords"
+        content="portfolio, front-end developer, UI UX designer, multimedia specialist, social media manager, video editor, web developer Philippines" />
     <meta name="author" content="Louis Amiel B. Rollorata" />
     <title>Louis Rollorata — Front-End Developer &amp; UI/UX Designer</title>
 
@@ -41,7 +44,8 @@
     <!-- Google Fonts: Inter + Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
 
     <style>
         /* ── Reset & Base ── */
@@ -50,6 +54,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+
         body {
             background: #0B061A;
             background-image:
@@ -79,11 +84,13 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
+
         .glass-light {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .glass-heavy {
             background: rgba(11, 6, 26, 0.75);
             backdrop-filter: blur(24px);
@@ -94,6 +101,7 @@
         .glow-hover {
             transition: box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.5s ease;
         }
+
         .glow-hover:hover {
             box-shadow: 0 0 60px rgba(224, 68, 125, 0.12), 0 0 120px rgba(224, 68, 125, 0.04);
             border-color: rgba(224, 68, 125, 0.20);
@@ -102,14 +110,17 @@
 
         /* ── Typing Cursor ── */
         @keyframes blinkCursor {
+
             0%,
             100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.1;
             }
         }
+
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -122,15 +133,18 @@
             position: relative;
             top: 0.04em;
         }
+
         .typing-container {
             display: inline-block;
             text-align: left;
             vertical-align: baseline;
         }
+
         #dynamicText {
             display: inline;
             white-space: nowrap;
         }
+
         .text-gradient {
             background: linear-gradient(135deg, #E0447D, #FFA552, #7A3FA6);
             background-size: 200% auto;
@@ -139,10 +153,12 @@
             -webkit-text-fill-color: transparent;
             animation: shimmer 5s linear infinite;
         }
+
         @keyframes shimmer {
             0% {
                 background-position: 0% center;
             }
+
             100% {
                 background-position: 200% center;
             }
@@ -153,6 +169,7 @@
             position: relative;
             display: inline-block;
         }
+
         .name-accent::after {
             content: '';
             position: absolute;
@@ -167,67 +184,86 @@
 
         /* ── Floating Animations ── */
         @keyframes floatOrb {
+
             0%,
             100% {
                 transform: translate(0, 0) scale(1);
             }
+
             25% {
                 transform: translate(20px, -24px) scale(1.05);
             }
+
             50% {
                 transform: translate(-12px, -38px) scale(0.95);
             }
+
             75% {
                 transform: translate(-22px, -12px) scale(1.03);
             }
         }
+
         @keyframes pulseGlow {
+
             0%,
             100% {
                 opacity: 0.3;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.6;
                 transform: scale(1.10);
             }
         }
+
         @keyframes rotateSlow {
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
         }
+
         @keyframes driftShape {
+
             0%,
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             33% {
                 transform: translate(22px, -16px) rotate(6deg);
             }
+
             66% {
                 transform: translate(-12px, -32px) rotate(-4deg);
             }
         }
+
         @keyframes pulseRing {
+
             0%,
             100% {
                 transform: scale(1);
                 opacity: 0.15;
             }
+
             50% {
                 transform: scale(1.4);
                 opacity: 0.05;
             }
         }
+
         @keyframes floatDot {
+
             0%,
             100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-24px) scale(1.15);
             }
@@ -257,11 +293,13 @@
             grid-template-columns: 1fr;
             gap: 1.25rem;
         }
+
         @media (min-width: 640px) {
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
         @media (min-width: 1024px) {
             .portfolio-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -279,11 +317,13 @@
             transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
             cursor: pointer;
         }
+
         .portfolio-card:hover {
             border-color: rgba(224, 68, 125, 0.25);
             transform: translateY(-8px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(224, 68, 125, 0.06);
         }
+
         .portfolio-card .thumb {
             position: relative;
             overflow: hidden;
@@ -293,18 +333,21 @@
             align-items: center;
             justify-content: center;
         }
+
         .portfolio-card .thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
+
         /* ── Logo thumbnail: contain + center ── */
         .portfolio-card .thumb img.logo-thumb {
             object-fit: contain;
             padding: 0.75rem;
             background: rgba(0, 0, 0, 0.20);
         }
+
         /* ── "Others" custom logo container ── */
         .others-logo-wrap {
             width: 100%;
@@ -315,9 +358,11 @@
             background: linear-gradient(145deg, rgba(224, 68, 125, 0.10), rgba(122, 63, 166, 0.08), rgba(255, 165, 82, 0.06));
             transition: background 0.5s ease;
         }
+
         .portfolio-card:hover .others-logo-wrap {
             background: linear-gradient(145deg, rgba(224, 68, 125, 0.18), rgba(122, 63, 166, 0.14), rgba(255, 165, 82, 0.10));
         }
+
         .others-logo-svg {
             width: 70%;
             height: 70%;
@@ -326,6 +371,7 @@
             filter: drop-shadow(0 0 30px rgba(224, 68, 125, 0.08));
             transition: transform 0.5s ease, filter 0.5s ease;
         }
+
         .portfolio-card:hover .others-logo-svg {
             transform: scale(1.04);
             filter: drop-shadow(0 0 50px rgba(224, 68, 125, 0.16));
@@ -334,6 +380,7 @@
         .portfolio-card:hover .thumb img:not(.logo-thumb) {
             transform: scale(1.05);
         }
+
         .portfolio-card .thumb .overlay {
             position: absolute;
             inset: 0;
@@ -344,9 +391,11 @@
             align-items: flex-end;
             padding: 1.25rem;
         }
+
         .portfolio-card:hover .thumb .overlay {
             opacity: 1;
         }
+
         .portfolio-card .thumb .icon-wrap {
             width: 48px;
             height: 48px;
@@ -358,10 +407,12 @@
             justify-content: center;
             transition: all 0.4s ease;
         }
+
         .portfolio-card:hover .thumb .icon-wrap {
             background: rgba(224, 68, 125, 0.30);
             transform: scale(1.05);
         }
+
         .portfolio-card .badge {
             position: absolute;
             top: 1rem;
@@ -378,14 +429,17 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             color: #C7B3D9;
         }
+
         .badge-graphics {
             border-color: rgba(255, 165, 82, 0.3);
             color: #FFA552;
         }
+
         .badge-video {
             border-color: rgba(224, 68, 125, 0.3);
             color: #E0447D;
         }
+
         .badge-web {
             border-color: rgba(122, 63, 166, 0.3);
             color: #7A3FA6;
@@ -404,11 +458,13 @@
             cursor: pointer;
             user-select: none;
         }
+
         .category-tab:hover {
             color: #fff;
             border-color: rgba(255, 255, 255, 0.10);
             background: rgba(255, 255, 255, 0.05);
         }
+
         .category-tab.active {
             background: rgba(224, 68, 125, 0.15);
             border-color: rgba(224, 68, 125, 0.30);
@@ -423,19 +479,24 @@
             transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
                 transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .reveal-delay-1 {
             transition-delay: 0.08s;
         }
+
         .reveal-delay-2 {
             transition-delay: 0.16s;
         }
+
         .reveal-delay-3 {
             transition-delay: 0.24s;
         }
+
         .reveal-delay-4 {
             transition-delay: 0.32s;
         }
@@ -454,10 +515,12 @@
             pointer-events: none;
             transition: opacity 0.35s ease;
         }
+
         .lightbox-overlay.active {
             opacity: 1;
             pointer-events: auto;
         }
+
         .lightbox-content {
             max-width: 90vw;
             max-height: 85vh;
@@ -467,14 +530,17 @@
             transform: scale(0.92);
             transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
+
         .lightbox-overlay.active .lightbox-content {
             transform: scale(1);
         }
+
         .lightbox-content {
             background: rgba(18, 13, 36, 0.95) !important;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
+
         /* Gallery grid images */
         #galleryGrid img {
             width: 100%;
@@ -483,10 +549,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         #galleryGrid img:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
+
         #galleryGrid .image-placeholder {
             background: rgba(224, 68, 125, 0.08);
             border-radius: 12px;
@@ -500,6 +568,7 @@
             flex-direction: column;
             gap: 0.5rem;
         }
+
         #galleryGrid .image-placeholder small {
             font-size: 0.7rem;
             opacity: 0.5;
@@ -510,13 +579,16 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-50%);
             }
         }
+
         .marquee-track {
             animation: marqueeScroll 32s linear infinite;
         }
+
         .marquee-container:hover .marquee-track {
             animation-play-state: paused;
         }
@@ -526,6 +598,7 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
+
         .carousel-track::-webkit-scrollbar {
             display: none;
         }
@@ -534,9 +607,11 @@
         ::-webkit-scrollbar {
             width: 5px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0B061A;
         }
+
         ::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 4px;
@@ -563,9 +638,11 @@
             gap: 0.4rem;
             font-size: 0.8rem;
         }
+
         .project-link:hover {
             color: #FFA552;
         }
+
         .project-link svg {
             width: 14px;
             height: 14px;
@@ -574,6 +651,7 @@
 
         /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -585,6 +663,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Background Texture -->
@@ -593,20 +672,30 @@
     <!-- ============================================================ -->
     <!-- NAVIGATION                                                   -->
     <!-- ============================================================ -->
-    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-2xl shadow-black/30 w-auto max-w-[95vw]" id="mainNav" aria-label="Main navigation">
-        <a href="#hero" class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors duration-300 flex-shrink-0">LR</a>
+    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-2xl shadow-black/30 w-auto max-w-[95vw]"
+        id="mainNav" aria-label="Main navigation">
+        <a href="#hero"
+            class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors duration-300 flex-shrink-0">LR</a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#portfolio" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a>
-            <a href="#skills" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Skills</a>
-            <a href="#experience" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Experience</a>
-            <a href="#testimonials" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Testimonials</a>
-            <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a>
+            <a href="#portfolio"
+                class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a>
+            <a href="#skills"
+                class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Skills</a>
+            <a href="#experience"
+                class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Experience</a>
+            <a href="#testimonials"
+                class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Testimonials</a>
+            <a href="#about"
+                class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a>
         </div>
-        <a href="#contact" class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 flex-shrink-0">
+        <a href="#contact"
+            class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 flex-shrink-0">
             Let's Talk
         </a>
-        <button class="md:hidden text-white p-1.5 flex-shrink-0" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="menuIcon">
+        <button class="md:hidden text-white p-1.5 flex-shrink-0" id="mobileMenuBtn" aria-label="Toggle menu"
+            aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                id="menuIcon">
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="18" x2="21" y2="18" />
@@ -615,52 +704,79 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden fixed top-20 left-4 right-4 z-50 glass rounded-3xl p-6 flex flex-col gap-3 text-center shadow-2xl transition-all duration-300 opacity-0 transform -translate-y-4">
-        <a href="#portfolio" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Portfolio</a>
-        <a href="#skills" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Skills</a>
-        <a href="#experience" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Experience</a>
-        <a href="#testimonials" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Testimonials</a>
-        <a href="#about" class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">About</a>
-        <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 mt-2">Let's Talk</a>
+    <div id="mobileMenu"
+        class="hidden fixed top-20 left-4 right-4 z-50 glass rounded-3xl p-6 flex flex-col gap-3 text-center shadow-2xl transition-all duration-300 opacity-0 transform -translate-y-4">
+        <a href="#portfolio"
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Portfolio</a>
+        <a href="#skills"
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Skills</a>
+        <a href="#experience"
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Experience</a>
+        <a href="#testimonials"
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Testimonials</a>
+        <a href="#about"
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">About</a>
+        <a href="#contact"
+            class="bg-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 mt-2">Let's
+            Talk</a>
     </div>
 
     <!-- ============================================================ -->
     <!-- HERO                                                         -->
     <!-- ============================================================ -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 lg:px-16 pt-32 sm:pt-36 lg:pt-40 pb-12 section-wrap">
+    <section id="hero"
+        class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 lg:px-16 pt-32 sm:pt-36 lg:pt-40 pb-12 section-wrap">
         <!-- Background -->
         <div class="section-bg">
-            <div class="orb w-[32rem] h-[32rem] bg-primary" style="top:-10%; right:-8%; animation:pulseGlow 8s ease-in-out infinite;"></div>
-            <div class="orb w-[24rem] h-[24rem] bg-accent" style="bottom:5%; left:-6%; animation:pulseGlow 10s ease-in-out infinite 2s;"></div>
-            <div class="orb w-[20rem] h-[20rem] bg-secondary" style="top:35%; right:25%; animation:pulseGlow 9s ease-in-out infinite 1s;"></div>
-            <div class="absolute hidden lg:block" style="top:18%; right:16%; animation:floatOrb 10s ease-in-out infinite;">
-                <div class="w-24 h-24 rounded-3xl border border-primary/20 bg-primary/5 backdrop-blur-sm rotate-12"></div>
+            <div class="orb w-[32rem] h-[32rem] bg-primary"
+                style="top:-10%; right:-8%; animation:pulseGlow 8s ease-in-out infinite;"></div>
+            <div class="orb w-[24rem] h-[24rem] bg-accent"
+                style="bottom:5%; left:-6%; animation:pulseGlow 10s ease-in-out infinite 2s;"></div>
+            <div class="orb w-[20rem] h-[20rem] bg-secondary"
+                style="top:35%; right:25%; animation:pulseGlow 9s ease-in-out infinite 1s;"></div>
+            <div class="absolute hidden lg:block"
+                style="top:18%; right:16%; animation:floatOrb 10s ease-in-out infinite;">
+                <div class="w-24 h-24 rounded-3xl border border-primary/20 bg-primary/5 backdrop-blur-sm rotate-12">
+                </div>
             </div>
-            <div class="absolute hidden lg:block" style="top:52%; right:6%; animation:floatOrb 11s ease-in-out infinite 0.6s;">
+            <div class="absolute hidden lg:block"
+                style="top:52%; right:6%; animation:floatOrb 11s ease-in-out infinite 0.6s;">
                 <div class="w-16 h-16 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-sm"></div>
             </div>
-            <div class="absolute hidden lg:block" style="top:22%; right:38%; animation:floatOrb 9s ease-in-out infinite 1.8s;">
-                <div class="w-12 h-12 rounded-2xl border border-secondary/25 bg-secondary/6 backdrop-blur-sm -rotate-6"></div>
+            <div class="absolute hidden lg:block"
+                style="top:22%; right:38%; animation:floatOrb 9s ease-in-out infinite 1.8s;">
+                <div class="w-12 h-12 rounded-2xl border border-secondary/25 bg-secondary/6 backdrop-blur-sm -rotate-6">
+                </div>
             </div>
             <div class="absolute hidden lg:block" style="top:28%; right:14%; animation:rotateSlow 25s linear infinite;">
                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" class="opacity-15">
-                    <circle cx="100" cy="100" r="88" stroke="url(#gradRingHero)" stroke-width="1.5" stroke-dasharray="30 16 60 20" fill="none" />
-                    <defs><linearGradient id="gradRingHero" x1="0" y1="0" x2="200" y2="200"><stop offset="0%" stop-color="#E0447D"/><stop offset="50%" stop-color="#FFA552"/><stop offset="100%" stop-color="#7A3FA6"/></linearGradient></defs>
+                    <circle cx="100" cy="100" r="88" stroke="url(#gradRingHero)" stroke-width="1.5"
+                        stroke-dasharray="30 16 60 20" fill="none" />
+                    <defs>
+                        <linearGradient id="gradRingHero" x1="0" y1="0" x2="200" y2="200">
+                            <stop offset="0%" stop-color="#E0447D" />
+                            <stop offset="50%" stop-color="#FFA552" />
+                            <stop offset="100%" stop-color="#7A3FA6" />
+                        </linearGradient>
+                    </defs>
                 </svg>
             </div>
         </div>
 
         <!-- Content -->
         <div class="relative z-10 text-center max-w-4xl mx-auto w-full">
-            <div class="inline-flex items-center gap-2 glass-light rounded-full px-4 py-1.5 text-sm text-text-soft mb-10 reveal">
+            <div
+                class="inline-flex items-center gap-2 glass-light rounded-full px-4 py-1.5 text-sm text-text-soft mb-10 reveal">
                 <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
                 Based in Tagum City, Philippines &middot; Open to freelance &amp; full-time
             </div>
             <h1 class="reveal reveal-delay-1 mb-6">
-                <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.92] text-white">
+                <span
+                    class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.92] text-white">
                     Louis <span class="name-accent">Rollorata</span>
                 </span>
-                <span class="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white mt-4 sm:mt-5">
+                <span
+                    class="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white mt-4 sm:mt-5">
                     I build&nbsp;
                     <span class="typing-container" id="typingContainer">
                         <span id="dynamicText" class="text-gradient"></span>
@@ -668,15 +784,23 @@
                     <span class="typing-cursor"></span>
                 </span>
             </h1>
-            <p class="text-sm sm:text-base md:text-lg text-text-soft max-w-2xl mx-auto mb-10 leading-relaxed reveal reveal-delay-2">
-                Front-End Developer, UI/UX Designer, and Multimedia Specialist — crafting responsive web apps, user-focused interfaces, and content that performs.
+            <p
+                class="text-sm sm:text-base md:text-lg text-text-soft max-w-2xl mx-auto mb-10 leading-relaxed reveal reveal-delay-2">
+                Front-End Developer, UI/UX Designer, and Multimedia Specialist — crafting responsive web apps,
+                user-focused interfaces, and content that performs.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center reveal reveal-delay-3">
-                <a href="#portfolio" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+                <a href="#portfolio"
+                    class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
                     Explore My Work
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
                 </a>
-                <a href="#contact" class="inline-flex items-center justify-center gap-2 glass-light hover:bg-white/7 text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5">
+                <a href="#contact"
+                    class="inline-flex items-center justify-center gap-2 glass-light hover:bg-white/7 text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5">
                     Start a Conversation
                 </a>
             </div>
@@ -689,16 +813,19 @@
     <section id="portfolio" class="py-28 px-6 lg:px-16 relative z-10 bg-bg-mid section-wrap overflow-hidden">
         <div class="section-bg">
             <div class="absolute" style="top:5%; left:2%; animation:driftShape 15s ease-in-out infinite;">
-                <div class="w-20 h-20 rounded-2xl border border-primary/15 bg-primary/5 backdrop-blur-sm rotate-12"></div>
+                <div class="w-20 h-20 rounded-2xl border border-primary/15 bg-primary/5 backdrop-blur-sm rotate-12">
+                </div>
             </div>
             <div class="absolute" style="bottom:12%; right:3%; animation:driftShape 17s ease-in-out infinite 1.4s;">
                 <div class="w-24 h-24 rounded-full border border-accent/12 bg-accent/4 backdrop-blur-sm"></div>
             </div>
             <div class="absolute" style="top:35%; left:55%; animation:driftShape 13s ease-in-out infinite 0.8s;">
-                <div class="w-14 h-14 rounded-xl border border-secondary/15 bg-secondary/5 backdrop-blur-sm -rotate-6"></div>
+                <div class="w-14 h-14 rounded-xl border border-secondary/15 bg-secondary/5 backdrop-blur-sm -rotate-6">
+                </div>
             </div>
             <div class="absolute" style="top:75%; left:8%; animation:driftShape 19s ease-in-out infinite 2.2s;">
-                <div class="w-12 h-12 rounded-lg border border-primary/15 bg-primary/4 backdrop-blur-sm rotate-45"></div>
+                <div class="w-12 h-12 rounded-lg border border-primary/15 bg-primary/4 backdrop-blur-sm rotate-45">
+                </div>
             </div>
         </div>
 
@@ -706,7 +833,8 @@
             <div class="text-center mb-14 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Portfolio</span>
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">Featured Work</h2>
-                <p class="text-text-soft text-lg max-w-xl mx-auto">A curated selection of projects spanning web development, graphic design, and video production.</p>
+                <p class="text-text-soft text-lg max-w-xl mx-auto">A curated selection of projects spanning web
+                    development, graphic design, and video production.</p>
             </div>
 
             <!-- Category Tabs -->
@@ -723,12 +851,10 @@
                 <!-- ─── GALLERY CARDS ─── -->
 
                 <!-- 1. Sport Court Ontario -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="Sport Court Ontario Campaigns"
-                     data-gallery-cat="Graphics • Social Media"
-                     data-gallery-desc="A collection of social media graphics, reels, event exhibits, and promotional content for Sport Court Ontario."
-                     data-images='[
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="Sport Court Ontario Campaigns" data-gallery-cat="Graphics • Social Media"
+                    data-gallery-desc="A collection of social media graphics, reels, event exhibits, and promotional content for Sport Court Ontario."
+                    data-images='[
                          "Graphics/SportCourt/SC_HL1.webp",
                          "Graphics/SportCourt/SC_HL2.webp",
                          "Graphics/SportCourt/SC_HL3.webp",
@@ -740,16 +866,22 @@
                          "Graphics/SportCourt/SC_PT4.webp",
                          "Graphics/SportCourt/SC_Exhibit_1.webp",
                          "Graphics/SportCourt/SC_Exhibit_2.webp"
-                     ]'
-                     onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Logo/sp-logo-new.jpg" alt="Sport Court Ontario" class="logo-thumb" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/25 to-accent/20">
+                        <img src="Logo/sp-logo-new.webp" alt="Sport Court Ontario" class="logo-thumb"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/25 to-accent/20">
                             <span class="text-text-soft text-sm">Sport Court</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -766,26 +898,30 @@
                 </div>
 
                 <!-- 2. The Light Publication (SEPARATE FOLDER) -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="The Light Publication"
-                     data-gallery-cat="Graphics • Editorial &amp; Video"
-                     data-gallery-desc="Editorial graphics, posters, and promotional assets for The Light Publication. (Includes a short video highlight.)"
-                     data-images='[
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="The Light Publication" data-gallery-cat="Graphics • Editorial &amp; Video"
+                    data-gallery-desc="Editorial graphics, posters, and promotional assets for The Light Publication. (Includes a short video highlight.)"
+                    data-images='[
                          "Graphics/The Light/TL_1.webp",
                          "Graphics/The Light/TL_3.webp",
                          "Graphics/The Light/TL_4.webp",
                          "Graphics/The Light/TL_5.webp"
-                     ]'
-                     onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Logo/TL.jpg" alt="The Light Publication" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
+                        <img src="Logo/TL.webp" alt="The Light Publication"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
                             <span class="text-text-soft text-sm">The Light</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -802,27 +938,30 @@
                 </div>
 
                 <!-- 3. Social Edge Campaigns -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="Social Edge Campaigns"
-                     data-gallery-cat="Graphics • Social Media"
-                     data-gallery-desc="Promotional graphics and social media assets for Social Edge."
-                     data-images='[
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="Social Edge Campaigns" data-gallery-cat="Graphics • Social Media"
+                    data-gallery-desc="Promotional graphics and social media assets for Social Edge." data-images='[
                          "Graphics/SocialEdge/Social_Edge_1.webp",
                          "Graphics/SocialEdge/Social_Edge_2.webp",
                          "Graphics/SocialEdge/Social_Edge_3.webp",
                          "Graphics/SocialEdge/Social_Edge_4.webp",
                          "Graphics/SocialEdge/Social_Edge_5.webp"
-                     ]'
-                     onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/SocialEdge/Social_Edge_2.webp" alt="Social Edge" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
+                        <img src="Graphics/SocialEdge/Social_Edge_2.webp" alt="Social Edge"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
                             <span class="text-text-soft text-sm">Social Edge</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -838,25 +977,28 @@
                 </div>
 
                 <!-- 4. Medicard Design Assets -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="Medicard Design Assets"
-                     data-gallery-cat="Graphics • Branding"
-                     data-gallery-desc="Medical card designs, promotional materials, and brand identity."
-                     data-images='[
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="Medicard Design Assets" data-gallery-cat="Graphics • Branding"
+                    data-gallery-desc="Medical card designs, promotional materials, and brand identity." data-images='[
                          "Graphics/Medicard/MediCard_1.webp",
                          "Graphics/Medicard/MediCard_2.webp",
                          "Graphics/Medicard/MediCard_3.webp"
-                     ]'
-                     onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Logo/Medicard.jpeg" alt="Medicard" class="logo-thumb" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/25 to-primary/20">
+                        <img src="Logo/Medicard.webp" alt="Medicard" class="logo-thumb"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-secondary/25 to-primary/20">
                             <span class="text-text-soft text-sm">Medicard</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -872,25 +1014,28 @@
                 </div>
 
                 <!-- 5. PcByte Graphics -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="PcByte Graphics"
-                     data-gallery-cat="Graphics • Tech Branding"
-                     data-gallery-desc="Branding and promotional graphics for PcByte."
-                     data-images='[
-                         "Graphics/PcByte/PcByte_1.png",
-                         "Graphics/PcByte/PcByte_2.png",
-                         "Graphics/PcByte/PcByte_3.png"
-                     ]'
-                     onclick="openLightbox(this)">
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="PcByte Graphics" data-gallery-cat="Graphics • Tech Branding"
+                    data-gallery-desc="Branding and promotional graphics for PcByte." data-images='[
+                         "Graphics/PcByte/PcByte_1.webp",
+                         "Graphics/PcByte/PcByte_2.webp",
+                         "Graphics/PcByte/PcByte_3.webp"
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Logo/PcByte.jpg" alt="PcByte" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-700/30 to-slate-600/20">
+                        <img src="Logo/PcByte.webp" alt="PcByte"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-700/30 to-slate-600/20">
                             <span class="text-text-soft text-sm">PcByte</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -906,25 +1051,28 @@
                 </div>
 
                 <!-- 6. Shirt Designs -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="Shirt Designs"
-                     data-gallery-cat="Graphics • Apparel Design"
-                     data-gallery-desc="Custom shirt designs for various clients and events."
-                     data-images='[
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="Shirt Designs" data-gallery-cat="Graphics • Apparel Design"
+                    data-gallery-desc="Custom shirt designs for various clients and events." data-images='[
                          "Graphics/Shirt Designs/1.webp",
                          "Graphics/Shirt Designs/2.webp",
                          "Graphics/Shirt Designs/3.webp"
-                     ]'
-                     onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
-                        <img src="Graphics/Shirt Designs/1.png" alt="Shirt Designs" onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
-                        <div class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
+                        <img src="Graphics/Shirt Designs/1.webp" alt="Shirt Designs"
+                            onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
+                        <div
+                            class="thumb-fallback hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-accent/25 to-primary/20">
                             <span class="text-text-soft text-sm">Shirts</span>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -940,52 +1088,60 @@
                 </div>
 
                 <!-- 7. Others (Miscellaneous Graphics) — with custom logo -->
-                <div class="portfolio-card" data-category="graphics"
-                     data-gallery="true"
-                     data-gallery-title="Other Graphics"
-                     data-gallery-cat="Graphics • Miscellaneous"
-                     data-gallery-desc="Various design projects including logos, posters, tarpaulins, and event materials."
-                     data-images='[
-                         "Graphics/Others/Boss Kol Logo.png",
-                         "Graphics/Others/G&S Poster.png",
+                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                    data-gallery-title="Other Graphics" data-gallery-cat="Graphics • Miscellaneous"
+                    data-gallery-desc="Various design projects including logos, posters, tarpaulins, and event materials."
+                    data-images='[
+                         "Graphics/Others/Boss Kol Logo.webp",
+                         "Graphics/Others/G&S Poster.webp",
                          "Graphics/Others/Info_1.webp",
                          "Graphics/Others/Info_2.webp",
-                         "Graphics/Others/STS.png",
-                         "Graphics/Others/Tarp_1.png",
-                         "Graphics/Others/Tarp_2.png",
-                         "Graphics/Others/TSC_1.png",
-                         "Graphics/Others/TSC_2.png"
-                     ]'
-                     onclick="openLightbox(this)">
+                         "Graphics/Others/STS.webp",
+                         "Graphics/Others/Tarp_1.webp",
+                         "Graphics/Others/Tarp_2.webp",
+                         "Graphics/Others/TSC_1.webp",
+                         "Graphics/Others/TSC_2.webp"
+                     ]' onclick="openLightbox(this)">
                     <div class="thumb">
                         <!-- Custom "Others" logo: stylized "O" with geometric flair -->
                         <div class="others-logo-wrap">
-                            <svg class="others-logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="others-logo-svg" viewBox="0 0 200 200" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <!-- Outer ring -->
-                                <circle cx="100" cy="100" r="86" stroke="url(#othersGrad)" stroke-width="3.5" opacity="0.5"/>
-                                <circle cx="100" cy="100" r="72" stroke="url(#othersGrad)" stroke-width="2" opacity="0.3" stroke-dasharray="12 8"/>
+                                <circle cx="100" cy="100" r="86" stroke="url(#othersGrad)" stroke-width="3.5"
+                                    opacity="0.5" />
+                                <circle cx="100" cy="100" r="72" stroke="url(#othersGrad)" stroke-width="2"
+                                    opacity="0.3" stroke-dasharray="12 8" />
                                 <!-- Inner diamond -->
-                                <rect x="56" y="56" width="88" height="88" rx="16" stroke="url(#othersGrad)" stroke-width="2.8" opacity="0.4" transform="rotate(12 100 100)"/>
+                                <rect x="56" y="56" width="88" height="88" rx="16" stroke="url(#othersGrad)"
+                                    stroke-width="2.8" opacity="0.4" transform="rotate(12 100 100)" />
                                 <!-- Stylized "O" letter -->
-                                <text x="100" y="118" font-family="Inter, system-ui, sans-serif" font-size="70" font-weight="800" fill="url(#othersGrad)" text-anchor="middle" dominant-baseline="middle" opacity="0.9">O</text>
+                                <text x="100" y="118" font-family="Inter, system-ui, sans-serif" font-size="70"
+                                    font-weight="800" fill="url(#othersGrad)" text-anchor="middle"
+                                    dominant-baseline="middle" opacity="0.9">O</text>
                                 <!-- Accent dots -->
-                                <circle cx="48" cy="48" r="6" fill="#FFA552" opacity="0.3"/>
-                                <circle cx="152" cy="48" r="5" fill="#E0447D" opacity="0.25"/>
-                                <circle cx="48" cy="152" r="5" fill="#7A3FA6" opacity="0.25"/>
-                                <circle cx="152" cy="152" r="6" fill="#FFA552" opacity="0.3"/>
+                                <circle cx="48" cy="48" r="6" fill="#FFA552" opacity="0.3" />
+                                <circle cx="152" cy="48" r="5" fill="#E0447D" opacity="0.25" />
+                                <circle cx="48" cy="152" r="5" fill="#7A3FA6" opacity="0.25" />
+                                <circle cx="152" cy="152" r="6" fill="#FFA552" opacity="0.3" />
                                 <!-- Gradient definitions -->
                                 <defs>
                                     <linearGradient id="othersGrad" x1="0" y1="0" x2="200" y2="200">
-                                        <stop offset="0%" stop-color="#E0447D"/>
-                                        <stop offset="45%" stop-color="#FFA552"/>
-                                        <stop offset="100%" stop-color="#7A3FA6"/>
+                                        <stop offset="0%" stop-color="#E0447D" />
+                                        <stop offset="45%" stop-color="#FFA552" />
+                                        <stop offset="100%" stop-color="#7A3FA6" />
                                     </linearGradient>
                                 </defs>
                             </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <line x1="9" y1="3" x2="9" y2="21" />
+                                    <line x1="15" y1="3" x2="15" y2="21" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
@@ -1001,25 +1157,194 @@
                     </div>
                 </div>
 
-                <!-- ─── WEB PROJECTS ─── -->
+               
+                <!-- ============================================================ -->
+                <!-- VIDEO PORTFOLIO CARDS — add these inside #portfolioGrid       -->
+                <!-- after the existing cards and before the closing </div>        -->
+                <!-- ============================================================ -->
+
+                <!-- ─── VIDEO PROJECTS ─── -->
+
+                <!-- 1. Short Form: Sport Court Reels -->
+                <div class="portfolio-card" data-category="video" data-gallery="true"
+                    data-gallery-title="Short Form Videos" data-gallery-cat="Short Form • Social Media"
+                    data-gallery-desc="A collection of short-form video reels created for Sport Court Ontario's social media channels — featuring event highlights, promotional clips, and behind-the-scenes content."
+                    data-videos='["Videos/SF_1.mp4","Videos/SF_2.mp4","Videos/SF_3.mp4","Videos/SF_4.mp4","Videos/SF_5.mp4","Videos/SF_6.mp4","Videos/SF_7.mp4","Videos/SF_8.mp4"]'
+                    onclick="openVideoLightbox(this)">
+                    <div class="thumb">
+                        <!-- Video thumbnail (shows first frame) -->
+                        <video muted playsinline preload="metadata" src="Videos/SF_6.mp4" poster=""
+                            class="w-full h-full object-cover"></video>
+                        <!-- Play icon overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="badge badge-video">Short Form</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Short Form Reels</h3>
+                        <p class="text-text-soft text-sm">Short-form social media reels &amp; highlights</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Reels</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Instagram</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Shorts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. AI Video Generation -->
+                <div class="portfolio-card" data-category="video" data-gallery="true"
+                    data-gallery-title="AI Video Campaigns" data-gallery-cat="AI Video Generation • Brand Content"
+                    data-gallery-desc="AI-assisted video content generation for brand campaigns — leveraging AI tools for concept development, voice synthesis, and automated editing workflows."
+                    data-videos='["Videos/AI_1.mp4","Videos/AI_2.mp4","Videos/AI_3.mp4","Videos/AI_4.mp4","Videos/AI_5.mp4"]'
+                    onclick="openVideoLightbox(this)">
+                    <div class="thumb">
+                        <video muted playsinline preload="metadata" src="Videos/AI_1.mp4" poster=""
+                            class="w-full h-full object-cover"></video>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="badge badge-video">AI Video Generation</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">AI Video Campaigns</h3>
+                        <p class="text-text-soft text-sm">AI-generated brand videos &amp; concept development</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">AI</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. AI Asset Generation -->
+                <div class="portfolio-card" data-category="video" data-gallery="true"
+                    data-gallery-title="AI Video Campaigns" data-gallery-cat="AI Video Generation • Brand Content"
+                    data-gallery-desc="AI-assisted video content generation for brand campaigns — leveraging AI tools for concept development, voice synthesis, and automated editing workflows."
+                    data-videos='["Videos/Assets/Shot1.mp4","Videos/Assets/Shot2.mp4","Videos/Assets/Shot3.mp4","Videos/Assets/Shot4.mp4","Videos/Assets/Shot5.mp4, "Videos/Assets/Shot6.mp4","Videos/Assets/Shot7.mp4", "Videos/Assets/Shot8.mp4", "Videos/Assets/Shot9.mp4", "Videos/Assets/Shot10.mp4", "Videos/Assets/Shot11.mp4", "Videos/Assets/Shot12.mp4"]'
+                    onclick="openVideoLightbox(this)">
+                    <div class="thumb">
+                        <video muted playsinline preload="metadata" src="Videos/Assets/Shot1.mp4" poster=""
+                            class="w-full h-full object-cover"></video>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="badge badge-video">AI Asset Generation</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">AI Asset Generation</h3>
+                        <p class="text-text-soft text-sm">AI-generated brand videos &amp; concept development</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">AI</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Long Form Event Films -->
+                <div class="portfolio-card" data-category="video" data-gallery="true"
+                    data-gallery-title="Long Form Event Films" data-gallery-cat="Long Form • Event Coverage"
+                    data-gallery-desc="Full-length event coverage, highlight films, and documentary-style videos produced for PNC Studios — capturing key moments with cinematic storytelling."
+                    data-videos='["Videos/LongForm/PNC_Event_1.webp","Videos/LongForm/PNC_Event_2.webp","Videos/LongForm/PNC_Event_3.webp","Videos/LongForm/PNC_Event_4.webp","Videos/LongForm/PNC_Event_5.webp"]'
+                    onclick="openVideoLightbox(this)">
+                    <div class="thumb">
+                        <!-- For images, use an img tag -->
+                        <img src="Videos/LongForm/PNC_Event_1.webp" alt="Long Form Video"
+                            class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="badge badge-video">Long Form</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-0.5">Long Form Videos</h3>
+                        <p class="text-text-soft text-sm">Event coverage, documentaries &amp; highlight films</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Documentary</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Event</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Cinematic</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- ─── WEB PROJECTS ─── -->
 
                 <!-- Atlas Edge Global -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
-                     data-title="Atlas Edge Global Website"
-                     data-cat="Web Project"
-                     data-desc="Responsive Wix site with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
+                    data-title="Atlas Edge Global Website" data-cat="Web Project"
+                    data-desc="Responsive Wix site with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
                     <div class="thumb">
-                        <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/15">
+                        <div
+                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/15">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="6" y="10" width="52" height="44" rx="6" stroke="#7A3FA6" stroke-width="2.5" opacity="0.5"/>
-                                <circle cx="22" cy="30" r="10" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
-                                <line x1="36" y1="28" x2="56" y2="28" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
-                                <line x1="36" y1="37" x2="48" y2="37" stroke="#7A3FA6" stroke-width="2" opacity="0.3"/>
+                                <rect x="6" y="10" width="52" height="44" rx="6" stroke="#7A3FA6" stroke-width="2.5"
+                                    opacity="0.5" />
+                                <circle cx="22" cy="30" r="10" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
+                                <line x1="36" y1="28" x2="56" y2="28" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
+                                <line x1="36" y1="37" x2="48" y2="37" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
                             </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-web">Web</span>
@@ -1029,7 +1354,11 @@
                         <p class="text-text-soft text-sm">Responsive Wix site with workflow automation</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
                                 Live Project
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Wix Studio</span>
@@ -1039,20 +1368,29 @@
 
                 <!-- ABECON 2025 -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
-                     data-title="ABECON 2025 Convention Platform"
-                     data-cat="Web Project"
-                     data-desc="Led UI/UX design and front-end development for a convention platform covering registration, attendance tracking, e-commerce, online voting, and vote tabulation. Sep – Nov 2025.">
+                    data-title="ABECON 2025 Convention Platform" data-cat="Web Project"
+                    data-desc="Led UI/UX design and front-end development for a convention platform covering registration, attendance tracking, e-commerce, online voting, and vote tabulation. Sep – Nov 2025.">
                     <div class="thumb">
-                        <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-accent/20 via-primary/18 to-secondary/14">
+                        <div
+                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-accent/20 via-primary/18 to-secondary/14">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="4" y="18" width="14" height="38" rx="3" stroke="#FFA552" stroke-width="2.5" opacity="0.4"/>
-                                <rect x="22" y="8" width="14" height="48" rx="3" stroke="#E0447D" stroke-width="2.5" opacity="0.4"/>
-                                <rect x="40" y="28" width="14" height="28" rx="3" stroke="#7A3FA6" stroke-width="2.5" opacity="0.4"/>
+                                <rect x="4" y="18" width="14" height="38" rx="3" stroke="#FFA552" stroke-width="2.5"
+                                    opacity="0.4" />
+                                <rect x="22" y="8" width="14" height="48" rx="3" stroke="#E0447D" stroke-width="2.5"
+                                    opacity="0.4" />
+                                <rect x="40" y="28" width="14" height="28" rx="3" stroke="#7A3FA6" stroke-width="2.5"
+                                    opacity="0.4" />
                             </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-web">Web</span>
@@ -1062,7 +1400,11 @@
                         <p class="text-text-soft text-sm">Registration, e-commerce, voting, tabulation</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
                                 Live Project
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">UI/UX</span>
@@ -1072,21 +1414,28 @@
 
                 <!-- Smart Cacao System -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
-                     data-title="Smart Cacao System (DOST-PCAARD)"
-                     data-cat="Web Project"
-                     data-desc="Led front-end development and UI/UX design for an IoT-based cacao monitoring platform, implementing algorithms to process real-time sensor data. Jun – Sep 2025.">
+                    data-title="Smart Cacao System (DOST-PCAARD)" data-cat="Web Project"
+                    data-desc="Led front-end development and UI/UX design for an IoT-based cacao monitoring platform, implementing algorithms to process real-time sensor data. Jun – Sep 2025.">
                     <div class="thumb">
-                        <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-amber-400/18 via-orange-400/16 to-rose-400/14">
+                        <div
+                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-amber-400/18 via-orange-400/16 to-rose-400/14">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="8" y="14" width="48" height="40" rx="8" stroke="#FFA552" stroke-width="2.5" opacity="0.5"/>
-                                <line x1="20" y1="28" x2="44" y2="28" stroke="#FFA552" stroke-width="2" opacity="0.3"/>
-                                <line x1="20" y1="38" x2="38" y2="38" stroke="#E0447D" stroke-width="2" opacity="0.3"/>
-                                <line x1="20" y1="48" x2="32" y2="48" stroke="#FFA552" stroke-width="2" opacity="0.3"/>
+                                <rect x="8" y="14" width="48" height="40" rx="8" stroke="#FFA552" stroke-width="2.5"
+                                    opacity="0.5" />
+                                <line x1="20" y1="28" x2="44" y2="28" stroke="#FFA552" stroke-width="2" opacity="0.3" />
+                                <line x1="20" y1="38" x2="38" y2="38" stroke="#E0447D" stroke-width="2" opacity="0.3" />
+                                <line x1="20" y1="48" x2="32" y2="48" stroke="#FFA552" stroke-width="2" opacity="0.3" />
                             </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-web">Web</span>
@@ -1096,7 +1445,11 @@
                         <p class="text-text-soft text-sm">IoT monitoring platform · DOST-PCAARD</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
                                 Live Project
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">IoT</span>
@@ -1106,20 +1459,27 @@
 
                 <!-- Glory Commercial -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
-                     data-title="Glory Commercial Integrated System"
-                     data-cat="Web Project"
-                     data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. Jun – Jul 2023.">
+                    data-title="Glory Commercial Integrated System" data-cat="Web Project"
+                    data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. Jun – Jul 2023.">
                     <div class="thumb">
-                        <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-rose-400/18 via-fuchsia-400/16 to-purple-400/14">
+                        <div
+                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-rose-400/18 via-fuchsia-400/16 to-purple-400/14">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="6" y="8" width="52" height="48" rx="6" stroke="#B95BA8" stroke-width="2.5" opacity="0.5"/>
-                                <circle cx="32" cy="32" r="10" stroke="#E0447D" stroke-width="2" opacity="0.3"/>
-                                <circle cx="32" cy="32" r="4" fill="#FFA552" opacity="0.2"/>
+                                <rect x="6" y="8" width="52" height="48" rx="6" stroke="#B95BA8" stroke-width="2.5"
+                                    opacity="0.5" />
+                                <circle cx="32" cy="32" r="10" stroke="#E0447D" stroke-width="2" opacity="0.3" />
+                                <circle cx="32" cy="32" r="4" fill="#FFA552" opacity="0.2" />
                             </svg>
                         </div>
                         <div class="overlay">
                             <div class="icon-wrap">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                                </svg>
                             </div>
                         </div>
                         <span class="badge badge-web">Web</span>
@@ -1129,14 +1489,17 @@
                         <p class="text-text-soft text-sm">POS, inventory, sales analytics</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
                                 Live Project
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">POS</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1145,15 +1508,22 @@
     <!-- LIGHTBOX (Single Image)                                     -->
     <!-- ============================================================ -->
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl" onclick="event.stopPropagation()">
-            <button class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300" onclick="closeLightbox()" aria-label="Close lightbox">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl"
+            onclick="event.stopPropagation()">
+            <button
+                class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
+                onclick="closeLightbox()" aria-label="Close lightbox">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
             <div class="rounded-2xl overflow-hidden mb-5" id="lightboxImageContainer">
-                <div class="w-full h-64 sm:h-80 bg-gradient-to-br from-primary/20 via-secondary/18 to-accent/15 flex items-center justify-center rounded-2xl" id="lightboxPlaceholder">
+                <div class="w-full h-64 sm:h-80 bg-gradient-to-br from-primary/20 via-secondary/18 to-accent/15 flex items-center justify-center rounded-2xl"
+                    id="lightboxPlaceholder">
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="opacity-40">
-                        <rect x="10" y="15" width="60" height="50" rx="8" stroke="#E0447D" stroke-width="3"/>
-                        <circle cx="35" cy="40" r="12" stroke="#FFA552" stroke-width="2.5"/>
+                        <rect x="10" y="15" width="60" height="50" rx="8" stroke="#E0447D" stroke-width="3" />
+                        <circle cx="35" cy="40" r="12" stroke="#FFA552" stroke-width="2.5" />
                     </svg>
                 </div>
             </div>
@@ -1167,9 +1537,15 @@
     <!-- GALLERY MODAL (for multiple images)                          -->
     <!-- ============================================================ -->
     <div class="lightbox-overlay" id="galleryOverlay" onclick="closeGallery(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-6xl w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <button class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300" onclick="closeGallery()" aria-label="Close gallery">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-6xl w-full shadow-2xl max-h-[90vh] overflow-y-auto"
+            onclick="event.stopPropagation()">
+            <button
+                class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
+                onclick="closeGallery()" aria-label="Close gallery">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
             </button>
             <span class="text-accent text-xs font-semibold tracking-widest uppercase" id="galleryCat">Graphics</span>
             <h3 class="text-2xl font-bold mt-2 mb-2" id="galleryTitle">Campaign Title</h3>
@@ -1184,6 +1560,40 @@
     </div>
 
     <!-- ============================================================ -->
+    <!-- VIDEO LIGHTBOX (plays MP4 and shows thumbnails)              -->
+    <!-- ============================================================ -->
+    <div class="lightbox-overlay" id="videoLightboxOverlay" onclick="closeVideoLightbox(event)">
+        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-5xl w-full shadow-2xl"
+            onclick="event.stopPropagation()">
+            <button
+                class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
+                onclick="closeVideoLightbox()" aria-label="Close video">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <span class="text-accent text-xs font-semibold tracking-widest uppercase"
+                id="videoLightboxCat">Category</span>
+            <h3 class="text-2xl font-bold mt-2 mb-4" id="videoLightboxTitle">Title</h3>
+            <div class="rounded-2xl overflow-hidden bg-black/50 aspect-video flex items-center justify-center relative"
+                id="videoPlayerContainer">
+                <video id="videoPlayer" controls class="w-full h-full max-h-[70vh] object-contain"
+                    style="display:none;"></video>
+                <div id="videoPlaceholder" class="text-text-soft flex flex-col items-center gap-4">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#8E7AA3" stroke-width="2">
+                        <polygon points="12 8 52 32 12 56 12 8" />
+                    </svg>
+                    <span>Select a video to play</span>
+                </div>
+            </div>
+            <div class="mt-5 flex items-center gap-3 overflow-x-auto py-2 scroll-smooth" id="videoThumbnailStrip">
+                <!-- thumbnails injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- SKILLS                                                       -->
     <!-- ============================================================ -->
     <section id="skills" class="py-28 px-6 lg:px-16 relative z-10 section-wrap">
@@ -1191,36 +1601,58 @@
             <div class="text-center mb-16 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Expertise</span>
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">What I Bring</h2>
-                <p class="text-text-soft text-lg max-w-xl mx-auto">A versatile skillset across development, design, content, and strategy.</p>
+                <p class="text-text-soft text-lg max-w-xl mx-auto">A versatile skillset across development, design,
+                    content, and strategy.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-1 group cursor-default">
-                    <div class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5 group-hover:bg-primary/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5 group-hover:bg-primary/25 transition-colors duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Front-End Development</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">HTML, CSS, JavaScript, Wix Studio, Git, database management, workflow &amp; email automation.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">HTML, CSS, JavaScript, Wix Studio, Git, database
+                        management, workflow &amp; email automation.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-2 group cursor-default">
-                    <div class="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:bg-accent/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:bg-accent/25 transition-colors duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">UI/UX Design</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">User-focused interfaces for web applications, from registration systems to IoT dashboards.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">User-focused interfaces for web applications, from
+                        registration systems to IoT dashboards.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-3 group cursor-default">
-                    <div class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center mb-5 group-hover:bg-secondary/25 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center mb-5 group-hover:bg-secondary/25 transition-colors duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Social Media &amp; Content</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">Social media management, SEO, YouTube channel management, content strategy that grows engagement.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">Social media management, SEO, YouTube channel
+                        management, content strategy that grows engagement.</p>
                 </div>
                 <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-4 group cursor-default">
-                    <div class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5 group-hover:bg-white/15 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C7B3D9" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="14" height="14" rx="2"/></svg>
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5 group-hover:bg-white/15 transition-colors duration-300">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C7B3D9" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="14" height="14" rx="2" />
+                        </svg>
                     </div>
                     <h3 class="text-lg font-bold mb-2">Video &amp; Multimedia</h3>
-                    <p class="text-text-soft text-sm leading-relaxed">Video editing and photo retouching in Adobe Photoshop, Premiere, and Canva — including same-day edits.</p>
+                    <p class="text-text-soft text-sm leading-relaxed">Video editing and photo retouching in Adobe
+                        Photoshop, Premiere, and Canva — including same-day edits.</p>
                 </div>
             </div>
         </div>
@@ -1246,43 +1678,64 @@
             </div>
             <div class="space-y-1">
                 <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal">
-                    <div class="absolute w-3.5 h-3.5 rounded-full bg-primary -left-[7px] top-10 shadow-lg shadow-primary/30"></div>
+                    <div
+                        class="absolute w-3.5 h-3.5 rounded-full bg-primary -left-[7px] top-10 shadow-lg shadow-primary/30">
+                    </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Oct 2025 — Present</span>
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Oct 2025 — August
+                            2026</span>
                         <h3 class="text-xl font-bold mt-1">Social Media Manager · Video Editor · Graphic Designer</h3>
-                        <p class="text-text-soft mt-1.5">Sport Court Ontario — Manage social content on Facebook and Instagram, produce promotional reels, design branded graphics with AI asset generation.</p>
+                        <p class="text-text-soft mt-1.5">Sport Court Ontario — Manage social content on Facebook and
+                            Instagram, produce promotional reels, design branded graphics with AI asset generation.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-1">
-                    <div class="absolute w-3.5 h-3.5 rounded-full bg-accent -left-[7px] top-10 shadow-lg shadow-accent/30"></div>
+                    <div
+                        class="absolute w-3.5 h-3.5 rounded-full bg-accent -left-[7px] top-10 shadow-lg shadow-accent/30">
+                    </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Sep 2025 — Nov 2025</span>
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Sep 2025 — Nov
+                            2025</span>
                         <h3 class="text-xl font-bold mt-1">Front-End Designer &amp; Developer</h3>
-                        <p class="text-text-soft mt-1.5">ABECON 2025 — Led UI/UX design and front-end development of a convention management platform with registration, e-commerce, voting, and tabulation.</p>
+                        <p class="text-text-soft mt-1.5">ABECON 2025 — Led UI/UX design and front-end development of a
+                            convention management platform with registration, e-commerce, voting, and tabulation.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-2">
-                    <div class="absolute w-3.5 h-3.5 rounded-full bg-secondary -left-[7px] top-10 shadow-lg shadow-secondary/30"></div>
+                    <div
+                        class="absolute w-3.5 h-3.5 rounded-full bg-secondary -left-[7px] top-10 shadow-lg shadow-secondary/30">
+                    </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2025 — Sep 2025</span>
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2025 — Sep
+                            2025</span>
                         <h3 class="text-xl font-bold mt-1">Front-End Designer &amp; Developer · Intern</h3>
-                        <p class="text-text-soft mt-1.5">DOST-PCAARD Smart Cacao System — Led front-end development and UI/UX design of an IoT-based cacao monitoring platform with real-time sensor data.</p>
+                        <p class="text-text-soft mt-1.5">DOST-PCAARD Smart Cacao System — Led front-end development and
+                            UI/UX design of an IoT-based cacao monitoring platform with real-time sensor data.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-3">
-                    <div class="absolute w-3.5 h-3.5 rounded-full bg-white/30 -left-[7px] top-10 shadow-lg shadow-white/10"></div>
+                    <div
+                        class="absolute w-3.5 h-3.5 rounded-full bg-white/30 -left-[7px] top-10 shadow-lg shadow-white/10">
+                    </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2024 — Jun 2025</span>
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Jun 2024 — Jun
+                            2025</span>
                         <h3 class="text-xl font-bold mt-1">Creative Media Specialist</h3>
-                        <p class="text-text-soft mt-1.5">PNC Studios — Edited and designed yearbooks, photo retouching, event photography, same-day edits, and highlight videos.</p>
+                        <p class="text-text-soft mt-1.5">PNC Studios — Edited and designed yearbooks, photo retouching,
+                            event photography, same-day edits, and highlight videos.</p>
                     </div>
                 </div>
                 <div class="flex gap-6 items-start py-8 timeline-line pl-8 relative reveal reveal-delay-4">
-                    <div class="absolute w-3.5 h-3.5 rounded-full bg-primary/60 -left-[7px] top-10 shadow-lg shadow-primary/20"></div>
+                    <div
+                        class="absolute w-3.5 h-3.5 rounded-full bg-primary/60 -left-[7px] top-10 shadow-lg shadow-primary/20">
+                    </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Nov 2022 — May 2024</span>
-                        <h3 class="text-xl font-bold mt-1">Multimedia Content Designer · Writer · Social Media Manager</h3>
-                        <p class="text-text-soft mt-1.5">The Light Publication — Created digital and print marketing materials, wrote content, grew social engagement by 92.31% in 12 months.</p>
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Nov 2022 — May
+                            2024</span>
+                        <h3 class="text-xl font-bold mt-1">Multimedia Content Designer · Writer · Social Media Manager
+                        </h3>
+                        <p class="text-text-soft mt-1.5">The Light Publication — Created digital and print marketing
+                            materials, wrote content, grew social engagement by 92.31% in 12 months.</p>
                     </div>
                 </div>
             </div>
@@ -1296,25 +1749,109 @@
         <div class="max-w-full mx-auto">
             <div class="text-center mb-12 reveal">
                 <span class="text-accent text-sm font-semibold tracking-widest uppercase">Trusted By</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Clients &amp; Organizations</h2>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Clients &amp; Organizations
+                </h2>
             </div>
-            <div class="marquee-container relative overflow-hidden py-6" style="mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);">
+            <div class="marquee-container relative overflow-hidden py-6"
+                style="mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);">
                 <div class="marquee-track flex items-center gap-14 whitespace-nowrap" style="width:max-content;">
                     <div class="flex items-center gap-14 flex-shrink-0">
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">SC</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport Court Ontario</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">AE</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas Edge Global</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">AB</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON 2025</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">DP</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">PNC</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC Studios</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">TL</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The Light Publication</span></div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                SC</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport
+                                Court Ontario</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                AE</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas
+                                Edge Global</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                AB</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON
+                                2025</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                DP</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                PNC</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC
+                                Studios</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                TL</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The
+                                Light Publication</span>
+                        </div>
                     </div>
                     <div class="flex items-center gap-14 flex-shrink-0" aria-hidden="true">
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">SC</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport Court Ontario</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">AE</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas Edge Global</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">AB</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON 2025</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">DP</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">PNC</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC Studios</span></div>
-                        <div class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group"><div class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">TL</div><span class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The Light Publication</span></div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                SC</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport
+                                Court Ontario</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                AE</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas
+                                Edge Global</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                AB</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON
+                                2025</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                DP</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                PNC</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC
+                                Studios</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
+                                TL</div><span
+                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The
+                                Light Publication</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1332,37 +1869,64 @@
                 <p class="text-text-soft text-lg max-w-xl mx-auto">Direct collaborators who can speak to my work.</p>
             </div>
             <div class="reveal">
-                <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth carousel-track pb-2" id="testimonialTrack">
-                    <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth carousel-track pb-2"
+                    id="testimonialTrack">
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">Sport Court Ontario</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-primary/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis brought a fresh creative energy to our social media. His reels and graphics consistently outperformed, and he's a pleasure to work with."</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="text-primary/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis brought a fresh
+                            creative energy to our social media. His reels and graphics consistently outperformed, and
+                            he's a pleasure to work with."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
-                            <div class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">CT</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                CT</div>
                             <div>
                                 <div class="font-semibold text-sm">Camilla Thibideau</div>
                                 <div class="text-text-soft text-xs">Sport Court Ontario</div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-accent font-extrabold text-lg tracking-tight mb-6">Atlas Edge Global</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis delivered a polished, professional website with seamless automation. He understood our needs and executed with precision."</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis delivered a
+                            polished, professional website with seamless automation. He understood our needs and
+                            executed with precision."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
-                            <div class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">LS</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">
+                                LS</div>
                             <div>
                                 <div class="font-semibold text-sm">Lel Smits</div>
                                 <div class="text-text-soft text-xs">Atlas Edge Global</div>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">PNC Studios</div>
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-secondary/40 mb-4"><path d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z"/></svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis handled our yearbook and event coverage with incredible attention to detail. His same-day edits were a game-changer."</p>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="text-secondary/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis handled our yearbook
+                            and event coverage with incredible attention to detail. His same-day edits were a
+                            game-changer."</p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
-                            <div class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">FC</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
+                                FC</div>
                             <div>
                                 <div class="font-semibold text-sm">Francis Dave P. Cabanting</div>
                                 <div class="text-text-soft text-xs">PNC Studios</div>
@@ -1371,12 +1935,20 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center gap-5 mt-8">
-                    <button id="testimonialPrev" aria-label="Previous" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    <button id="testimonialPrev" aria-label="Previous"
+                        class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
                     </button>
                     <div class="flex items-center gap-2" id="testimonialDots"></div>
-                    <button id="testimonialNext" aria-label="Next" class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    <button id="testimonialNext" aria-label="Next"
+                        class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -1397,10 +1969,15 @@
                         execution
                     </h2>
                     <p class="text-text-soft text-lg leading-relaxed mb-6">
-                        I'm a versatile Front-End Developer, UI/UX Designer, and Multimedia Specialist with hands-on experience across web development, digital design, content creation, and marketing. I'm currently finishing a BS in Information Technology, majoring in Information Security, at the University of Southeastern Philippines.
+                        I'm a versatile Front-End Developer, UI/UX Designer, and Multimedia Specialist with hands-on
+                        experience across web development, digital design, content creation, and marketing. I'm
+                        currently finishing a BS in Information Technology, majoring in Information Security, at the
+                        University of Southeastern Philippines.
                     </p>
                     <p class="text-text-soft text-lg leading-relaxed mb-8">
-                        Whether it's building a responsive web application, designing a user-focused interface, producing multimedia content, or implementing workflow automation — I bring a detail-oriented, technology-meets-creativity approach to every project.
+                        Whether it's building a responsive web application, designing a user-focused interface,
+                        producing multimedia content, or implementing workflow automation — I bring a detail-oriented,
+                        technology-meets-creativity approach to every project.
                     </p>
                     <div class="grid grid-cols-3 gap-5">
                         <div class="glass-light rounded-2xl p-5 text-center">
@@ -1419,14 +1996,25 @@
                 </div>
                 <div class="reveal reveal-delay-2 order-1 lg:order-2 flex justify-center">
                     <div class="relative">
-                        <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/10 flex items-center justify-center border border-white/5 backdrop-blur-sm">
+                        <div
+                            class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/10 flex items-center justify-center border border-white/5 backdrop-blur-sm">
                             <span class="text-7xl font-black text-white/10">LR</span>
                         </div>
-                        <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl glass-light flex items-center justify-center border border-white/5">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <div
+                            class="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl glass-light flex items-center justify-center border border-white/5">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
                         </div>
-                        <div class="absolute -top-4 -left-4 w-16 h-16 rounded-2xl glass-light flex items-center justify-center border border-white/5">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <div
+                            class="absolute -top-4 -left-4 w-16 h-16 rounded-2xl glass-light flex items-center justify-center border border-white/5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D"
+                                stroke-width="2">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1457,23 +2045,53 @@
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                 <div class="reveal">
                     <span class="text-accent text-sm font-semibold tracking-widest uppercase">Contact</span>
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-6 leading-[1.15]">Let's create<br><span class="text-gradient">something great</span></h2>
-                    <p class="text-text-soft text-lg leading-relaxed mb-8">Available for freelance, collaborations, and full-time opportunities. Whether you need a website, a social strategy, or compelling video content — let's talk.</p>
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-6 leading-[1.15]">Let's
+                        create<br><span class="text-gradient">something great</span></h2>
+                    <p class="text-text-soft text-lg leading-relaxed mb-8">Available for freelance, collaborations, and
+                        full-time opportunities. Whether you need a website, a social strategy, or compelling video
+                        content — let's talk.</p>
                     <div class="space-y-4 text-text-soft">
-                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:louis.rollorata@gmail.com" class="hover:text-white transition-colors duration-300">louis.rollorata@gmail.com</a></div>
-                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg><a href="tel:+639910557647" class="hover:text-white transition-colors duration-300">+63 9910 - 557 - 647</a></div>
-                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Tagum City, Davao del Norte, Philippines</span></div>
+                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg><a href="mailto:louis.rollorata@gmail.com"
+                                class="hover:text-white transition-colors duration-300">louis.rollorata@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07" />
+                            </svg><a href="tel:+639910557647"
+                                class="hover:text-white transition-colors duration-300">+63 9910 - 557 - 647</a></div>
+                        <div class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg><span>Tagum City, Davao del Norte, Philippines</span></div>
                     </div>
                 </div>
                 <div class="glass-light rounded-3xl p-8 reveal reveal-delay-2 flex flex-col justify-center text-center">
                     <div class="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-6">
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 15l2 2 4-4"/></svg>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                            <path d="M9 15l2 2 4-4" />
+                        </svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Book a Google Meet</h3>
-                    <p class="text-text-soft text-sm leading-relaxed mb-8">Skip the back-and-forth — grab a slot straight from my calendar and we'll hop on a video call.</p>
-                    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR-SCHEDULE-LINK-HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+                    <p class="text-text-soft text-sm leading-relaxed mb-8">Skip the back-and-forth — grab a slot
+                        straight from my calendar and we'll hop on a video call.</p>
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR-SCHEDULE-LINK-HERE"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
                         Schedule on Google Calendar
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
                     </a>
                     <p class="text-text-soft text-xs mt-5">Prefer email or a call? Use the details on the left.</p>
                 </div>
@@ -1489,7 +2107,8 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <div>
                     <a href="#hero" class="text-white font-bold text-2xl tracking-tight">LR</a>
-                    <p class="text-text-soft text-sm mt-3 leading-relaxed">Front-end development, UI/UX design, and multimedia production based in Tagum City, Philippines.</p>
+                    <p class="text-text-soft text-sm mt-3 leading-relaxed">Front-end development, UI/UX design, and
+                        multimedia production based in Tagum City, Philippines.</p>
                 </div>
                 <div>
                     <h4 class="text-white font-semibold mb-4">Navigation</h4>
@@ -1504,18 +2123,23 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Connect</h4>
                     <div class="flex flex-col gap-2.5 text-sm text-text-soft">
-                        <a href="mailto:louis.rollorata@gmail.com" class="hover:text-white transition-colors duration-300">Email</a>
+                        <a href="mailto:louis.rollorata@gmail.com"
+                            class="hover:text-white transition-colors duration-300">Email</a>
                         <a href="#" class="hover:text-white transition-colors duration-300">LinkedIn</a>
                         <a href="#" class="hover:text-white transition-colors duration-300">GitHub</a>
                     </div>
                 </div>
                 <div>
                     <h4 class="text-white font-semibold mb-4">Start a Project</h4>
-                    <p class="text-text-soft text-sm mb-4 leading-relaxed">Ready to elevate your brand? Let's collaborate.</p>
-                    <a href="#contact" class="inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300">Get in Touch</a>
+                    <p class="text-text-soft text-sm mb-4 leading-relaxed">Ready to elevate your brand? Let's
+                        collaborate.</p>
+                    <a href="#contact"
+                        class="inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300">Get
+                        in Touch</a>
                 </div>
             </div>
-            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-text-soft text-sm">
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-text-soft text-sm">
                 <p>&copy; 2026 Louis Amiel B. Rollorata. All rights reserved.</p>
             </div>
         </div>
@@ -1561,9 +2185,11 @@
         function typeAnimation() {
             const current = phrases[phraseIndex];
             if (isPausing) {
-                timeoutId = setTimeout(() => { isPausing = false;
+                timeoutId = setTimeout(() => {
+                    isPausing = false;
                     isDeleting = true;
-                    typeAnimation(); }, 2200);
+                    typeAnimation();
+                }, 2200);
                 return;
             }
             if (!isDeleting) {
@@ -1574,9 +2200,11 @@
                     timeoutId = setTimeout(typeAnimation, speed);
                 } else {
                     isPausing = true;
-                    timeoutId = setTimeout(() => { isPausing = false;
+                    timeoutId = setTimeout(() => {
+                        isPausing = false;
                         isDeleting = true;
-                        typeAnimation(); }, 2400);
+                        typeAnimation();
+                    }, 2400);
                 }
             } else {
                 if (charIndex > 0) {
@@ -1612,8 +2240,10 @@
             if (menuOpen) {
                 mobileMenu.classList.remove('hidden');
                 menuBtn.setAttribute('aria-expanded', 'true');
-                requestAnimationFrame(() => { mobileMenu.style.opacity = '1';
-                    mobileMenu.style.transform = 'translateY(0)'; });
+                requestAnimationFrame(() => {
+                    mobileMenu.style.opacity = '1';
+                    mobileMenu.style.transform = 'translateY(0)';
+                });
             } else {
                 closeMobileMenu();
             }
@@ -1740,7 +2370,7 @@
 
                 const tryLoad = () => {
                     if (attemptIndex < fallbackPaths.length && fallbackPaths[attemptIndex] !== cleanSrc) {
-                        console.warn(`Attempting fallback ${attemptIndex+1}: ${fallbackPaths[attemptIndex]}`);
+                        console.warn(`Attempting fallback ${attemptIndex + 1}: ${fallbackPaths[attemptIndex]}`);
                         img.src = fallbackPaths[attemptIndex];
                         attemptIndex++;
                     } else {
@@ -1750,12 +2380,12 @@
                         const placeholder = document.createElement('div');
                         placeholder.className =
                             'image-placeholder w-full min-h-[200px] flex items-center justify-center text-text-muted';
-                        placeholder.innerHTML = `<span>🖼️ ${index+1}</span><small>${cleanSrc.split('/').pop()}</small>`;
+                        placeholder.innerHTML = `<span>🖼️ ${index + 1}</span><small>${cleanSrc.split('/').pop()}</small>`;
                         col.appendChild(placeholder);
                     }
                 };
 
-                img.onerror = function() {
+                img.onerror = function () {
                     if (attemptIndex < fallbackPaths.length) {
                         tryLoad();
                     } else {
@@ -1764,12 +2394,12 @@
                         const placeholder = document.createElement('div');
                         placeholder.className =
                             'image-placeholder w-full min-h-[200px] flex items-center justify-center text-text-muted';
-                        placeholder.innerHTML = `<span>🖼️ ${index+1}</span><small>${cleanSrc.split('/').pop()}</small>`;
+                        placeholder.innerHTML = `<span>🖼️ ${index + 1}</span><small>${cleanSrc.split('/').pop()}</small>`;
                         col.appendChild(placeholder);
                     }
                 };
 
-                img.onload = function() {
+                img.onload = function () {
                     loadedCount++;
                     this.style.opacity = '1';
                     console.log(`✅ Loaded: ${this.src}`);
@@ -1810,19 +2440,25 @@
         // ── Scroll Reveal ──
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible');
-                    observer.unobserve(e.target); } });
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
         }, { rootMargin: '0px 0px -40px 0px', threshold: 0.06 });
         revealEls.forEach(el => observer.observe(el));
 
         // ── Smooth Scroll ──
         document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
+            a.addEventListener('click', function (e) {
                 const id = this.getAttribute('href');
                 if (id === '#') return;
                 const target = document.querySelector(id);
-                if (target) { e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
@@ -1875,7 +2511,140 @@
                 nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)';
             }
         });
+
+        // ── VIDEO LIGHTBOX ──
+        const videoOverlay = document.getElementById('videoLightboxOverlay');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const videoTitle = document.getElementById('videoLightboxTitle');
+        const videoCat = document.getElementById('videoLightboxCat');
+        const videoStrip = document.getElementById('videoThumbnailStrip');
+        let currentVideoList = [];
+        let currentVideoIndex = 0;
+
+        function openVideoLightbox(el) {
+            const title = el.getAttribute('data-gallery-title') || 'Video Gallery';
+            const cat = el.getAttribute('data-gallery-cat') || 'Video';
+            const videosAttr = el.getAttribute('data-videos');
+
+            if (!videosAttr) {
+                console.warn('No videos found in data-videos attribute');
+                return;
+            }
+
+            let videoFiles = [];
+            try {
+                videoFiles = JSON.parse(videosAttr);
+            } catch (e) {
+                videoFiles = videosAttr.split(',').map(s => s.trim().replace(/["']/g, ''));
+            }
+
+            if (videoFiles.length === 0) {
+                console.warn('Empty video list');
+                return;
+            }
+
+            currentVideoList = videoFiles;
+            currentVideoIndex = 0;
+
+            videoTitle.textContent = title;
+            videoCat.textContent = cat;
+
+            // Build thumbnail strip
+            videoStrip.innerHTML = '';
+            videoFiles.forEach((src, idx) => {
+                const thumb = document.createElement('button');
+                thumb.className = `flex-shrink-0 w-32 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 relative ${idx === 0 ? 'border-primary' : 'border-white/10'} hover:border-primary/60`;
+                thumb.setAttribute('data-index', idx);
+
+                const isVideo = src.match(/\.(mp4|webm|mov)$/i);
+                if (isVideo) {
+                    const vid = document.createElement('video');
+                    vid.src = src;
+                    vid.muted = true;
+                    vid.playsInline = true;
+                    vid.preload = 'metadata';
+                    vid.className = 'w-full h-full object-cover';
+                    vid.onloadedmetadata = function () {
+                        this.currentTime = this.duration / 2;
+                    };
+                    thumb.appendChild(vid);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'w-full h-full object-cover';
+                    img.alt = 'Thumbnail';
+                    thumb.appendChild(img);
+                }
+
+                const playIcon = document.createElement('div');
+                playIcon.className = 'absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none';
+                playIcon.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+                thumb.appendChild(playIcon);
+
+                thumb.addEventListener('click', () => {
+                    playVideoAtIndex(idx);
+                    document.querySelectorAll('#videoThumbnailStrip button').forEach(b => b.classList.remove('border-primary'));
+                    thumb.classList.add('border-primary');
+                });
+
+                videoStrip.appendChild(thumb);
+            });
+
+            playVideoAtIndex(0);
+            videoOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function playVideoAtIndex(index) {
+            if (index < 0 || index >= currentVideoList.length) return;
+            currentVideoIndex = index;
+            const src = currentVideoList[index];
+            const isVideo = src.match(/\.(mp4|webm|mov)$/i);
+
+            if (isVideo) {
+                videoPlayer.src = src;
+                videoPlayer.style.display = 'block';
+                videoPlaceholder.style.display = 'none';
+                videoPlayer.load();
+                videoPlayer.play().catch(() => { });
+            } else {
+                videoPlayer.style.display = 'none';
+                videoPlaceholder.style.display = 'flex';
+                videoPlaceholder.innerHTML = `<img src="${src}" alt="Video thumbnail" class="w-full h-full object-contain rounded-2xl" />`;
+            }
+
+            document.querySelectorAll('#videoThumbnailStrip button').forEach((btn, i) => {
+                btn.classList.toggle('border-primary', i === index);
+                btn.classList.toggle('border-white/10', i !== index);
+            });
+        }
+
+        function closeVideoLightbox(e) {
+            if (e && e.target !== videoOverlay && e.target.closest('.lightbox-content')) return;
+            videoOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            videoPlayer.pause();
+            videoPlayer.style.display = 'none';
+            videoPlaceholder.style.display = 'flex';
+            videoPlaceholder.innerHTML = `
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#8E7AA3" stroke-width="2"><polygon points="12 8 52 32 12 56 12 8"/></svg>
+        <span>Select a video to play</span>
+    `;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!videoOverlay.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') {
+                playVideoAtIndex(currentVideoIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                playVideoAtIndex(currentVideoIndex + 1);
+            } else if (e.key === 'Escape') {
+                closeVideoLightbox();
+            }
+        });
     </script>
 
 </body>
+
 </html>
