@@ -1439,7 +1439,7 @@
 
                 <!-- Atlas Edge Global -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
-                    data-title="Atlas Edge Global Website" data-cat="Web Project"
+                    data-title="Atlas Edge Global Website" data-cat="Web Project" data-unavailable="true"
                     data-desc="Responsive Wix site with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
 
                     <!-- Thumbnail / Preview -->
@@ -1599,7 +1599,7 @@
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-0.5">Smart Cacao System</h3>
-                        
+
                         <p class="text-text-soft text-sm">IoT monitoring platform · DOST-PCAARD</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link"
@@ -1618,7 +1618,7 @@
 
                 <!-- PcByte -->
                 <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
-                    data-title="PcByte Integrated System" data-cat="Web Project"
+                    data-title="PcByte Integrated System" data-cat="Web Project" data-unavailable="true"
                     data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. Jun – Jul 2023.">
 
                     <!-- ===== THUMBNAIL ===== -->
@@ -2555,6 +2555,12 @@
         function openLightbox(el, event) {
             // If a click event was passed and it came from a link, ignore it
             if (event && event.target && event.target.closest('a')) {
+                return;
+            }
+
+            // Private/unavailable project: route any click on the card to the same modal
+            if (el.getAttribute('data-unavailable') === 'true') {
+                openUnavailableModal();
                 return;
             }
 
