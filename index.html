@@ -661,7 +661,161 @@
                 scroll-behavior: auto !important;
             }
         }
+
+        /* ===== MODAL OVERLAY ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        /* ===== MODAL CONTENT ===== */
+        .modal-content {
+            position: relative;
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 36px 32px;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+            animation: modalSlideUp 0.35s ease;
+        }
+
+        /* ===== CLOSE BUTTON ===== */
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #9ca3af;
+            transition: all 0.25s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        /* ===== MODAL ICON ===== */
+        .modal-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(224, 68, 125, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        /* ===== MODAL TITLE ===== */
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        /* ===== MODAL MESSAGE ===== */
+        .modal-message {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #c9d1d9;
+            margin-bottom: 20px;
+        }
+
+        /* ===== MODAL FOOTER NOTE ===== */
+        .modal-footer-note {
+            font-size: 13px;
+            color: #8b949e;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 18px;
+            margin-top: 4px;
+        }
+
+        .modal-email-link {
+            color: #E0447D;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .modal-email-link:hover {
+            color: #ff6b9d;
+            text-decoration: underline;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 32px 24px 28px;
+            }
+
+            .modal-title {
+                font-size: 18px;
+            }
+
+            .modal-message {
+                font-size: 14px;
+            }
+        }
     </style>
+
+    <!-- LR Favicon (appears in browser tab before the text) -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E0447D'/%3E%3Ctext x='50' y='50' font-family='Segoe UI, Arial, sans-serif' font-size='45' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'%3ELR%3C/text%3E%3C/svg%3E"
+        type="image/svg+xml">
+
+    <!-- For Safari / iOS (Apple Touch Icon) -->
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E0447D'/%3E%3Ctext x='50' y='50' font-family='Segoe UI, Arial, sans-serif' font-size='45' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'%3ELR%3C/text%3E%3C/svg%3E">
 </head>
 
 <body>
@@ -866,7 +1020,7 @@
                          "Graphics/SportCourt/SC_PT4.webp",
                          "Graphics/SportCourt/SC_Exhibit_1.webp",
                          "Graphics/SportCourt/SC_Exhibit_2.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Logo/sp-logo-new.webp" alt="Sport Court Ontario" class="logo-thumb"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -906,7 +1060,7 @@
                          "Graphics/The Light/TL_3.webp",
                          "Graphics/The Light/TL_4.webp",
                          "Graphics/The Light/TL_5.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Logo/TL.webp" alt="The Light Publication"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -946,7 +1100,7 @@
                          "Graphics/SocialEdge/Social_Edge_3.webp",
                          "Graphics/SocialEdge/Social_Edge_4.webp",
                          "Graphics/SocialEdge/Social_Edge_5.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Graphics/SocialEdge/Social_Edge_2.webp" alt="Social Edge"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -983,7 +1137,7 @@
                          "Graphics/Medicard/MediCard_1.webp",
                          "Graphics/Medicard/MediCard_2.webp",
                          "Graphics/Medicard/MediCard_3.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Logo/Medicard.webp" alt="Medicard" class="logo-thumb"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -1020,7 +1174,7 @@
                          "Graphics/PcByte/PcByte_1.webp",
                          "Graphics/PcByte/PcByte_2.webp",
                          "Graphics/PcByte/PcByte_3.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Logo/PcByte.webp" alt="PcByte"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -1057,7 +1211,7 @@
                          "Graphics/Shirt Designs/1.webp",
                          "Graphics/Shirt Designs/2.webp",
                          "Graphics/Shirt Designs/3.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <img src="Graphics/Shirt Designs/1.webp" alt="Shirt Designs"
                             onerror="this.style.display='none';this.parentElement.querySelector('.thumb-fallback')?.classList.remove('hidden');" />
@@ -1101,7 +1255,7 @@
                          "Graphics/Others/Tarp_2.webp",
                          "Graphics/Others/TSC_1.webp",
                          "Graphics/Others/TSC_2.webp"
-                     ]' onclick="openLightbox(this)">
+                     ]' onclick="openLightbox(this, event)">
                     <div class="thumb">
                         <!-- Custom "Others" logo: stylized "O" with geometric flair -->
                         <div class="others-logo-wrap">
@@ -1157,7 +1311,7 @@
                     </div>
                 </div>
 
-               
+
                 <!-- ============================================================ -->
                 <!-- VIDEO PORTFOLIO CARDS — add these inside #portfolioGrid       -->
                 <!-- after the existing cards and before the closing </div>        -->
@@ -1281,23 +1435,20 @@
                     </div>
                 </div>
 
-                 <!-- ─── WEB PROJECTS ─── -->
+                <!-- ─── WEB PROJECTS ─── -->
 
                 <!-- Atlas Edge Global -->
-                <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
+                <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
                     data-title="Atlas Edge Global Website" data-cat="Web Project"
                     data-desc="Responsive Wix site with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
+
+                    <!-- Thumbnail / Preview -->
                     <div class="thumb">
-                        <div
-                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-primary/25 via-secondary/20 to-accent/15">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="6" y="10" width="52" height="44" rx="6" stroke="#7A3FA6" stroke-width="2.5"
-                                    opacity="0.5" />
-                                <circle cx="22" cy="30" r="10" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
-                                <line x1="36" y1="28" x2="56" y2="28" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
-                                <line x1="36" y1="37" x2="48" y2="37" stroke="#7A3FA6" stroke-width="2" opacity="0.3" />
-                            </svg>
-                        </div>
+                        <!-- 🖼️ Replace the SVG with your actual image -->
+                        <img src="Logo/AE.png" alt="Atlas Edge Global Website screenshot"
+                            class="w-full h-full object-cover">
+
+                        <!-- Overlay (magnifying glass – stays on top) -->
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6"
@@ -1309,19 +1460,43 @@
                                 </svg>
                             </div>
                         </div>
+
+                        <!-- Badge -->
                         <span class="badge badge-web">Web</span>
                     </div>
+
+                    <!-- Content -->
                     <div class="p-5">
+                        <!-- Title -->
                         <h3 class="text-lg font-bold mb-0.5">Atlas Edge Global Website</h3>
-                        <p class="text-text-soft text-sm">Responsive Wix site with workflow automation</p>
-                        <div class="mt-3 flex items-center gap-4">
-                            <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+                        <!-- Description -->
+                        <p class="text-text-soft text-sm leading-relaxed">
+                            Responsive Wix site with workflow and email automation, improving lead generation and
+                            operational efficiency.
+                        </p>
+
+                        <!-- Timeline -->
+                        <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            <span>Dec 2025 – Jan 2026</span>
+                        </div>
+
+                        <!-- Link + Tech tag -->
+                        <div class="mt-3 flex items-center justify-between">
+                            <a href="#" class="project-link"
+                                onclick="event.stopPropagation(); openUnavailableModal(); return false;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                    height="16">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                                Live Project
+                                Unavailable for Public Viewing
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Wix Studio</span>
                         </div>
@@ -1329,21 +1504,17 @@
                 </div>
 
                 <!-- ABECON 2025 -->
-                <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
+                <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
                     data-title="ABECON 2025 Convention Platform" data-cat="Web Project"
                     data-desc="Led UI/UX design and front-end development for a convention platform covering registration, attendance tracking, e-commerce, online voting, and vote tabulation. Sep – Nov 2025.">
+
+                    <!-- ===== THUMBNAIL (with image placeholder) ===== -->
                     <div class="thumb">
-                        <div
-                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-accent/20 via-primary/18 to-secondary/14">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="4" y="18" width="14" height="38" rx="3" stroke="#FFA552" stroke-width="2.5"
-                                    opacity="0.4" />
-                                <rect x="22" y="8" width="14" height="48" rx="3" stroke="#E0447D" stroke-width="2.5"
-                                    opacity="0.4" />
-                                <rect x="40" y="28" width="14" height="28" rx="3" stroke="#7A3FA6" stroke-width="2.5"
-                                    opacity="0.4" />
-                            </svg>
-                        </div>
+                        <!-- 🖼️ Replace src with your actual screenshot or logo -->
+                        <img src="Logo/Abecon.png" alt="ABECON 2025 Convention Platform screenshot"
+                            class="w-full h-full object-cover">
+
+                        <!-- Overlay (magnifying glass) -->
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
@@ -1355,14 +1526,38 @@
                                 </svg>
                             </div>
                         </div>
+
+                        <!-- Badge -->
                         <span class="badge badge-web">Web</span>
                     </div>
+
+                    <!-- ===== CONTENT ===== -->
                     <div class="p-5">
+                        <!-- Title -->
                         <h3 class="text-lg font-bold mb-0.5">ABECON 2025 Convention Platform</h3>
-                        <p class="text-text-soft text-sm">Registration, e-commerce, voting, tabulation</p>
-                        <div class="mt-3 flex items-center gap-4">
-                            <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+                        <!-- Full Description -->
+                        <p class="text-text-soft text-sm leading-relaxed">
+                            Led UI/UX design and front-end development for a convention platform covering registration,
+                            attendance tracking, e-commerce, online voting, and vote tabulation.
+                        </p>
+
+                        <!-- Timeline -->
+                        <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            <span>Sep – Nov 2025</span>
+                        </div>
+
+                        <!-- Link + Tech tag -->
+                        <div class="mt-3 flex items-center justify-between">
+                            <a href="https://abeconmindanao.com/" class="project-link"
+                                onclick="event.stopPropagation();" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                    height="16">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
@@ -1375,7 +1570,7 @@
                 </div>
 
                 <!-- Smart Cacao System -->
-                <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
+                <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
                     data-title="Smart Cacao System (DOST-PCAARD)" data-cat="Web Project"
                     data-desc="Led front-end development and UI/UX design for an IoT-based cacao monitoring platform, implementing algorithms to process real-time sensor data. Jun – Sep 2025.">
                     <div class="thumb">
@@ -1404,35 +1599,33 @@
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-0.5">Smart Cacao System</h3>
+                        
                         <p class="text-text-soft text-sm">IoT monitoring platform · DOST-PCAARD</p>
                         <div class="mt-3 flex items-center gap-4">
-                            <a href="#" class="project-link" onclick="event.stopPropagation();">
+                            <a href="#" class="project-link"
+                                onclick="event.stopPropagation(); openUnavailableModal(); return false;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                                Live Project
+                                Unavailable for Public Viewing
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">IoT</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Glory Commercial -->
-                <div class="portfolio-card" data-category="web" onclick="openLightbox(this)"
-                    data-title="Glory Commercial Integrated System" data-cat="Web Project"
+                <!-- PcByte -->
+                <div class="portfolio-card" data-category="web" onclick="openLightbox(this, event)"
+                    data-title="PcByte Integrated System" data-cat="Web Project"
                     data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. Jun – Jul 2023.">
+
+                    <!-- ===== THUMBNAIL ===== -->
                     <div class="thumb">
-                        <div
-                            class="flex items-center justify-center w-full h-full bg-gradient-to-br from-rose-400/18 via-fuchsia-400/16 to-purple-400/14">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="opacity-35">
-                                <rect x="6" y="8" width="52" height="48" rx="6" stroke="#B95BA8" stroke-width="2.5"
-                                    opacity="0.5" />
-                                <circle cx="32" cy="32" r="10" stroke="#E0447D" stroke-width="2" opacity="0.3" />
-                                <circle cx="32" cy="32" r="4" fill="#FFA552" opacity="0.2" />
-                            </svg>
-                        </div>
+                        <img src="Logo/PcByte.webp" alt="PcByte Integrated System screenshot"
+                            class="w-full h-full object-cover">
+
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8"
@@ -1444,23 +1637,47 @@
                                 </svg>
                             </div>
                         </div>
+
                         <span class="badge badge-web">Web</span>
                     </div>
+
+                    <!-- ===== CONTENT (SINGLE .p-5) ===== -->
                     <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Glory Commercial Integrated System</h3>
-                        <p class="text-text-soft text-sm">POS, inventory, sales analytics</p>
-                        <div class="mt-3 flex items-center gap-4">
-                            <a href="#" class="project-link" onclick="event.stopPropagation();">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Title -->
+                        <h3 class="text-lg font-bold mb-0.5">PcByte Integrated System</h3>
+
+                        <!-- Description -->
+                        <p class="text-text-soft text-sm leading-relaxed">
+                            Developed an integrated business management system with POS, inventory, and stock modules,
+                            plus sales analytics and financial reporting features.
+                        </p>
+
+                        <!-- Timeline -->
+                        <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            <span>Jun – Jul 2023</span>
+                        </div>
+
+                        <!-- Link + Tech tag -->
+                        <div class="mt-3 flex items-center justify-between">
+                            <a href="#" class="project-link"
+                                onclick="event.stopPropagation(); openUnavailableModal(); return false;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
+                                    height="16">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                                Live Project
+                                Unavailable for Public Viewing
                             </a>
                             <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">POS</span>
                         </div>
                     </div>
+                    <!-- ✅ .p-5 is properly closed here -->
                 </div>
             </div>
         </div>
@@ -1644,7 +1861,7 @@
                         class="absolute w-3.5 h-3.5 rounded-full bg-primary -left-[7px] top-10 shadow-lg shadow-primary/30">
                     </div>
                     <div>
-                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Oct 2025 — August
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">Oct 2025 — Aug
                             2026</span>
                         <h3 class="text-xl font-bold mt-1">Social Media Manager · Video Editor · Graphic Designer</h3>
                         <p class="text-text-soft mt-1.5">Sport Court Ontario — Manage social content on Facebook and
@@ -1714,107 +1931,84 @@
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-4">Clients &amp; Organizations
                 </h2>
             </div>
+
             <div class="marquee-container relative overflow-hidden py-6"
                 style="mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);">
+
                 <div class="marquee-track flex items-center gap-14 whitespace-nowrap" style="width:max-content;">
+
+                    <!-- ===== FIRST SET ===== -->
                     <div class="flex items-center gap-14 flex-shrink-0">
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                SC</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport
-                                Court Ontario</span>
+
+                        <!-- Sport Court Ontario -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/sp-logo-new.webp" alt="Sport Court Ontario"
+                                class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                AE</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas
-                                Edge Global</span>
+
+                        <!-- Atlas Edge Global -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/AE.png" alt="Atlas Edge Global" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                AB</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON
-                                2025</span>
+
+                        <!-- ABECON 2025 -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/AbeCon_Logo.jpeg" alt="ABECON 2025" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                DP</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span>
+
+                        <!-- DOST-PCAARD -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/DOST-PCAARRD.png" alt="DOST-PCAARD" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                PNC</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC
-                                Studios</span>
+
+                        <!-- PNC Studios -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/PeekSure.png" alt="PNC Studios" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                TL</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The
-                                Light Publication</span>
+
+                        <!-- The Light Publication -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/TL.webp" alt="The Light Publication" class="h-14 w-auto object-contain" />
                         </div>
+
                     </div>
+
+                    <!-- ===== DUPLICATE SET (seamless loop) ===== -->
                     <div class="flex items-center gap-14 flex-shrink-0" aria-hidden="true">
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                SC</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Sport
-                                Court Ontario</span>
+
+                        <!-- Sport Court Ontario -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/sp-logo-new.webp" alt="Sport Court Ontario"
+                                class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                AE</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">Atlas
-                                Edge Global</span>
+
+                        <!-- Atlas Edge Global -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/AE.png" alt="Atlas Edge Global" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                AB</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">ABECON
-                                2025</span>
+
+                        <!-- ABECON 2025 -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/AbeCon_Logo.jpeg" alt="ABECON 2025" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                DP</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">DOST-PCAARD</span>
+
+                        <!-- DOST-PCAARD -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/DOST-PCAARRD.png" alt="DOST-PCAARD" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-accent/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                PNC</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">PNC
-                                Studios</span>
+
+                        <!-- PNC Studios -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/PeekSure.png" alt="PNC Studios" class="h-14 w-auto object-contain" />
                         </div>
-                        <div
-                            class="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-400 cursor-pointer group">
-                            <div
-                                class="w-9 h-9 rounded-xl bg-white/10 group-hover:bg-secondary/20 transition-colors duration-300 flex items-center justify-center font-bold text-base">
-                                TL</div><span
-                                class="text-text-soft group-hover:text-white font-semibold text-sm transition-colors duration-300">The
-                                Light Publication</span>
+
+                        <!-- The Light Publication -->
+                        <div class="transition-all duration-400 cursor-pointer hover:scale-105">
+                            <img src="Logo/TL.webp" alt="The Light Publication" class="h-14 w-auto object-contain" />
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1830,9 +2024,12 @@
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-4 mb-4">What People Say</h2>
                 <p class="text-text-soft text-lg max-w-xl mx-auto">Direct collaborators who can speak to my work.</p>
             </div>
+
             <div class="reveal">
                 <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth carousel-track pb-2"
                     id="testimonialTrack">
+
+                    <!-- ===== SPORT COURT ONTARIO ===== -->
                     <div
                         class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">Sport Court Ontario</div>
@@ -1841,9 +2038,11 @@
                             <path
                                 d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
                         </svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis brought a fresh
-                            creative energy to our social media. His reels and graphics consistently outperformed, and
-                            he's a pleasure to work with."</p>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "The creative energy brought to our social media was exactly what we needed. The reels and
+                            graphics are gret, and working together has been an
+                            absolute pleasure from start to finish."
+                        </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
                                 class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
@@ -1854,6 +2053,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- ===== ATLAS EDGE GLOBAL ===== -->
                     <div
                         class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-accent font-extrabold text-lg tracking-tight mb-6">Atlas Edge Global</div>
@@ -1861,9 +2062,11 @@
                             <path
                                 d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
                         </svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis delivered a
-                            polished, professional website with seamless automation. He understood our needs and
-                            executed with precision."</p>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "We got a polished, professional website that actually works the way we need it to. The
+                            automation flows seamlessly, and the whole process felt smooth and well-understood from day
+                            one."
+                        </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
                                 class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">
@@ -1874,6 +2077,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- ===== PNC STUDIOS ===== -->
                     <div
                         class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                         <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">PNC Studios</div>
@@ -1882,20 +2087,127 @@
                             <path
                                 d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
                         </svg>
-                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">"Louis handled our yearbook
-                            and event coverage with incredible attention to detail. His same-day edits were a
-                            game-changer."</p>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "It's rare to find someone who can jump between photography, videography, design and
+                            actually deliver quality work across all of them. The attention to detail and ability to
+                            turn things around same-day made a real difference for our team."
+                        </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
                                 class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
                                 FC</div>
                             <div>
                                 <div class="font-semibold text-sm">Francis Dave P. Cabanting</div>
-                                <div class="text-text-soft text-xs">PNC Studios</div>
+                                <div class="text-text-soft text-xs">Founder</div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- ===== THE LIGHT PUBLICATION ===== -->
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        <div class="text-primary font-extrabold text-lg tracking-tight mb-6">The Light Publication</div>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="text-primary/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "The design work for our publication was excellent. Clean, professional, and exactly what
+                            we were hoping for. It's not easy to find someone who truly gets your vision, but this was
+                            one of those rare collaborations where everything just clicked."
+                        </p>
+                        <div class="flex items-center gap-3 pt-6 border-t border-white/8">
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                RM</div>
+                            <div>
+                                <div class="font-semibold text-sm">Rhunafe Mercampo</div>
+                                <div class="text-text-soft text-xs">Editor-in-Chief</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== DOST PCAARRD ===== -->
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        <div class="text-accent font-extrabold text-lg tracking-tight mb-6">DOST PCAARRD</div>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "The technical support and development work on our research platform was spot on.
+                            Responsive, dependable, and delivered exactly what we needed on time — honestly, that
+                            combination is harder to find than you'd think. A real professional through and through."
+                        </p>
+                        <div class="flex items-center gap-3 pt-6 border-t border-white/8">
+                            <div
+                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">
+                                MG</div>
+                            <div>
+                                <div class="font-semibold text-sm">Honeybee S. Limbaro</div>
+                                <div class="text-text-soft text-xs">Project Manager</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== TAGUM STUDENT COUNCIL ===== -->
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">Tagum Student Council
+                        </div>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="text-secondary/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "The quality of work and creative approach really stood out to us. It's one thing to
+                            understand a brand, but another to translate it into content that actually connects with
+                            people. We've been genuinely impressed with the results and would absolutely work together
+                            again."
+                        </p>
+                        <div class="flex items-center gap-3 pt-6 border-t border-white/8">
+                            <div
+                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
+                                ES</div>
+                            <div>
+                                <div class="font-semibold text-sm">Eina Angelu Samson</div>
+                                <div class="text-text-soft text-xs">Former TSC President</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== PcByte Integrated System ===== -->
+                    <div
+                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        <div class="text-primary font-extrabold text-lg tracking-tight mb-6">PcByte Integrated System
+                        </div>
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="text-primary/40 mb-4">
+                            <path
+                                d="M9.5 4C6.5 6 4.5 9 4.5 12.5c0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L9.5 4zm9.5 0c-3 2-5 5-5 8.5 0 3 2 5.5 4.8 5.5 2 0 3.5-1.5 3.5-3.4 0-1.8-1.3-3.1-3-3.1-.3 0-.6 0-.9.1.4-2 2-3.8 4.1-5.1L19 4z" />
+                        </svg>
+                        <p class="text-text-soft text-sm leading-relaxed italic mb-8 flex-1">
+                            "The business management system built for us completely streamlined how we handle POS,
+                            inventory, and sales reporting. It's reliable, intuitive, and honestly made a huge
+                            difference in our day-to-day operations. Exactly what we were looking for."
+                        </p>
+                        <div class="flex items-center gap-3 pt-6 border-t border-white/8">
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                GA</div>
+                            <div>
+                                <div class="font-semibold text-sm">Glen Michael Agot</div>
+                                <div class="text-text-soft text-xs">CEO</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- ===== CAROUSEL CONTROLS ===== -->
                 <div class="flex items-center justify-center gap-5 mt-8">
                     <button id="testimonialPrev" aria-label="Previous"
                         class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
@@ -1913,6 +2225,7 @@
                         </svg>
                     </button>
                 </div>
+
             </div>
         </div>
     </section>
@@ -2045,8 +2358,7 @@
                     <h3 class="text-2xl font-bold mb-3">Book a Google Meet</h3>
                     <p class="text-text-soft text-sm leading-relaxed mb-8">Skip the back-and-forth — grab a slot
                         straight from my calendar and we'll hop on a video call.</p>
-                    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR-SCHEDULE-LINK-HERE"
-                        target="_blank" rel="noopener noreferrer"
+                    <a href="https://calendar.app.google/1PuNPWXqKXz3h2YNA" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
                         Schedule on Google Calendar
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -2240,7 +2552,12 @@
         const lbDesc = document.getElementById('lightboxDesc');
         const lbPlaceholder = document.getElementById('lightboxPlaceholder');
 
-        function openLightbox(el) {
+        function openLightbox(el, event) {
+            // If a click event was passed and it came from a link, ignore it
+            if (event && event.target && event.target.closest('a')) {
+                return;
+            }
+
             // Check if this is a gallery card
             if (el.getAttribute('data-gallery') === 'true') {
                 openGallery(el);
@@ -2257,9 +2574,7 @@
                 lbPlaceholder.innerHTML = `<img src="${img.src}" alt="${lbTitle.textContent}" class="w-full h-full object-cover rounded-2xl" />`;
                 lbPlaceholder.className = 'w-full h-64 sm:h-80 flex items-center justify-center rounded-2xl overflow-hidden';
             } else {
-                // fallback to SVG placeholder
-                lbPlaceholder.innerHTML =
-                    `<svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="opacity-40"><rect x="10" y="15" width="60" height="50" rx="8" stroke="#E0447D" stroke-width="3"/><circle cx="35" cy="40" r="12" stroke="#FFA552" stroke-width="2.5"/></svg>`;
+                lbPlaceholder.innerHTML = `<svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="opacity-40"><rect x="10" y="15" width="60" height="50" rx="8" stroke="#E0447D" stroke-width="3"/><circle cx="35" cy="40" r="12" stroke="#FFA552" stroke-width="2.5"/></svg>`;
                 lbPlaceholder.className = 'w-full h-64 sm:h-80 bg-gradient-to-br from-primary/20 via-secondary/18 to-accent/15 flex items-center justify-center rounded-2xl';
             }
 
@@ -2605,8 +2920,72 @@
                 closeVideoLightbox();
             }
         });
-    </script>
+        // ── UNAVAILABLE PROJECT MODAL ──
+        function openUnavailableModal() {
+            const modal = document.getElementById('unavailableModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
+        function closeUnavailableModal(event) {
+            // If event is passed and target is not the overlay, ignore
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('unavailableModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('unavailableModal');
+                if (modal && modal.classList.contains('active')) {
+                    closeUnavailableModal();
+                }
+            }
+        });
+    </script>
+    <!-- ===== UNAVAILABLE PROJECT MODAL ===== -->
+    <div id="unavailableModal" class="modal-overlay" onclick="closeUnavailableModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <!-- Close button -->
+            <button class="modal-close" onclick="closeUnavailableModal()" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <!-- Icon -->
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <path d="M3 3l18 18" opacity="0.3" />
+                </svg>
+            </div>
+
+            <!-- Title -->
+            <h3 class="modal-title">Not Available for Public Viewing</h3>
+
+            <!-- Message -->
+            <p class="modal-message">
+                This project is currently under a non-disclosure agreement (NDA) or is for internal use only.
+                It will be made publicly available once approved by the client.
+            </p>
+
+            <!-- Footer note -->
+            <p class="modal-footer-note">
+                For more details, feel free to <a href="mailto:your.email@example.com" class="modal-email-link">reach
+                    out directly</a>.
+            </p>
+        </div>
+    </div>
 </body>
 
 </html>
