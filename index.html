@@ -12,8 +12,7 @@
     <title>Louis Rollorata — Front-End Developer &amp; UI/UX Designer</title>
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -41,14 +40,16 @@
         }
     </script>
 
-    <!-- Google Fonts: Inter + Display -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
     <style>
-        /* ── Reset & Base ── */
+        /* ═══════════════════════════════════════════════════════════════
+           BASE / RESET
+           ═══════════════════════════════════════════════════════════════ */
         * {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
@@ -58,16 +59,18 @@
         body {
             background: #0B061A;
             background-image:
-                radial-gradient(ellipse 70% 40% at 50% 0%, rgba(122, 63, 166, 0.20), transparent 50%),
-                radial-gradient(ellipse 60% 35% at 90% 70%, rgba(224, 68, 125, 0.08), transparent 50%),
-                radial-gradient(ellipse 50% 30% at 10% 80%, rgba(255, 165, 82, 0.06), transparent 50%);
+                radial-gradient(ellipse 70% 40% at 50% 0%, rgba(122, 63, 166, 0.22), transparent 55%),
+                radial-gradient(ellipse 60% 35% at 90% 70%, rgba(224, 68, 125, 0.09), transparent 55%),
+                radial-gradient(ellipse 50% 30% at 10% 80%, rgba(255, 165, 82, 0.07), transparent 55%);
             background-attachment: fixed;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* ── Background Texture ── */
+        /* ═══════════════════════════════════════════════════════════════
+           BACKGROUND TEXTURE
+           ═══════════════════════════════════════════════════════════════ */
         .bg-texture {
             position: fixed;
             inset: 0;
@@ -78,37 +81,126 @@
             background-size: 42px 42px;
         }
 
-        /* ── Glassmorphism ── */
+        /* ═══════════════════════════════════════════════════════════════
+           GLASS POLYMORPHISM SYSTEM
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            --glass-bg-1: rgba(255, 255, 255, 0.055);
+            --glass-bg-2: rgba(255, 255, 255, 0.018);
+            --glass-border: rgba(255, 255, 255, 0.10);
+            --glass-border-top: rgba(255, 255, 255, 0.20);
+            --glass-border-left: rgba(255, 255, 255, 0.14);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            --glass-inner-top: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            --glass-inner-bottom: inset 0 -1px 0 rgba(0, 0, 0, 0.20);
+        }
+
+        /* Core glass panel — layered, specular, translucent */
         .glass {
-            background: rgba(26, 20, 53, 0.65);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.075) 0%,
+                    rgba(255, 255, 255, 0.022) 45%,
+                    rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-top-color: var(--glass-border-top);
+            border-left-color: var(--glass-border-left);
+            box-shadow:
+                var(--glass-shadow),
+                var(--glass-inner-top),
+                var(--glass-inner-bottom);
+            overflow: hidden;
+        }
+
+        /* Specular sheen — subtle radial highlight */
+        .glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(ellipse 70% 50% at 25% 0%,
+                    rgba(255, 255, 255, 0.10),
+                    transparent 60%);
+            pointer-events: none;
+            opacity: 0.9;
         }
 
         .glass-light {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.015) 50%,
+                    rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-top-color: rgba(255, 255, 255, 0.14);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            overflow: hidden;
         }
 
         .glass-heavy {
-            background: rgba(11, 6, 26, 0.75);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg,
+                    rgba(18, 13, 36, 0.82) 0%,
+                    rgba(11, 6, 26, 0.72) 100%);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top-color: rgba(255, 255, 255, 0.14);
+            box-shadow:
+                0 24px 80px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
-        /* ── Glow Hover ── */
+        /* Glass shine sweep — activated on hover */
+        .glass-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(100deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.10) 45%,
+                    rgba(255, 255, 255, 0.18) 50%,
+                    rgba(255, 255, 255, 0.10) 55%,
+                    transparent 100%);
+            transform: skewX(-18deg);
+            transition: left 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .glass-shine:hover::after {
+            left: 160%;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           GLOW HOVER
+           ═══════════════════════════════════════════════════════════════ */
         .glow-hover {
-            transition: box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.5s ease;
+            transition: box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                border-color 0.5s ease;
         }
 
         .glow-hover:hover {
-            box-shadow: 0 0 60px rgba(224, 68, 125, 0.12), 0 0 120px rgba(224, 68, 125, 0.04);
-            border-color: rgba(224, 68, 125, 0.20);
+            box-shadow:
+                0 0 60px rgba(224, 68, 125, 0.12),
+                0 0 120px rgba(224, 68, 125, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.14);
+            border-color: rgba(224, 68, 125, 0.25);
             transform: translateY(-6px);
         }
 
-        /* ── Typing Cursor ── */
+        /* ═══════════════════════════════════════════════════════════════
+           TYPING CURSOR
+           ═══════════════════════════════════════════════════════════════ */
         @keyframes blinkCursor {
 
             0%,
@@ -132,6 +224,7 @@
             vertical-align: baseline;
             position: relative;
             top: 0.04em;
+            box-shadow: 0 0 12px rgba(255, 165, 82, 0.6);
         }
 
         .typing-container {
@@ -164,7 +257,6 @@
             }
         }
 
-        /* ── Name accent ── */
         .name-accent {
             position: relative;
             display: inline-block;
@@ -182,7 +274,9 @@
             opacity: 0.5;
         }
 
-        /* ── Floating Animations ── */
+        /* ═══════════════════════════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════════════════════════ */
         @keyframes floatOrb {
 
             0%,
@@ -269,7 +363,6 @@
             }
         }
 
-        /* ── Orb base ── */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -278,7 +371,6 @@
             opacity: 0.18;
         }
 
-        /* ── Section background containers ── */
         .section-bg {
             position: absolute;
             inset: 0;
@@ -287,7 +379,9 @@
             overflow: hidden;
         }
 
-        /* ── Portfolio Grid ── */
+        /* ═══════════════════════════════════════════════════════════════
+           PORTFOLIO GRID
+           ═══════════════════════════════════════════════════════════════ */
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -307,21 +401,81 @@
             }
         }
 
-        /* ── Portfolio Card ── */
+        /* ═══════════════════════════════════════════════════════════════
+           PORTFOLIO CARD — REVAMPED
+           ═══════════════════════════════════════════════════════════════ */
         .portfolio-card {
             position: relative;
-            background: rgba(26, 20, 53, 0.50);
+            background: linear-gradient(155deg,
+                    rgba(26, 20, 53, 0.72) 0%,
+                    rgba(18, 13, 36, 0.55) 50%,
+                    rgba(26, 20, 53, 0.62) 100%);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-top-color: rgba(255, 255, 255, 0.14);
+            box-shadow:
+                0 8px 28px rgba(0, 0, 0, 0.32),
+                inset 0 1px 0 rgba(255, 255, 255, 0.07);
+            transition: all 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-card:hover {
-            border-color: rgba(224, 68, 125, 0.25);
+            border-color: rgba(224, 68, 125, 0.32);
+            border-top-color: rgba(255, 165, 82, 0.35);
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(224, 68, 125, 0.06);
+            box-shadow:
+                0 24px 60px rgba(0, 0, 0, 0.55),
+                0 0 90px rgba(224, 68, 125, 0.10),
+                inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        /* Glass shine sweep on card hover */
+        .portfolio-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -130%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(100deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.06) 45%,
+                    rgba(255, 255, 255, 0.14) 50%,
+                    rgba(255, 255, 255, 0.06) 55%,
+                    transparent 100%);
+            transform: skewX(-18deg);
+            transition: left 0.95s cubic-bezier(0.22, 0.61, 0.36, 1);
+            pointer-events: none;
+            z-index: 8;
+        }
+
+        .portfolio-card:hover::after {
+            left: 170%;
+        }
+
+        /* Card number badge (glass) */
+        .card-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 4;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.65);
+            padding: 0.35rem 0.7rem;
+            border-radius: 100px;
+            background: rgba(11, 6, 26, 0.55);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .portfolio-card .thumb {
@@ -332,35 +486,66 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .portfolio-card .thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    transparent 40%,
+                    rgba(11, 6, 26, 0.55) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portfolio-card:hover .thumb::after {
+            opacity: 1;
         }
 
         .portfolio-card .thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
-        /* ── Logo thumbnail: contain + center ── */
         .portfolio-card .thumb img.logo-thumb {
             object-fit: contain;
             padding: 0.75rem;
-            background: rgba(0, 0, 0, 0.20);
+            background: rgba(0, 0, 0, 0.22);
         }
 
-        /* ── "Others" custom logo container ── */
+        .portfolio-card:hover .thumb img:not(.logo-thumb) {
+            transform: scale(1.07);
+        }
+
+        .portfolio-card:hover .thumb img.logo-thumb {
+            transform: scale(1.04);
+        }
+
+        /* Others custom logo */
         .others-logo-wrap {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, rgba(224, 68, 125, 0.10), rgba(122, 63, 166, 0.08), rgba(255, 165, 82, 0.06));
+            background: linear-gradient(145deg,
+                    rgba(224, 68, 125, 0.10),
+                    rgba(122, 63, 166, 0.08),
+                    rgba(255, 165, 82, 0.06));
             transition: background 0.5s ease;
         }
 
         .portfolio-card:hover .others-logo-wrap {
-            background: linear-gradient(145deg, rgba(224, 68, 125, 0.18), rgba(122, 63, 166, 0.14), rgba(255, 165, 82, 0.10));
+            background: linear-gradient(145deg,
+                    rgba(224, 68, 125, 0.18),
+                    rgba(122, 63, 166, 0.14),
+                    rgba(255, 165, 82, 0.10));
         }
 
         .others-logo-svg {
@@ -377,19 +562,17 @@
             filter: drop-shadow(0 0 50px rgba(224, 68, 125, 0.16));
         }
 
-        .portfolio-card:hover .thumb img:not(.logo-thumb) {
-            transform: scale(1.05);
-        }
-
+        /* Glass overlay reveal */
         .portfolio-card .thumb .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(11, 6, 26, 0.70) 100%);
+            background: linear-gradient(180deg, transparent 45%, rgba(11, 6, 26, 0.78) 100%);
             opacity: 0;
             transition: opacity 0.5s ease;
             display: flex;
             align-items: flex-end;
             padding: 1.25rem;
+            z-index: 3;
         }
 
         .portfolio-card:hover .thumb .overlay {
@@ -400,79 +583,239 @@
             width: 48px;
             height: 48px;
             border-radius: 14px;
-            background: rgba(224, 68, 125, 0.15);
-            backdrop-filter: blur(8px);
+            background: rgba(224, 68, 125, 0.20);
+            backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.4s ease;
+            transform: translateY(8px);
         }
 
         .portfolio-card:hover .thumb .icon-wrap {
-            background: rgba(224, 68, 125, 0.30);
-            transform: scale(1.05);
+            background: rgba(224, 68, 125, 0.35);
+            transform: translateY(0) scale(1.05);
         }
 
+        /* Badge — glass pill */
         .portfolio-card .badge {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            z-index: 2;
-            padding: 0.3rem 0.9rem;
+            z-index: 4;
+            padding: 0.35rem 0.9rem;
             border-radius: 100px;
             font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            backdrop-filter: blur(8px);
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(14px) saturate(180%);
+            background: rgba(11, 6, 26, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
             color: #C7B3D9;
         }
 
         .badge-graphics {
-            border-color: rgba(255, 165, 82, 0.3);
+            border-color: rgba(255, 165, 82, 0.35);
             color: #FFA552;
+            background: rgba(255, 165, 82, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 200, 150, 0.18);
         }
 
         .badge-video {
-            border-color: rgba(224, 68, 125, 0.3);
+            border-color: rgba(224, 68, 125, 0.35);
             color: #E0447D;
+            background: rgba(224, 68, 125, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 150, 190, 0.18);
         }
 
         .badge-web {
-            border-color: rgba(122, 63, 166, 0.3);
-            color: #7A3FA6;
+            border-color: rgba(122, 63, 166, 0.45);
+            color: #B07FDC;
+            background: rgba(122, 63, 166, 0.14);
+            box-shadow: inset 0 1px 0 rgba(180, 140, 230, 0.18);
         }
 
-        /* ── Category Tabs ── */
+        /* Card body */
+        .portfolio-card .card-body {
+            padding: 1.35rem 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Card CTA (glass pill button) */
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #FFA552;
+            margin-top: 0.85rem;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: all 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .portfolio-card:hover .card-cta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-cta svg {
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover .card-cta svg {
+            transform: translateX(3px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FEATURED CARD
+           ═══════════════════════════════════════════════════════════════ */
+        .portfolio-card.featured {
+            border-color: rgba(255, 165, 82, 0.18);
+            border-top-color: rgba(255, 165, 82, 0.30);
+            background: linear-gradient(155deg,
+                    rgba(30, 22, 60, 0.78) 0%,
+                    rgba(18, 13, 36, 0.62) 50%,
+                    rgba(30, 22, 60, 0.72) 100%);
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-card.featured {
+                grid-column: span 2;
+                display: grid;
+                grid-template-columns: 1.35fr 1fr;
+            }
+
+            .portfolio-card.featured .thumb {
+                aspect-ratio: auto;
+                height: 100%;
+                min-height: 340px;
+            }
+
+            .portfolio-card.featured .card-body {
+                padding: 2.25rem 2rem;
+                justify-content: center;
+            }
+
+            .portfolio-card.featured .featured-title {
+                font-size: 1.6rem;
+                line-height: 1.15;
+            }
+
+            .portfolio-card.featured .featured-desc {
+                font-size: 0.95rem;
+                line-height: 1.65;
+            }
+        }
+
+        .featured-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #FFA552;
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            background: rgba(255, 165, 82, 0.10);
+            border: 1px solid rgba(255, 165, 82, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 200, 150, 0.15);
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .featured-eyebrow .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #FFA552;
+            box-shadow: 0 0 10px #FFA552;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CATEGORY TABS — GLASS PILLS
+           ═══════════════════════════════════════════════════════════════ */
         .category-tab {
-            padding: 0.6rem 1.6rem;
+            padding: 0.65rem 1.7rem;
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 600;
+            letter-spacing: 0.02em;
             transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.015));
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-top-color: rgba(255, 255, 255, 0.13);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
             color: #8E7AA3;
             cursor: pointer;
             user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tab::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%,
+                    rgba(224, 68, 125, 0.18),
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .category-tab:hover {
             color: #fff;
-            border-color: rgba(255, 255, 255, 0.10);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.08),
+                    rgba(255, 255, 255, 0.025));
+            transform: translateY(-2px);
         }
 
         .category-tab.active {
-            background: rgba(224, 68, 125, 0.15);
-            border-color: rgba(224, 68, 125, 0.30);
+            background: linear-gradient(135deg,
+                    rgba(224, 68, 125, 0.20),
+                    rgba(122, 63, 166, 0.14));
+            border-color: rgba(224, 68, 125, 0.40);
+            border-top-color: rgba(255, 165, 82, 0.45);
             color: #fff;
-            box-shadow: 0 0 30px rgba(224, 68, 125, 0.06);
+            box-shadow:
+                0 0 32px rgba(224, 68, 125, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.18);
         }
 
-        /* ── Scroll Reveal ── */
+        .category-tab.active::before {
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SCROLL REVEAL
+           ═══════════════════════════════════════════════════════════════ */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -501,13 +844,16 @@
             transition-delay: 0.32s;
         }
 
-        /* ── Lightbox & Gallery ── */
+        /* ═══════════════════════════════════════════════════════════════
+           LIGHTBOX & GALLERY
+           ═══════════════════════════════════════════════════════════════ */
         .lightbox-overlay {
             position: fixed;
             inset: 0;
             z-index: 999;
             background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -529,19 +875,21 @@
             position: relative;
             transform: scale(0.92);
             transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+            background: linear-gradient(155deg,
+                    rgba(26, 20, 53, 0.92) 0%,
+                    rgba(18, 13, 36, 0.88) 100%) !important;
+            backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top-color: rgba(255, 255, 255, 0.14);
+            box-shadow:
+                0 24px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .lightbox-overlay.active .lightbox-content {
             transform: scale(1);
         }
 
-        .lightbox-content {
-            background: rgba(18, 13, 36, 0.95) !important;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        /* Gallery grid images */
         #galleryGrid img {
             width: 100%;
             height: auto;
@@ -574,7 +922,9 @@
             opacity: 0.5;
         }
 
-        /* ── Marquee ── */
+        /* ═══════════════════════════════════════════════════════════════
+           MARQUEE
+           ═══════════════════════════════════════════════════════════════ */
         @keyframes marqueeScroll {
             0% {
                 transform: translateX(0);
@@ -593,7 +943,6 @@
             animation-play-state: paused;
         }
 
-        /* ── Carousel ── */
         .carousel-track {
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -603,7 +952,6 @@
             display: none;
         }
 
-        /* ── Scrollbar ── */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -617,18 +965,15 @@
             border-radius: 4px;
         }
 
-        /* ── Section wrap ── */
         .section-wrap {
             position: relative;
             z-index: 1;
         }
 
-        /* ── Timeline ── */
         .timeline-line {
             border-left: 1.5px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* ── Link style ── */
         .project-link {
             color: #C7B3D9;
             text-decoration: none;
@@ -649,7 +994,6 @@
             flex-shrink: 0;
         }
 
-        /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -662,15 +1006,17 @@
             }
         }
 
-        /* ===== MODAL OVERLAY ===== */
+        /* ═══════════════════════════════════════════════════════════════
+           MODAL
+           ═══════════════════════════════════════════════════════════════ */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 99999;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px) saturate(160%);
+            -webkit-backdrop-filter: blur(10px) saturate(160%);
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -681,21 +1027,25 @@
             display: flex;
         }
 
-        /* ===== MODAL CONTENT ===== */
         .modal-content {
             position: relative;
-            background: #1a1a2e;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(155deg,
+                    rgba(26, 22, 46, 0.92) 0%,
+                    rgba(18, 13, 36, 0.88) 100%);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-top-color: rgba(255, 255, 255, 0.16);
             border-radius: 24px;
             padding: 40px 36px 32px;
             max-width: 460px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+            box-shadow:
+                0 24px 80px rgba(0, 0, 0, 0.65),
+                inset 0 1px 0 rgba(255, 255, 255, 0.10);
             animation: modalSlideUp 0.35s ease;
         }
 
-        /* ===== CLOSE BUTTON ===== */
         .modal-close {
             position: absolute;
             top: 16px;
@@ -719,19 +1069,21 @@
             transform: rotate(90deg);
         }
 
-        /* ===== MODAL ICON ===== */
         .modal-icon {
             width: 72px;
             height: 72px;
             border-radius: 50%;
             background: rgba(224, 68, 125, 0.12);
+            border: 1px solid rgba(224, 68, 125, 0.22);
+            box-shadow:
+                0 0 40px rgba(224, 68, 125, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.10);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 18px;
         }
 
-        /* ===== MODAL TITLE ===== */
         .modal-title {
             font-size: 20px;
             font-weight: 700;
@@ -740,7 +1092,6 @@
             letter-spacing: -0.3px;
         }
 
-        /* ===== MODAL MESSAGE ===== */
         .modal-message {
             font-size: 15px;
             line-height: 1.7;
@@ -748,7 +1099,6 @@
             margin-bottom: 20px;
         }
 
-        /* ===== MODAL FOOTER NOTE ===== */
         .modal-footer-note {
             font-size: 13px;
             color: #8b949e;
@@ -769,7 +1119,6 @@
             text-decoration: underline;
         }
 
-        /* ===== ANIMATIONS ===== */
         @keyframes modalFadeIn {
             from {
                 opacity: 0;
@@ -792,7 +1141,6 @@
             }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             .modal-content {
                 padding: 32px 24px 28px;
@@ -806,31 +1154,85 @@
                 font-size: 14px;
             }
         }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LOAD MORE BUTTON
+           ═══════════════════════════════════════════════════════════════ */
+        .load-more-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.06),
+                    rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(14px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-top-color: rgba(255, 255, 255, 0.16);
+            box-shadow:
+                0 6px 24px rgba(0, 0, 0, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: #C7B3D9;
+            margin: 3rem auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .load-more-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 165, 82, 0.35);
+            background: linear-gradient(135deg,
+                    rgba(255, 165, 82, 0.12),
+                    rgba(224, 68, 125, 0.08));
+            box-shadow:
+                0 0 40px rgba(255, 165, 82, 0.12),
+                0 6px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .load-more-btn svg {
+            transition: transform 0.35s ease;
+        }
+
+        .load-more-btn:hover svg {
+            transform: translateY(2px);
+        }
+
+        @media (max-width: 640px) {
+            .load-more-btn {
+                width: 100%;
+            }
+        }
     </style>
 
-    <!-- LR Favicon (appears in browser tab before the text) -->
+    <!-- Favicon -->
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E0447D'/%3E%3Ctext x='50' y='50' font-family='Segoe UI, Arial, sans-serif' font-size='45' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'%3ELR%3C/text%3E%3C/svg%3E"
         type="image/svg+xml">
-
-    <!-- For Safari / iOS (Apple Touch Icon) -->
     <link rel="apple-touch-icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E0447D'/%3E%3Ctext x='50' y='50' font-family='Segoe UI, Arial, sans-serif' font-size='45' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'%3ELR%3C/text%3E%3C/svg%3E">
 </head>
 
 <body>
 
-    <!-- Background Texture -->
     <div class="bg-texture"></div>
 
     <!-- ============================================================ -->
     <!-- NAVIGATION                                                   -->
     <!-- ============================================================ -->
-    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-2xl shadow-black/30 w-auto max-w-[95vw]"
+    <nav class="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 glass glass-shine rounded-3xl px-5 sm:px-7 py-3 flex items-center gap-6 sm:gap-8 shadow-2xl shadow-black/30 w-auto max-w-[95vw]"
         id="mainNav" aria-label="Main navigation">
         <a href="#hero"
-            class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors duration-300 flex-shrink-0">LR</a>
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+            class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors duration-300 flex-shrink-0 relative z-10">LR</a>
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium relative z-10">
             <a href="#portfolio"
                 class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Portfolio</a>
             <a href="#skills"
@@ -843,10 +1245,10 @@
                 class="text-text-soft hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a>
         </div>
         <a href="#contact"
-            class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 flex-shrink-0">
+            class="hidden md:inline-flex bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 flex-shrink-0 relative z-10">
             Let's Talk
         </a>
-        <button class="md:hidden text-white p-1.5 flex-shrink-0" id="mobileMenuBtn" aria-label="Toggle menu"
+        <button class="md:hidden text-white p-1.5 flex-shrink-0 relative z-10" id="mobileMenuBtn" aria-label="Toggle menu"
             aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 id="menuIcon">
@@ -861,17 +1263,17 @@
     <div id="mobileMenu"
         class="hidden fixed top-20 left-4 right-4 z-50 glass rounded-3xl p-6 flex flex-col gap-3 text-center shadow-2xl transition-all duration-300 opacity-0 transform -translate-y-4">
         <a href="#portfolio"
-            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Portfolio</a>
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium relative z-10">Portfolio</a>
         <a href="#skills"
-            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Skills</a>
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium relative z-10">Skills</a>
         <a href="#experience"
-            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Experience</a>
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium relative z-10">Experience</a>
         <a href="#testimonials"
-            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">Testimonials</a>
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium relative z-10">Testimonials</a>
         <a href="#about"
-            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium">About</a>
+            class="text-text-soft hover:text-white transition-colors duration-300 py-2.5 text-base font-medium relative z-10">About</a>
         <a href="#contact"
-            class="bg-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 mt-2">Let's
+            class="bg-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-300 mt-2 relative z-10">Let's
             Talk</a>
     </div>
 
@@ -880,7 +1282,6 @@
     <!-- ============================================================ -->
     <section id="hero"
         class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 lg:px-16 pt-32 sm:pt-36 lg:pt-40 pb-12 section-wrap">
-        <!-- Background -->
         <div class="section-bg">
             <div class="orb w-[32rem] h-[32rem] bg-primary"
                 style="top:-10%; right:-8%; animation:pulseGlow 8s ease-in-out infinite;"></div>
@@ -917,7 +1318,6 @@
             </div>
         </div>
 
-        <!-- Content -->
         <div class="relative z-10 text-center max-w-4xl mx-auto w-full">
             <div
                 class="inline-flex items-center gap-2 glass-light rounded-full px-4 py-1.5 text-sm text-text-soft mb-10 reveal">
@@ -954,7 +1354,7 @@
                     </svg>
                 </a>
                 <a href="#contact"
-                    class="inline-flex items-center justify-center gap-2 glass-light hover:bg-white/7 text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5">
+                    class="inline-flex items-center justify-center gap-2 glass-light glass-shine hover:bg-white/7 text-white px-8 py-4 rounded-2xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 relative z-10">
                     Start a Conversation
                 </a>
             </div>
@@ -962,7 +1362,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PORTFOLIO — Main Focus                                       -->
+    <!-- PORTFOLIO — REVAMPED                                         -->
     <!-- ============================================================ -->
     <section id="portfolio" class="py-28 px-6 lg:px-16 relative z-10 bg-bg-mid section-wrap overflow-hidden">
         <div class="section-bg">
@@ -1002,10 +1402,10 @@
             <!-- Portfolio Grid -->
             <div class="portfolio-grid reveal reveal-delay-2" id="portfolioGrid">
 
-                <!-- ─── GALLERY CARDS ─── -->
-
-                <!-- 1. Sport Court Ontario -->
-                <div class="portfolio-card" data-category="graphics" data-gallery="true"
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- FEATURED — Sport Court Ontario (first card)         -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <div class="portfolio-card featured" data-category="graphics" data-gallery="true"
                     data-gallery-title="Sport Court Ontario Campaigns" data-gallery-cat="Graphics • Social Media"
                     data-gallery-desc="A collection of social media graphics, reels, event exhibits, and promotional content for Sport Court Ontario."
                     data-images='[
@@ -1039,19 +1439,34 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">01</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Sport Court Ontario Campaigns</h3>
-                        <p class="text-text-soft text-sm">Social media graphics, reels, and event exhibits</p>
-                        <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Facebook</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Instagram</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Canva</span>
+                    <div class="card-body">
+                        <span class="featured-eyebrow"><span class="dot"></span>Featured Project</span>
+                        <h3 class="featured-title text-xl font-bold mb-2 leading-tight">Sport Court Ontario Campaigns</h3>
+                        <p class="featured-desc text-text-soft text-sm leading-relaxed">
+                            A full social media campaign for Sport Court Ontario — featuring reels, event exhibits,
+                            promotional graphics, and branded content designed to drive engagement across Facebook and
+                            Instagram.
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Facebook</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Instagram</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Canva</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Reels</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-                <!-- 2. The Light Publication (SEPARATE FOLDER) -->
+                <!-- 2. The Light Publication -->
                 <div class="portfolio-card" data-category="graphics" data-gallery="true"
                     data-gallery-title="The Light Publication" data-gallery-cat="Graphics • Editorial &amp; Video"
                     data-gallery-desc="Editorial graphics, posters, and promotional assets for The Light Publication. (Includes a short video highlight.)"
@@ -1079,15 +1494,25 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">02</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">The Light Publication</h3>
-                        <p class="text-text-soft text-sm">Editorial graphics, posters, and promotional assets</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">The Light Publication</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Editorial graphics, posters, and promotional
+                            assets</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Print</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Social</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Video</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Print</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Social</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Video</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
@@ -1119,14 +1544,23 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">03</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Social Edge Campaigns</h3>
-                        <p class="text-text-soft text-sm">Brand graphics and social media assets</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Social Edge Campaigns</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Brand graphics and social media assets</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Instagram</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Facebook</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Instagram</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Facebook</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
@@ -1156,14 +1590,23 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">04</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Medicard Design Assets</h3>
-                        <p class="text-text-soft text-sm">Medical card designs, promotional materials</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Medicard Design Assets</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Medical card designs, promotional materials</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Print</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Print</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
@@ -1193,14 +1636,23 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">05</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">PcByte Graphics</h3>
-                        <p class="text-text-soft text-sm">Branding and promotional graphics</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">PcByte Graphics</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Branding and promotional graphics</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Tech</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Tech</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Branding</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
@@ -1230,18 +1682,27 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">06</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Shirt Designs</h3>
-                        <p class="text-text-soft text-sm">Custom apparel designs</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Shirt Designs</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Custom apparel designs</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Apparel</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Custom</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Apparel</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Custom</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-                <!-- 7. Others (Miscellaneous Graphics) — with custom logo -->
+                <!-- 7. Others -->
                 <div class="portfolio-card" data-category="graphics" data-gallery="true"
                     data-gallery-title="Other Graphics" data-gallery-cat="Graphics • Miscellaneous"
                     data-gallery-desc="Various design projects including logos, posters, tarpaulins, and event materials."
@@ -1257,28 +1718,22 @@
                          "Graphics/Others/TSC_2.webp"
                      ]'>
                     <div class="thumb">
-                        <!-- Custom "Others" logo: stylized "O" with geometric flair -->
                         <div class="others-logo-wrap">
                             <svg class="others-logo-svg" viewBox="0 0 200 200" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <!-- Outer ring -->
                                 <circle cx="100" cy="100" r="86" stroke="url(#othersGrad)" stroke-width="3.5"
                                     opacity="0.5" />
                                 <circle cx="100" cy="100" r="72" stroke="url(#othersGrad)" stroke-width="2"
                                     opacity="0.3" stroke-dasharray="12 8" />
-                                <!-- Inner diamond -->
                                 <rect x="56" y="56" width="88" height="88" rx="16" stroke="url(#othersGrad)"
                                     stroke-width="2.8" opacity="0.4" transform="rotate(12 100 100)" />
-                                <!-- Stylized "O" letter -->
                                 <text x="100" y="118" font-family="Inter, system-ui, sans-serif" font-size="70"
                                     font-weight="800" fill="url(#othersGrad)" text-anchor="middle"
                                     dominant-baseline="middle" opacity="0.9">O</text>
-                                <!-- Accent dots -->
                                 <circle cx="48" cy="48" r="6" fill="#FFA552" opacity="0.3" />
                                 <circle cx="152" cy="48" r="5" fill="#E0447D" opacity="0.25" />
                                 <circle cx="48" cy="152" r="5" fill="#7A3FA6" opacity="0.25" />
                                 <circle cx="152" cy="152" r="6" fill="#FFA552" opacity="0.3" />
-                                <!-- Gradient definitions -->
                                 <defs>
                                     <linearGradient id="othersGrad" x1="0" y1="0" x2="200" y2="200">
                                         <stop offset="0%" stop-color="#E0447D" />
@@ -1299,38 +1754,38 @@
                             </div>
                         </div>
                         <span class="badge badge-graphics">Graphics</span>
+                        <span class="card-number">07</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Other Graphics</h3>
-                        <p class="text-text-soft text-sm">Logos, posters, tarpaulins, and event materials</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Other Graphics</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Logos, posters, tarpaulins, and event materials
+                        </p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Logos</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Posters</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Print</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Logos</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Posters</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Print</span>
                         </div>
+                        <span class="card-cta">
+                            View Gallery
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-
-                <!-- ============================================================ -->
-                <!-- VIDEO PORTFOLIO CARDS — add these inside #portfolioGrid       -->
-                <!-- after the existing cards and before the closing </div>        -->
-                <!-- ============================================================ -->
-
-                <!-- ─── VIDEO PROJECTS ─── -->
-
-                <!-- 1. Short Form: Sport Court Reels -->
+                <!-- VIDEO 1. Short Form: Sport Court Reels -->
                 <div class="portfolio-card" data-category="video" data-gallery="true"
                     data-gallery-title="Short Form Videos" data-gallery-cat="Short Form • Social Media"
                     data-gallery-desc="A collection of short-form video reels created for Sport Court Ontario's social media channels — featuring event highlights, promotional clips, and behind-the-scenes content."
                     data-videos='["Videos/SF_4.mp4","Videos/SF_5.mp4","Videos/SF_6.mp4","Videos/SF_7.mp4","Videos/SF_8.mp4","Videos/SF_1.mp4","Videos/SF_3.mp4"]'>
                     <div class="thumb">
-                        <!-- Video thumbnail (shows first frame) -->
                         <img src="Thumbnails/SF_Thumb.webp" alt="AG Thumbnail" class="w-full h-full object-cover">
-                        <!-- Play icon overlay -->
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                             <div
-                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                class="w-16 h-16 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border-2 border-white/40 shadow-2xl">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
@@ -1345,28 +1800,36 @@
                             </div>
                         </div>
                         <span class="badge badge-video">Short Form</span>
+                        <span class="card-number">08</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Short Form Reels</h3>
-                        <p class="text-text-soft text-sm">Short-form social media reels &amp; highlights</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Short Form Reels</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">Short-form social media reels &amp; highlights
+                        </p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Reels</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Instagram</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Shorts</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Reels</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Instagram</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Shorts</span>
                         </div>
+                        <span class="card-cta">
+                            Play Videos
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-                <!-- 2. AI Video Generation -->
+                <!-- VIDEO 2. AI Video Generation -->
                 <div class="portfolio-card" data-category="video" data-gallery="true"
                     data-gallery-title="AI Video Campaigns" data-gallery-cat="AI Video Generation • Brand Content"
                     data-gallery-desc="AI-assisted video content generation for brand campaigns — leveraging AI tools for concept development, voice synthesis, and automated editing workflows."
                     data-videos='["Videos/AI_1.mp4","Videos/AI_2.mp4","Videos/AI_3.mp4","Videos/AI_4.mp4"]'>
                     <div class="thumb">
                         <img src="Thumbnails/AI_Thumb.webp" alt="AG Thumbnail" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                             <div
-                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                class="w-16 h-16 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border-2 border-white/40 shadow-2xl">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
@@ -1381,28 +1844,36 @@
                             </div>
                         </div>
                         <span class="badge badge-video">AI Video Generation</span>
+                        <span class="card-number">09</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">AI Video Campaigns</h3>
-                        <p class="text-text-soft text-sm">AI-generated brand videos &amp; concept development</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">AI Video Campaigns</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">AI-generated brand videos &amp; concept
+                            development</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">AI</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Automation</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">AI</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Automation</span>
                         </div>
+                        <span class="card-cta">
+                            Play Videos
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-                <!-- 2. AI Asset Generation -->
+                <!-- VIDEO 3. AI Asset Generation -->
                 <div class="portfolio-card" data-category="video" data-gallery="true"
                     data-gallery-title="AI Video Campaigns" data-gallery-cat="AI Video Generation • Brand Content"
                     data-gallery-desc="AI-assisted video content generation for brand campaigns — leveraging AI tools for concept development, voice synthesis, and automated editing workflows."
                     data-videos='["Videos/Assets/Shot2.mp4","Videos/Assets/Shot3.mp4","Videos/Assets/Shot4.mp4","Videos/Assets/Shot5.mp4", "Videos/Assets/Shot6.mp4","Videos/Assets/Shot7.mp4", "Videos/Assets/Shot8.mp4", "Videos/Assets/Shot9.mp4", "Videos/Assets/Shot10.mp4", "Videos/Assets/Shot11.mp4", "Videos/Assets/Shot12.mp4"]'>
                     <div class="thumb">
                         <img src="Thumbnails/AG_Thumb.webp" alt="AG Thumbnail" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                             <div
-                                class="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                                class="w-16 h-16 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border-2 border-white/40 shadow-2xl">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                                     <polygon points="5 3 19 12 5 21 5 3" />
                                 </svg>
@@ -1417,32 +1888,33 @@
                             </div>
                         </div>
                         <span class="badge badge-video">AI Asset Generation</span>
+                        <span class="card-number">10</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">AI Asset Generation</h3>
-                        <p class="text-text-soft text-sm">AI-generated brand videos &amp; concept development</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">AI Asset Generation</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">AI-generated brand videos &amp; concept
+                            development</p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">AI</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Branding</span>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Automation</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">AI</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Branding</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Automation</span>
                         </div>
+                        <span class="card-cta">
+                            Play Videos
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
 
-                <!-- ─── WEB PROJECTS ─── -->
-
-                <!-- Atlas Edge Global -->
+                <!-- WEB 1. Atlas Edge Global -->
                 <div class="portfolio-card" data-category="web" data-title="Atlas Edge Global Website"
                     data-cat="Web Project" data-unavailable="true"
                     data-desc="Responsive Wix site with workflow and email automation, improving lead generation and operational efficiency. Dec 2025 – Jan 2026.">
-
-                    <!-- Thumbnail / Preview -->
                     <div class="thumb">
-                        <!-- 🖼️ Replace the SVG with your actual image -->
                         <img src="Logo/AE.webp" alt="Atlas Edge Global Website screenshot"
                             class="w-full h-full object-cover">
-
-                        <!-- Overlay (magnifying glass – stays on top) -->
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6"
@@ -1454,23 +1926,15 @@
                                 </svg>
                             </div>
                         </div>
-
-                        <!-- Badge -->
                         <span class="badge badge-web">Web</span>
+                        <span class="card-number">11</span>
                     </div>
-
-                    <!-- Content -->
-                    <div class="p-5">
-                        <!-- Title -->
-                        <h3 class="text-lg font-bold mb-0.5">Atlas Edge Global Website</h3>
-
-                        <!-- Description -->
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Atlas Edge Global Website</h3>
                         <p class="text-text-soft text-sm leading-relaxed">
                             Responsive Wix site with workflow and email automation, improving lead generation and
                             operational efficiency.
                         </p>
-
-                        <!-- Timeline -->
                         <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -1479,8 +1943,6 @@
                             </svg>
                             <span>Dec 2025 – Jan 2026</span>
                         </div>
-
-                        <!-- Link + Tech tag -->
                         <div class="mt-3 flex items-center justify-between">
                             <a href="#" class="project-link unavailable-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
@@ -1491,23 +1953,18 @@
                                 </svg>
                                 Unavailable for Public Viewing
                             </a>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Wix Studio</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Wix Studio</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- ABECON 2025 -->
+                <!-- WEB 2. ABECON 2025 -->
                 <div class="portfolio-card" data-category="web" data-title="ABECON 2025 Convention Platform"
                     data-cat="Web Project"
                     data-desc="Led UI/UX design and front-end development for a convention platform covering registration, attendance tracking, e-commerce, online voting, and vote tabulation. Sep – Nov 2025.">
-
-                    <!-- ===== THUMBNAIL (with image placeholder) ===== -->
                     <div class="thumb">
-                        <!-- 🖼️ Replace src with your actual screenshot or logo -->
                         <img src="Thumbnails/Abecon.webp" alt="ABECON 2025 Convention Platform screenshot"
                             class="w-full h-full object-cover">
-
-                        <!-- Overlay (magnifying glass) -->
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
@@ -1519,23 +1976,15 @@
                                 </svg>
                             </div>
                         </div>
-
-                        <!-- Badge -->
                         <span class="badge badge-web">Web</span>
+                        <span class="card-number">12</span>
                     </div>
-
-                    <!-- ===== CONTENT ===== -->
-                    <div class="p-5">
-                        <!-- Title -->
-                        <h3 class="text-lg font-bold mb-0.5">ABECON 2025 Convention Platform</h3>
-
-                        <!-- Full Description -->
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">ABECON 2025 Convention Platform</h3>
                         <p class="text-text-soft text-sm leading-relaxed">
                             Led UI/UX design and front-end development for a convention platform covering registration,
                             attendance tracking, e-commerce, online voting, and vote tabulation.
                         </p>
-
-                        <!-- Timeline -->
                         <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -1544,8 +1993,6 @@
                             </svg>
                             <span>Sep – Nov 2025</span>
                         </div>
-
-                        <!-- Link + Tech tag -->
                         <div class="mt-3 flex items-center justify-between">
                             <a href="https://abeconmindanao.com/" class="project-link" target="_blank">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
@@ -1556,45 +2003,35 @@
                                 </svg>
                                 Live Project
                             </a>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">UI/UX</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">UI/UX</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Smart Cacao System -->
+                <!-- WEB 3. Smart Cacao System -->
                 <div class="portfolio-card" data-category="web" data-title="Smart Cacao System (DOST-PCAARD)"
                     data-cat="Web Project" data-unavailable="true"
                     data-desc="Led front-end development and UI/UX design for an IoT-based cacao monitoring platform, implementing algorithms to process real-time sensor data. Jun – Sep 2025.">
                     <div class="thumb">
-
-                        <!-- ===== THUMBNAIL (with image placeholder) ===== -->
-                        <div class="thumb">
-                            <!-- 🖼️ Replace src with your actual screenshot or logo -->
-                            <img src="Thumbnails/Smart.webp" alt="Smart Cacao System screenshot"
-                                class="w-full h-full object-cover">
-
-                            <!-- Overlay (magnifying glass) -->
-                            <div class="overlay">
-                                <div class="icon-wrap">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
-                                        stroke-width="2">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <line x1="2" y1="12" x2="22" y2="12" />
-                                        <path
-                                            d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-                                    </svg>
-                                </div>
+                        <img src="Thumbnails/Smart.webp" alt="Smart Cacao System screenshot"
+                            class="w-full h-full object-cover">
+                        <div class="overlay">
+                            <div class="icon-wrap">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA552"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                                </svg>
                             </div>
-
-                            <!-- Badge -->
-                            <span class="badge badge-web">Web</span>
                         </div>
-
+                        <span class="badge badge-web">Web</span>
+                        <span class="card-number">13</span>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-bold mb-0.5">Smart Cacao System</h3>
-
-                        <p class="text-text-soft text-sm">IoT monitoring platform · DOST-PCAARD</p>
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">Smart Cacao System</h3>
+                        <p class="text-text-soft text-sm leading-relaxed">IoT monitoring platform · DOST-PCAARD</p>
                         <div class="mt-3 flex items-center gap-4">
                             <a href="#" class="project-link unavailable-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1604,21 +2041,18 @@
                                 </svg>
                                 Unavailable for Public Viewing
                             </a>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">IoT</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">IoT</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- PcByte -->
+                <!-- WEB 4. PcByte -->
                 <div class="portfolio-card" data-category="web" data-title="PcByte Integrated System"
                     data-cat="Web Project" data-unavailable="true"
                     data-desc="Developed an integrated business management system with POS, inventory, and stock modules, plus sales analytics and financial reporting features. Jun – Jul 2023.">
-
-                    <!-- ===== THUMBNAIL ===== -->
                     <div class="thumb">
                         <img src="Thumbnails/PcByte.webp" alt="PcByte Integrated System screenshot"
                             class="w-full h-full object-cover">
-
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8"
@@ -1630,22 +2064,15 @@
                                 </svg>
                             </div>
                         </div>
-
                         <span class="badge badge-web">Web</span>
+                        <span class="card-number">14</span>
                     </div>
-
-                    <!-- ===== CONTENT (SINGLE .p-5) ===== -->
-                    <div class="p-5">
-                        <!-- Title -->
-                        <h3 class="text-lg font-bold mb-0.5">PcByte Integrated System</h3>
-
-                        <!-- Description -->
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">PcByte Integrated System</h3>
                         <p class="text-text-soft text-sm leading-relaxed">
                             Developed an integrated business management system with POS, inventory, and stock modules,
                             plus sales analytics and financial reporting features.
                         </p>
-
-                        <!-- Timeline -->
                         <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -1654,8 +2081,6 @@
                             </svg>
                             <span>Jun – Jul 2023</span>
                         </div>
-
-                        <!-- Link + Tech tag -->
                         <div class="mt-3 flex items-center justify-between">
                             <a href="#" class="project-link unavailable-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
@@ -1666,21 +2091,17 @@
                                 </svg>
                                 Unavailable for Public Viewing
                             </a>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">POS</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">POS</span>
                         </div>
                     </div>
-                    <!-- ✅ .p-5 is properly closed here -->
                 </div>
 
-                <!-- BrailleVox -->
+                <!-- WEB 5. BrailleVox -->
                 <div class="portfolio-card" data-category="web"
                     data-title="BrailleVox: A Smart Braille-Based Learning System" data-cat="Web Project"
                     data-desc="An interactive braille-learning platform combining audio feedback, gamified exercises, and real-time progress tracking to make literacy accessible for visually impaired learners. Jun – Jul 2023.">
-
-                    <!-- ===== THUMBNAIL ===== -->
                     <div class="thumb">
                         <img src="Thumbnails/BrailleVox.webp" alt="BrailleVox" class="w-full h-full object-cover">
-
                         <div class="overlay">
                             <div class="icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B95BA8"
@@ -1692,22 +2113,15 @@
                                 </svg>
                             </div>
                         </div>
-
                         <span class="badge badge-web">Web</span>
+                        <span class="card-number">15</span>
                     </div>
-
-                    <!-- ===== CONTENT (SINGLE .p-5) ===== -->
-                    <div class="p-5">
-                        <!-- Title -->
-                        <h3 class="text-lg font-bold mb-0.5">BrailleVox: A Smart Braille-Based Learning System</h3>
-
-                        <!-- Description -->
+                    <div class="card-body">
+                        <h3 class="text-lg font-bold mb-1">BrailleVox: A Smart Braille-Based Learning System</h3>
                         <p class="text-text-soft text-sm leading-relaxed">
                             An interactive braille-learning platform combining audio feedback, gamified exercises, and
                             real-time progress tracking to make literacy accessible for visually impaired learners.
                         </p>
-
-                        <!-- Timeline -->
                         <div class="mt-2 flex items-center gap-2 text-xs text-text-muted">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -1716,8 +2130,6 @@
                             </svg>
                             <span>Jun – Jul 2023</span>
                         </div>
-
-                        <!-- Link + Tech tag -->
                         <div class="mt-3 flex items-center justify-between">
                             <a href="https://braillevox.com/" class="project-link" target="_blank">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
@@ -1728,11 +2140,11 @@
                                 </svg>
                                 View Project
                             </a>
-                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full">Education</span>
+                            <span class="text-xs text-text-muted bg-white/5 px-3 py-1 rounded-full border border-white/5">Education</span>
                         </div>
                     </div>
-                    <!-- ✅ .p-5 is properly closed here -->
                 </div>
+
             </div>
         </div>
     </section>
@@ -1743,27 +2155,23 @@
             // ─── LOAD MORE FUNCTIONALITY ───
             const grid = document.getElementById('portfolioGrid');
             const cards = grid ? Array.from(grid.querySelectorAll('.portfolio-card')) : [];
-            const INITIAL_VISIBLE = 6; // number of cards shown on load
-            const STEP = 4; // number of cards added per "Load More" click
+            const INITIAL_VISIBLE = 6;
+            const STEP = 4;
 
             let visibleCount = Math.min(INITIAL_VISIBLE, cards.length);
             let loadMoreBtn = null;
 
-            // Only proceed if we have more cards than the initial visible count
             if (cards.length > INITIAL_VISIBLE) {
 
-                // 1. Hide all cards beyond the initial count
                 cards.forEach((card, index) => {
                     if (index >= INITIAL_VISIBLE) {
                         card.style.display = 'none';
                     }
                 });
 
-                // 2. Create the "Load More" button
                 loadMoreBtn = document.createElement('button');
                 loadMoreBtn.id = 'loadMoreBtn';
-                loadMoreBtn.className =
-                    'load-more-btn mx-auto mt-12 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-text-soft hover:bg-white/10 hover:border-accent/30 transition-all duration-300 text-sm font-medium flex items-center gap-2';
+                loadMoreBtn.className = 'load-more-btn';
                 loadMoreBtn.innerHTML = `
                         Load More
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -1771,10 +2179,8 @@
                         </svg>
                     `;
 
-                // Insert after the grid
                 grid.parentNode.insertBefore(loadMoreBtn, grid.nextSibling);
 
-                // 3. Click handler
                 loadMoreBtn.addEventListener('click', function () {
                     const hiddenCards = cards.filter((card, index) => index >= visibleCount && card.style
                         .display === 'none');
@@ -1786,52 +2192,37 @@
 
                     visibleCount += toShow.length;
 
-                    // If no more hidden cards, remove the button
                     if (visibleCount >= cards.length) {
                         loadMoreBtn.remove();
                     }
                 });
 
-                // 4. Handle filter/tab changes: reset visibility
-                // We need to hook into your existing filter logic.
-                // Since you already have category tabs, we'll patch the filter behavior.
                 const tabs = document.querySelectorAll('.category-tab');
                 tabs.forEach(tab => {
                     tab.addEventListener('click', function () {
-                        // Let the original filter logic run first (it uses your existing code)
-                        // Then we re-apply our visibility rules.
-                        // We'll use a MutationObserver or a small delay to run after filter.
                         setTimeout(() => {
                             applyLoadMoreAfterFilter();
                         }, 50);
                     });
                 });
 
-                // Helper: re-apply load-more visibility after filter
                 function applyLoadMoreAfterFilter() {
                     const visibleCards = cards.filter(card => card.style.display !== 'none');
-                    // If after filtering we have fewer than INITIAL_VISIBLE, show all
                     if (visibleCards.length <= INITIAL_VISIBLE) {
-                        // Show all visible cards
                         cards.forEach(card => {
                             if (card.style.display !== 'none') {
                                 card.style.display = '';
                             }
                         });
-                        // Hide the load more button if it exists
                         if (loadMoreBtn) loadMoreBtn.style.display = 'none';
                         return;
                     }
 
-                    // Reset: hide all, then show first INITIAL_VISIBLE of the filtered set
                     const filteredCards = cards.filter(card => card.style.display !== 'none');
-                    // Hide all filtered cards first
                     filteredCards.forEach(card => { card.style.display = 'none'; });
-                    // Show first INITIAL_VISIBLE
                     filteredCards.slice(0, INITIAL_VISIBLE).forEach(card => { card.style.display = ''; });
                     visibleCount = Math.min(INITIAL_VISIBLE, filteredCards.length);
 
-                    // Show load more button if there are more hidden cards
                     if (loadMoreBtn) {
                         if (filteredCards.length > INITIAL_VISIBLE) {
                             loadMoreBtn.style.display = 'flex';
@@ -1841,43 +2232,19 @@
                     }
                 }
 
-                // Expose the helper so it can be called from your existing filter logic
                 window.applyLoadMoreAfterFilter = applyLoadMoreAfterFilter;
-
-                // Also, we need to override your existing filter to call our helper.
-                // Your filter uses data-filter attribute. We'll patch it.
-                // We'll use a more robust approach: listen for clicks on tabs and re-apply.
-                // But since your filter logic might be in a separate script, we'll use
-                // MutationObserver on the grid to detect when cards change visibility.
-                // Simpler: we'll just re-run after any click on a tab.
-
-                // Already set up above with setTimeout.
-
             } else {
-                // If there are fewer cards than INITIAL_VISIBLE, no load more needed.
-                // But we still want to handle filter resets.
-                // We'll just ensure all cards are shown.
                 cards.forEach(card => { card.style.display = ''; });
             }
 
-            // ─── FALLBACK: ensure load more works with your existing filter logic ───
-            // Your existing filter likely toggles display:none/block on cards.
-            // We'll use a MutationObserver on the grid to detect changes and re-apply
-            // our load-more visibility rules.
-
             const observer = new MutationObserver(() => {
-                // Only if loadMoreBtn exists and is visible
                 if (loadMoreBtn && loadMoreBtn.style.display !== 'none') {
-                    // Count how many cards are currently visible (not display:none)
                     const currentlyVisible = cards.filter(c => c.style.display !== 'none' && c.style.display !== '');
                     if (currentlyVisible.length <= INITIAL_VISIBLE) {
-                        // Show all that are visible
                         currentlyVisible.forEach(c => { c.style.display = ''; });
                         if (loadMoreBtn) loadMoreBtn.style.display = 'none';
                     } else {
-                        // Hide all visible cards beyond INITIAL_VISIBLE
                         currentlyVisible.slice(INITIAL_VISIBLE).forEach(c => { c.style.display = 'none'; });
-                        // Ensure first INITIAL_VISIBLE are shown
                         currentlyVisible.slice(0, INITIAL_VISIBLE).forEach(c => { c.style.display = ''; });
                         visibleCount = INITIAL_VISIBLE;
                         if (loadMoreBtn) loadMoreBtn.style.display = 'flex';
@@ -1885,7 +2252,6 @@
                 }
             });
 
-            // Observe the grid for attribute changes on children (style changes)
             if (grid) {
                 observer.observe(grid, {
                     attributes: false,
@@ -1895,13 +2261,8 @@
                 });
             }
 
-            // ─── ALSO patch your tab clicks explicitly ───
-            // Since we can't modify your original filter code directly, we'll
-            // add a second listener that runs after your filter.
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.addEventListener('click', function (e) {
-                    // Let the original handler run first (it's likely bound with addEventListener)
-                    // We'll use a microtask or setTimeout to run after.
                     setTimeout(() => {
                         if (window.applyLoadMoreAfterFilter) {
                             window.applyLoadMoreAfterFilter();
@@ -1910,33 +2271,6 @@
                 });
             });
 
-            // ─── STYLES FOR LOAD MORE BUTTON ───
-            const style = document.createElement('style');
-            style.textContent = `
-                    .load-more-btn {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 0.5rem;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    }
-                    .load-more-btn:hover svg {
-                        transform: translateY(2px);
-                    }
-                    .load-more-btn svg {
-                        transition: transform 0.3s ease;
-                    }
-                    @media (max-width: 640px) {
-                        .load-more-btn {
-                            width: 100%;
-                            padding: 0.75rem 1rem;
-                            font-size: 0.875rem;
-                        }
-                    }
-                `;
-            document.head.appendChild(style);
-
         });
     </script>
 
@@ -1944,7 +2278,7 @@
     <!-- LIGHTBOX (Single Image)                                     -->
     <!-- ============================================================ -->
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl"
+        <div class="lightbox-content rounded-3xl p-6 sm:p-8 max-w-3xl w-full"
             onclick="event.stopPropagation()">
             <button
                 class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
@@ -1970,10 +2304,10 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- GALLERY MODAL (for multiple images)                          -->
+    <!-- GALLERY MODAL                                                -->
     <!-- ============================================================ -->
     <div class="lightbox-overlay" id="galleryOverlay" onclick="closeGallery(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-6xl w-full shadow-2xl max-h-[90vh] overflow-y-auto"
+        <div class="lightbox-content rounded-3xl p-6 sm:p-8 max-w-6xl w-full max-h-[90vh] overflow-y-auto"
             onclick="event.stopPropagation()">
             <button
                 class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
@@ -1986,9 +2320,7 @@
             <span class="text-accent text-xs font-semibold tracking-widest uppercase" id="galleryCat">Graphics</span>
             <h3 class="text-2xl font-bold mt-2 mb-2" id="galleryTitle">Campaign Title</h3>
             <p class="text-text-soft text-sm leading-relaxed mb-6" id="galleryDesc">Description</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
-                <!-- images will be injected here -->
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid"></div>
             <div id="galleryFallback" class="hidden text-center py-12 text-text-soft">
                 <p>No images to display.</p>
             </div>
@@ -1996,10 +2328,10 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- VIDEO LIGHTBOX (plays MP4 and shows thumbnails)              -->
+    <!-- VIDEO LIGHTBOX                                               -->
     <!-- ============================================================ -->
     <div class="lightbox-overlay" id="videoLightboxOverlay" onclick="closeVideoLightbox(event)">
-        <div class="lightbox-content bg-bg-light rounded-3xl p-6 sm:p-8 max-w-5xl w-full shadow-2xl"
+        <div class="lightbox-content rounded-3xl p-6 sm:p-8 max-w-5xl w-full"
             onclick="event.stopPropagation()">
             <button
                 class="absolute top-4 right-4 w-10 h-10 rounded-full glass-light hover:bg-white/10 flex items-center justify-center z-10 transition-all duration-300"
@@ -2023,9 +2355,7 @@
                     <span>Select a video to play</span>
                 </div>
             </div>
-            <div class="mt-5 flex items-center gap-3 overflow-x-auto py-2 scroll-smooth" id="videoThumbnailStrip">
-                <!-- thumbnails injected here -->
-            </div>
+            <div class="mt-5 flex items-center gap-3 overflow-x-auto py-2 scroll-smooth" id="videoThumbnailStrip"></div>
         </div>
     </div>
 
@@ -2041,9 +2371,9 @@
                     content, and strategy.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-1 group cursor-default">
+                <div class="glass-light glass-shine rounded-3xl p-7 glow-hover reveal reveal-delay-1 group cursor-default relative z-10">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5 group-hover:bg-primary/25 transition-colors duration-300">
+                        class="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5 group-hover:bg-primary/25 transition-colors duration-300 border border-primary/20">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2">
                             <polyline points="16 18 22 12 16 6" />
                             <polyline points="8 6 2 12 8 18" />
@@ -2053,9 +2383,9 @@
                     <p class="text-text-soft text-sm leading-relaxed">HTML, CSS, JavaScript, Wix Studio, Git, database
                         management, workflow &amp; email automation.</p>
                 </div>
-                <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-2 group cursor-default">
+                <div class="glass-light glass-shine rounded-3xl p-7 glow-hover reveal reveal-delay-2 group cursor-default relative z-10">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:bg-accent/25 transition-colors duration-300">
+                        class="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:bg-accent/25 transition-colors duration-300 border border-accent/20">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 6v6l4 2" />
@@ -2065,9 +2395,9 @@
                     <p class="text-text-soft text-sm leading-relaxed">User-focused interfaces for web applications, from
                         registration systems to IoT dashboards.</p>
                 </div>
-                <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-3 group cursor-default">
+                <div class="glass-light glass-shine rounded-3xl p-7 glow-hover reveal reveal-delay-3 group cursor-default relative z-10">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center mb-5 group-hover:bg-secondary/25 transition-colors duration-300">
+                        class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center mb-5 group-hover:bg-secondary/25 transition-colors duration-300 border border-secondary/20">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A3FA6" stroke-width="2">
                             <rect x="2" y="3" width="20" height="14" rx="2" />
                             <line x1="8" y1="21" x2="16" y2="21" />
@@ -2078,9 +2408,9 @@
                     <p class="text-text-soft text-sm leading-relaxed">Social media management, SEO, YouTube channel
                         management, content strategy that grows engagement.</p>
                 </div>
-                <div class="glass-light rounded-3xl p-7 glow-hover reveal reveal-delay-4 group cursor-default">
+                <div class="glass-light glass-shine rounded-3xl p-7 glow-hover reveal reveal-delay-4 group cursor-default relative z-10">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5 group-hover:bg-white/15 transition-colors duration-300">
+                        class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5 group-hover:bg-white/15 transition-colors duration-300 border border-white/10">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C7B3D9" stroke-width="2">
                             <polygon points="23 7 16 12 23 17 23 7" />
                             <rect x="1" y="5" width="14" height="14" rx="2" />
@@ -2194,127 +2524,85 @@
 
                 <div class="marquee-track flex items-center gap-20 whitespace-nowrap" style="width:max-content;">
 
-                    <!-- ===== FIRST SET ===== -->
                     <div class="flex items-center gap-20 flex-shrink-0">
-
-                        <!-- Sport Court Ontario -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/SC_Logo.webp" alt="Sport Court Ontario"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- Atlas Edge Global -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/AEG_Logo.webp" alt="Atlas Edge Global"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- ABECON 2025 -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/AbeCon_Logo.webp" alt="ABECON 2025"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- DOST-PCAARD -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/DOST-PCAARRD.webp" alt="DOST-PCAARD"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- PNC Studios -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/PS_Logo.webp" alt="PNC Studios"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- The Light Publication -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/TL_Logo.webp" alt="The Light Publication"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- PcByte -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/PcByte_Logo.webp" alt="PcByte"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- TSC -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/TSC_Logo.webp" alt="TSC" class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- DITO Telecommunity -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/DITO_Logo.webp" alt="DITO Telecommunity"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- Desiniano -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/Desin_Logo.webp" alt="Desiniano"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
                     </div>
 
-                    <!-- ===== DUPLICATE SET (seamless loop) ===== -->
                     <div class="flex items-center gap-20 flex-shrink-0">
-
-                        <!-- Sport Court Ontario -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/SC_Logo.webp" alt="Sport Court Ontario"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- Atlas Edge Global -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/AEG_Logo.webp" alt="Atlas Edge Global"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- ABECON 2025 -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/AbeCon_Logo.webp" alt="ABECON 2025"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- DOST-PCAARD -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/DOST-PCAARRD.webp" alt="DOST-PCAARD"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- PNC Studios -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/PS_Logo.webp" alt="PNC Studios"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- The Light Publication -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/TL_Logo.webp" alt="The Light Publication"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- PcByte -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/PcByte_Logo.webp" alt="PcByte"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- TSC -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/TSC_Logo.webp" alt="TSC" class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- DITO Telecommunity -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/DITO_Logo.webp" alt="DITO Telecommunity"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
-
-                        <!-- Desiniano -->
-                        <div class="w-36 flex items-center justify-center flex-shrink-0">
+                        <div class="w-36 flex items-center justify-center flex-shrink-0 glass-light rounded-2xl p-3">
                             <img src="Logo/Desin_Logo.webp" alt="Desiniano"
                                 class="h-20 w-auto max-w-full object-contain" />
                         </div>
@@ -2340,9 +2628,8 @@
                 <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth carousel-track pb-2"
                     id="testimonialTrack">
 
-                    <!-- ===== SPORT COURT ONTARIO ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">Sport Court Ontario</div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
                             class="text-primary/40 mb-4">
@@ -2356,7 +2643,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0 border border-primary/25">
                                 CT</div>
                             <div>
                                 <div class="font-semibold text-sm">Camilla Thibideau</div>
@@ -2365,9 +2652,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== ATLAS EDGE GLOBAL ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-accent font-extrabold text-lg tracking-tight mb-6">Atlas Edge Global</div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4">
                             <path
@@ -2377,11 +2663,10 @@
                             “We got the polished, professional website we had envisioned from the start. It reflects
                             exactly what we wanted, looks great, and gives our brand the online presence we were aiming
                             for.”
-
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0 border border-accent/25">
                                 LS</div>
                             <div>
                                 <div class="font-semibold text-sm">Lel Smits</div>
@@ -2390,9 +2675,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== PNC STUDIOS ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">PNC Studios</div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
                             class="text-secondary/40 mb-4">
@@ -2406,7 +2690,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0 border border-secondary/25">
                                 FC</div>
                             <div>
                                 <div class="font-semibold text-sm">Francis Dave P. Cabanting</div>
@@ -2415,9 +2699,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== THE LIGHT PUBLICATION ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">The Light Publication</div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
                             class="text-primary/40 mb-4">
@@ -2431,7 +2714,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0 border border-primary/25">
                                 RM</div>
                             <div>
                                 <div class="font-semibold text-sm">Rhunafe Mercampo</div>
@@ -2440,9 +2723,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== DOST PCAARRD ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-accent font-extrabold text-lg tracking-tight mb-6">DOST PCAARRD</div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" class="text-accent/40 mb-4">
                             <path
@@ -2455,7 +2737,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm flex-shrink-0 border border-accent/25">
                                 MG</div>
                             <div>
                                 <div class="font-semibold text-sm">Honeybee S. Limbaro</div>
@@ -2464,9 +2746,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== TAGUM STUDENT COUNCIL ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-secondary font-extrabold text-lg tracking-tight mb-6">Tagum Student Council
                         </div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
@@ -2482,7 +2763,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0 border border-secondary/25">
                                 ES</div>
                             <div>
                                 <div class="font-semibold text-sm">Eina Angelu Samson</div>
@@ -2491,9 +2772,8 @@
                         </div>
                     </div>
 
-                    <!-- ===== PcByte Integrated System ===== -->
                     <div
-                        class="glass-light rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+                        class="glass-light glass-shine rounded-3xl p-8 glow-hover snap-start shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col relative z-10">
                         <div class="text-primary font-extrabold text-lg tracking-tight mb-6">PcByte Integrated System
                         </div>
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"
@@ -2508,7 +2788,7 @@
                         </p>
                         <div class="flex items-center gap-3 pt-6 border-t border-white/8">
                             <div
-                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                                class="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0 border border-primary/25">
                                 GA</div>
                             <div>
                                 <div class="font-semibold text-sm">Glen Michael Agot</div>
@@ -2519,10 +2799,9 @@
 
                 </div>
 
-                <!-- ===== CAROUSEL CONTROLS ===== -->
                 <div class="flex items-center justify-center gap-5 mt-8">
                     <button id="testimonialPrev" aria-label="Previous"
-                        class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                        class="w-11 h-11 rounded-full glass-light glass-shine flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300 relative z-10">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5">
                             <polyline points="15 18 9 12 15 6" />
@@ -2530,7 +2809,7 @@
                     </button>
                     <div class="flex items-center gap-2" id="testimonialDots"></div>
                     <button id="testimonialNext" aria-label="Next"
-                        class="w-11 h-11 rounded-full glass-light flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                        class="w-11 h-11 rounded-full glass-light glass-shine flex items-center justify-center hover:bg-white/10 hover:border-primary/30 transition-all duration-300 relative z-10">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5">
                             <polyline points="9 18 15 12 9 6" />
@@ -2567,31 +2846,27 @@
                         technology-meets-creativity approach to every project.
                     </p>
                     <div class="grid grid-cols-3 gap-5">
-                        <div class="glass-light rounded-2xl p-5 text-center">
+                        <div class="glass-light glass-shine rounded-2xl p-5 text-center relative z-10">
                             <div class="text-3xl font-bold text-white mb-1">4+</div>
                             <div class="text-xs text-text-soft">Years Exp.</div>
                         </div>
-                        <div class="glass-light rounded-2xl p-5 text-center">
+                        <div class="glass-light glass-shine rounded-2xl p-5 text-center relative z-10">
                             <div class="text-3xl font-bold text-white mb-1">7+</div>
                             <div class="text-xs text-text-soft">Projects</div>
                         </div>
-                        <div class="glass-light rounded-2xl p-5 text-center">
+                        <div class="glass-light glass-shine rounded-2xl p-5 text-center relative z-10">
                             <div class="text-3xl font-bold text-white mb-1">92%</div>
                             <div class="text-xs text-text-soft">Engagement Growth</div>
                         </div>
                     </div>
                 </div>
                 <div class="relative order-1 lg:order-2 w-fit">
-                    <!-- Main circle with placeholder image -->
                     <div
                         class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/10 flex items-center justify-center border border-white/5 backdrop-blur-sm relative overflow-hidden">
-                        <!-- ===== PLACEHOLDER IMAGE ===== -->
                         <img src="MyPic.png" alt="Your Photo Placeholder"
                             class="absolute inset-0 w-full h-full object-cover rounded-3xl" />
-                        <!-- (You can replace the src with your actual image URL later) -->
                     </div>
 
-                    <!-- Clock icon (bottom-right) -->
                     <div
                         class="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl glass-light flex items-center justify-center border border-white/5">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA552" stroke-width="2">
@@ -2600,7 +2875,6 @@
                         </svg>
                     </div>
 
-                    <!-- Code icon (top-left) -->
                     <div
                         class="absolute -top-4 -left-4 w-16 h-16 rounded-2xl glass-light flex items-center justify-center border border-white/5">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2">
@@ -2664,7 +2938,6 @@
                  12.84 12.84 0 0 0 2.81.7 
                  A2 2 0 0 1 22 16.92z" />
                             </svg>
-
                             <a href="tel:+639910557647" class="hover:text-white transition-colors duration-300">
                                 +63 9910 - 557 - 647
                             </a>
@@ -2676,8 +2949,8 @@
                             </svg><span>Tagum City, Davao del Norte, Philippines</span></div>
                     </div>
                 </div>
-                <div class="glass-light rounded-3xl p-8 reveal reveal-delay-2 flex flex-col justify-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-6">
+                <div class="glass-light glass-shine rounded-3xl p-8 reveal reveal-delay-2 flex flex-col justify-center text-center relative z-10">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-6 border border-primary/20">
                         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" />
                             <line x1="16" y1="2" x2="16" y2="6" />
@@ -2866,7 +3139,7 @@
                 const filter = tab.getAttribute('data-filter');
                 portfolioItems.forEach(item => {
                     if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
+                        item.style.display = '';
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
                     } else {
@@ -2884,24 +3157,17 @@
         const lbPlaceholder = document.getElementById('lightboxPlaceholder');
 
         function openLightbox(el, event) {
-            // If a click event was passed and it came from a link, ignore it (safety)
             if (event && event.target && event.target.closest('a')) {
                 return;
             }
-
-            // Private/unavailable project: route any click on the card to the same modal
             if (el.getAttribute('data-unavailable') === 'true') {
                 openUnavailableModal();
                 return;
             }
-
-            // Check if this is a gallery card
             if (el.getAttribute('data-gallery') === 'true') {
                 openGallery(el);
                 return;
             }
-
-            // Single-image lightbox
             lbTitle.textContent = el.getAttribute('data-title');
             lbCat.textContent = el.getAttribute('data-cat');
             lbDesc.textContent = el.getAttribute('data-desc');
@@ -2954,11 +3220,6 @@
                 return;
             }
 
-            console.log(`📸 Loading ${images.length} images for "${title}"`);
-
-            let loadedCount = 0;
-            const totalImages = images.length;
-
             images.forEach((src, index) => {
                 const col = document.createElement('div');
                 col.className = 'rounded-2xl overflow-hidden bg-white/5 border border-white/5 relative group';
@@ -2969,11 +3230,8 @@
                 img.alt = title + ' ' + (index + 1);
                 img.className = 'w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105';
                 img.loading = 'lazy';
-
-                // Store original source for fallback
                 img.dataset.src = cleanSrc;
 
-                // Error handling: try multiple fallback paths
                 const fallbackPaths = [
                     cleanSrc.replace('Graphics/', ''),
                     cleanSrc.replace('Graphics/', '../Graphics/'),
@@ -2984,12 +3242,9 @@
 
                 const tryLoad = () => {
                     if (attemptIndex < fallbackPaths.length && fallbackPaths[attemptIndex] !== cleanSrc) {
-                        console.warn(`Attempting fallback ${attemptIndex + 1}: ${fallbackPaths[attemptIndex]}`);
                         img.src = fallbackPaths[attemptIndex];
                         attemptIndex++;
                     } else {
-                        // All fallbacks failed – show placeholder
-                        console.warn(`All attempts failed for: ${cleanSrc}`);
                         img.style.display = 'none';
                         const placeholder = document.createElement('div');
                         placeholder.className =
@@ -3003,7 +3258,6 @@
                     if (attemptIndex < fallbackPaths.length) {
                         tryLoad();
                     } else {
-                        // Show placeholder
                         img.style.display = 'none';
                         const placeholder = document.createElement('div');
                         placeholder.className =
@@ -3013,25 +3267,10 @@
                     }
                 };
 
-                img.onload = function () {
-                    loadedCount++;
-                    this.style.opacity = '1';
-                    console.log(`✅ Loaded: ${this.src}`);
-                };
-
-                // Start loading
                 img.style.opacity = '0.6';
                 col.appendChild(img);
                 galleryGrid.appendChild(col);
             });
-
-            // After 5 seconds, if not all images loaded, show a count
-            setTimeout(() => {
-                const visibleImgs = galleryGrid.querySelectorAll('img:not([style*="display: none"])');
-                if (visibleImgs.length < totalImages) {
-                    console.log(`⚠️ ${visibleImgs.length}/${totalImages} images loaded.`);
-                }
-            }, 5000);
 
             galleryOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3043,7 +3282,6 @@
             document.body.style.overflow = '';
         }
 
-        // ── Escape key closes both ──
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 if (galleryOverlay.classList.contains('active')) closeGallery();
@@ -3119,11 +3357,11 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) {
-                nav.style.background = 'rgba(11,6,26,0.85)';
-                nav.style.boxShadow = '0 12px 48px rgba(0,0,0,0.5)';
+                nav.style.background = 'linear-gradient(135deg, rgba(18,13,36,0.88), rgba(11,6,26,0.80))';
+                nav.style.boxShadow = '0 12px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.10)';
             } else {
-                nav.style.background = 'rgba(26,20,53,0.65)';
-                nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.25)';
+                nav.style.background = '';
+                nav.style.boxShadow = '';
             }
         });
 
@@ -3165,7 +3403,6 @@
             videoTitle.textContent = title;
             videoCat.textContent = cat;
 
-            // Build thumbnail strip
             videoStrip.innerHTML = '';
             videoFiles.forEach((src, idx) => {
                 const thumb = document.createElement('button');
@@ -3277,7 +3514,6 @@
             }
         }
 
-        // Close modal with ESC key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('unavailableModal');
@@ -3291,7 +3527,6 @@
         const portfolioGrid = document.getElementById('portfolioGrid');
 
         portfolioGrid.addEventListener('click', function (e) {
-            // 1. Check if the click is on an "Unavailable" link
             const unavailableLink = e.target.closest('.unavailable-link');
             if (unavailableLink) {
                 e.preventDefault();
@@ -3300,31 +3535,23 @@
                 return;
             }
 
-            // 2. Check if the click is on any other link inside a card (Live/View)
             const anyLink = e.target.closest('.project-link');
             if (anyLink) {
-                // Allow default behavior (open href in new tab) but stop propagation to prevent lightbox
                 e.stopPropagation();
-                // Do NOT prevent default – the link will open normally
                 return;
             }
 
-            // 3. Find the parent portfolio card
             const card = e.target.closest('.portfolio-card');
             if (!card) return;
 
-            // 4. Determine which lightbox to open
             const isGallery = card.getAttribute('data-gallery') === 'true';
             const isVideo = card.hasAttribute('data-videos');
 
             if (isGallery && isVideo) {
-                // Video gallery
                 openVideoLightbox(card);
             } else if (isGallery) {
-                // Graphics gallery
                 openGallery(card);
             } else {
-                // Single-image lightbox (web projects)
                 openLightbox(card, e);
             }
         });
@@ -3333,7 +3560,6 @@
     <!-- ===== UNAVAILABLE PROJECT MODAL ===== -->
     <div id="unavailableModal" class="modal-overlay" onclick="closeUnavailableModal(event)">
         <div class="modal-content" onclick="event.stopPropagation();">
-            <!-- Close button -->
             <button class="modal-close" onclick="closeUnavailableModal()" aria-label="Close">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -3341,7 +3567,6 @@
                 </svg>
             </button>
 
-            <!-- Icon -->
             <div class="modal-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E0447D" stroke-width="1.5">
                     <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -3351,16 +3576,13 @@
                 </svg>
             </div>
 
-            <!-- Title -->
             <h3 class="modal-title">Not Available for Public Viewing</h3>
 
-            <!-- Message -->
             <p class="modal-message">
                 This project is currently under a non-disclosure agreement (NDA) or is for internal use only.
                 It will be made publicly available once approved by the client.
             </p>
 
-            <!-- Footer note -->
             <p class="modal-footer-note">
                 For more details, feel free to <a href="mailto:louis.rollorata@gmail.com" class="modal-email-link">reach
                     out directly</a>.
